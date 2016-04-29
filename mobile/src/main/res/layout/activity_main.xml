@@ -9,11 +9,61 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="xyz.mechenbier.circuittester.MainActivity">
 
-    <GridLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+    <ImageView
+        android:layout_width="170dp"
+        android:layout_height="170dp"
+        android:id="@+id/image_powerstate"
+        android:src="@drawable/bolt"
         android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="65dp"
+        android:contentDescription="@string/image_powerstate_content_description" />
+
+    <ToggleButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New ToggleButton"
+        android:id="@+id/toggle_mute"
+        android:textOff="@string/mute_button_unmuted"
+        android:textOn="@string/mute_button_muted"
+        android:checked="false"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_toLeftOf="@+id/toggle_mute"
+        android:layout_toStartOf="@+id/toggle_mute"
+        android:id="@+id/rg_invert">
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/invert_radio_invert"
+            android:id="@+id/rb_sound_when_powered"
+            android:checked="true" />
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/invert_radio_uninvert"
+            android:id="@+id/rb_sound_when_not_powered"
+            android:checked="false" />
+    </RadioGroup>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="@string/warning"
+        android:id="@+id/text_warning"
+        android:layout_above="@+id/rg_invert"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"></GridLayout>
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="62dp"
+        android:visibility="invisible" />
 
 </RelativeLayout>

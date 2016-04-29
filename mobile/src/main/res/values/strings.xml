@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Circuit Tester</string>
+    <string name="warning">Warning: When doing electrical work, always double check that there is no power to the outlet you are testing after removing your phone charger.</string>
+    <string name="image_powerstate_content_description">Power State</string>
+    <string name="mute_button_muted">Unmute</string>
+    <string name="mute_button_unmuted">Mute</string>
+    <string name="invert_radio_invert">Sound when powered</string>
+    <string name="invert_radio_uninvert">Sound when not powered</string>
 </resources>
