@@ -3,4 +3,9 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+    <color name="image_charging">#D32F2F</color>
+    <!--<color name="image_charging">#F44336</color>-->
+    <color name="image_not_charging">#009688</color>
+    <!--<color name="image_not_charging">#388E3C</color>-->
+    <!--<color name="image_not_charging">#4CAF50</color>-->
 </resources>
