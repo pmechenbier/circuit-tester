@@ -44,14 +44,16 @@
             android:layout_height="wrap_content"
             android:text="@string/invert_radio_invert"
             android:id="@+id/rb_sound_when_powered"
-            android:checked="true" />
+            android:checked="true"
+            android:onClick="onRadioButtonClicked" />
 
         <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/invert_radio_uninvert"
             android:id="@+id/rb_sound_when_not_powered"
-            android:checked="false" />
+            android:checked="false"
+            android:onClick="onRadioButtonClicked" />
     </RadioGroup>
 
     <TextView

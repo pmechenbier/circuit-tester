@@ -4,6 +4,11 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.CompoundButton;
+import android.widget.RadioButton;
+import android.widget.ToggleButton;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -18,6 +23,12 @@ public class MainActivity extends AppCompatActivity {
 
         ifilter = new IntentFilter(Intent.ACTION_BATTERY_CHANGED);
         pConRec.init(this);
+        ToggleButton  muteToggleButton = (ToggleButton ) findViewById(R.id.toggle_mute);
+        muteToggleButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                pConRec.SetMuted(isChecked);
+            }
+        });
     }
 
     @Override
@@ -30,5 +41,22 @@ public class MainActivity extends AppCompatActivity {
     protected void onPause(){
         this.unregisterReceiver(pConRec);
         super.onPause();
+    }
+
+    public void onRadioButtonClicked(View view) {
+        // Is the button now checked?
+        boolean checked = ((RadioButton) view).isChecked();
+
+        // Check which radio button was clicked
+        switch(view.getId()) {
+            case R.id.rb_sound_when_powered:
+                if (checked)
+                    pConRec.SetSoundOnPowered(true);
+                    break;
+            case R.id.rb_sound_when_not_powered:
+                if (checked)
+                    pConRec.SetSoundOnPowered(false);
+                    break;
+        }
     }
 }
