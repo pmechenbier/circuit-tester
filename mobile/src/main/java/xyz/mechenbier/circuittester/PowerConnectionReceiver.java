@@ -1,12 +1,17 @@
 package xyz.mechenbier.circuittester;
 
+import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.media.MediaPlayer;
 import android.os.BatteryManager;
+import android.view.View;
+import android.view.Window;
+import android.widget.RadioButton;
 import android.widget.Toast;
+import android.widget.ToggleButton;
 
 import java.security.PublicKey;
 
@@ -33,6 +38,30 @@ public class PowerConnectionReceiver extends BroadcastReceiver {
                 status == BatteryManager.BATTERY_STATUS_CHARGING ||
                 status == BatteryManager.BATTERY_STATUS_FULL;
         audio.AlterAudioState();
+    }
+
+    public void Pause(){
+        audio.SetMuted(true);
+    }
+
+    public void Resume(){
+        View dv = ((Activity)audio.parentContext).getWindow().getDecorView();
+        ToggleButton muteToggleButton = (ToggleButton ) dv.findViewById(R.id.toggle_mute);
+        audio.SetMuted(muteToggleButton.isChecked());
+    }
+
+    public void SoundButtonClicked(View view){
+        boolean checked = ((RadioButton) view).isChecked();
+
+        // Check which radio button was clicked
+        switch(view.getId()) {
+            case R.id.rb_sound_when_powered:
+                audio.SetSoundOnPowered(checked);
+                break;
+            case R.id.rb_sound_when_not_powered:
+                audio.SetSoundOnPowered(!checked);
+                break;
+        }
     }
 
 }
