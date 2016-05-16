@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
         ToggleButton  muteToggleButton = (ToggleButton ) findViewById(R.id.toggle_mute);
         muteToggleButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                pConRec.SetMuted(isChecked);
+                pConRec.audio.SetMuted(isChecked);
             }
         });
     }
@@ -51,11 +51,11 @@ public class MainActivity extends AppCompatActivity {
         switch(view.getId()) {
             case R.id.rb_sound_when_powered:
                 if (checked)
-                    pConRec.SetSoundOnPowered(true);
+                    pConRec.audio.SetSoundOnPowered(true);
                     break;
             case R.id.rb_sound_when_not_powered:
                 if (checked)
-                    pConRec.SetSoundOnPowered(false);
+                    pConRec.audio.SetSoundOnPowered(false);
                     break;
         }
     }

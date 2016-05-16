@@ -15,31 +15,11 @@ import java.security.PublicKey;
  */
 public class PowerConnectionReceiver extends BroadcastReceiver {
 
-    private MediaPlayer mp;
-    private Context parentContext;
-
-    private boolean Muted;
-    private boolean SoundOnPowered = true;
-    private boolean isCharging;
-
-    public void SetMuted(boolean isMuted){
-        Muted = isMuted;
-        if(Muted){
-            StopMP();
-        }
-        else{
-            AlterAudioState();
-        }
-    }
-
-    public void SetSoundOnPowered(boolean isSoundOnPowered){
-        SoundOnPowered = isSoundOnPowered;
-        AlterAudioState();
-    }
+    protected final PowerStateAudio audio = new PowerStateAudio();
 
     public void init(Context context){
-        parentContext = context;
-        InitMP();
+        audio.parentContext = context;
+        audio.InitMP();
     }
 
     @Override
@@ -49,49 +29,10 @@ public class PowerConnectionReceiver extends BroadcastReceiver {
 
     private void EvaluateBattery(Intent intent) {
         int status = intent.getIntExtra(BatteryManager.EXTRA_STATUS, -1);
-        isCharging =
+        audio.isCharging =
                 status == BatteryManager.BATTERY_STATUS_CHARGING ||
                 status == BatteryManager.BATTERY_STATUS_FULL;
-        AlterAudioState();
-    }
-
-    private void AlterAudioState() {
-        if(isCharging){
-            if(SoundOnPowered){
-                StartMP();
-            }
-            else{
-                StopMP();
-            }
-
-        }
-        else{
-            if(SoundOnPowered){
-                StopMP();
-            }
-            else{
-                StartMP();
-            }
-        }
-    }
-
-    private void InitMP() {
-        mp = MediaPlayer.create(parentContext, R.raw.test_alert);
-        mp.setLooping(true);
-    }
-
-    private void StartMP() {
-        if(!mp.isPlaying() && !Muted){
-            InitMP();
-            mp.start();
-        }
-    }
-
-    private void StopMP() {
-        if(mp.isPlaying()){
-            mp.stop();
-            mp.reset();
-        }
+        audio.AlterAudioState();
     }
 
 }
