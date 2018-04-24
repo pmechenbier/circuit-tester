@@ -1,52 +1,149 @@
 package xyz.mechenbier.circuittester;
 
+import android.content.ComponentName;
+import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
-import android.support.v7.app.AppCompatActivity;
+import android.content.ServiceConnection;
 import android.os.Bundle;
+import android.os.IBinder;
+import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.RadioButton;
 import android.widget.ToggleButton;
+import xyz.mechenbier.circuittester.PowerStateService.LocalBinder;
 
 public class MainActivity extends AppCompatActivity {
 
-    private PowerConnectionReceiver pConRec = new PowerConnectionReceiver();
-    private IntentFilter ifilter;
+  PowerStateService mService;
+  boolean mBound = false;
+
+  /**
+   * Defines callbacks for service binding, passed to bindService()
+   */
+  private ServiceConnection mConnection = new ServiceConnection() {
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        pConRec.init(this);
-
-        ifilter = new IntentFilter(Intent.ACTION_BATTERY_CHANGED);
-        pConRec.init(this);
-
-        ToggleButton  muteToggleButton = (ToggleButton ) findViewById(R.id.toggle_mute);
-        muteToggleButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                pConRec.audio.SetMuted(isChecked);
-            }
-        });
+    public void onServiceConnected(ComponentName className,
+        IBinder service) {
+      // We've bound to LocalService, cast the IBinder and get LocalService instance
+      LocalBinder binder = (LocalBinder) service;
+      mService = binder.getService();
+      mBound = true;
     }
 
     @Override
-    protected void onResume(){
-        this.registerReceiver(pConRec, ifilter);
-        pConRec.Resume();
-        super.onResume();
+    public void onServiceDisconnected(ComponentName arg0) {
+      mBound = false;
     }
+  };
 
-    @Override
-    protected void onPause(){
-        this.unregisterReceiver(pConRec);
-        pConRec.Pause();
-        super.onPause();
-    }
+  @Override
+  protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.activity_main);
 
-    public void onRadioButtonClicked(View view) {
-        pConRec.SoundButtonClicked(view);
+    ToggleButton muteToggleButton = (ToggleButton) findViewById(R.id.toggle_mute);
+    muteToggleButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+      public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+        setMute(isChecked);
+      }
+    });
+    startService();
+  }
+
+  @Override
+  protected void onStart() {
+    super.onStart();
+    bindService();
+  }
+
+  @Override
+  protected void onResume() {
+    super.onResume();
+  }
+
+
+  @Override
+  protected void onPause() {
+    super.onPause();
+  }
+
+
+  @Override
+  protected void onStop() {
+    super.onStop();
+    unbindService();
+  }
+
+
+  @Override
+  protected void onDestroy() {
+    stopService();
+    super.onDestroy();
+  }
+
+
+  public void startService(View view) {
+    startService();
+    bindService();
+  }
+
+  public void startService() {
+    Intent intent = new Intent(this, PowerStateService.class);
+    startService(intent);
+  }
+
+  public void bindService() {
+    // Bind to LocalService
+    Intent intent = new Intent(this, PowerStateService.class);
+    bindService(intent, mConnection, Context.BIND_AUTO_CREATE);
+  }
+
+  public void stopService(View view) {
+    stopService();
+  }
+
+  private void stopService() {
+    unbindService();
+    Intent intent = new Intent(this, PowerStateService.class);
+    stopService(intent);
+  }
+
+  private void unbindService() {
+    try {
+      unbindService(mConnection);
+    } catch (Exception e) {
+      Log.e("SERVICE", "Issue unbinding the service");
     }
+    mBound = false;
+  }
+
+
+  public void onRadioButtonClicked(View view) {
+    boolean checked = ((RadioButton) view).isChecked();
+
+    // Check which radio button was clicked
+    switch (view.getId()) {
+      case R.id.rb_sound_when_powered:
+        SetSoundOnPowered(!checked);
+        break;
+      case R.id.rb_sound_when_not_powered:
+        SetSoundOnPowered(checked);
+        break;
+    }
+  }
+
+  private void setMute(boolean muted) {
+    if (mBound) {
+      mService.setMute(muted);
+    }
+  }
+
+  private void SetSoundOnPowered(boolean checked) {
+    if (mBound) {
+      mService.setSoundOnPowered(checked);
+    }
+  }
 }

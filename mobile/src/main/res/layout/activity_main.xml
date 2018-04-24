@@ -29,7 +29,35 @@
         android:checked="false"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+      />
+
+    <Button
+      android:id="@+id/start_service"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginBottom="80dp"
+      android:layout_alignParentBottom="true"
+      android:layout_alignParentEnd="true"
+      android:layout_alignParentRight="true"
+      android:checked="false"
+      android:onClick="startService"
+      android:text="Start Service"
+      android:visibility="invisible" />
+
+    <Button
+      android:id="@+id/stop_service"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginBottom="40dp"
+      android:layout_alignParentBottom="true"
+      android:layout_alignParentEnd="true"
+      android:layout_alignParentRight="true"
+      android:checked="false"
+      android:onClick="stopService"
+      android:text="Stop Service"
+      android:visibility="invisible" />
+
 
     <RadioGroup
         android:layout_width="match_parent"
