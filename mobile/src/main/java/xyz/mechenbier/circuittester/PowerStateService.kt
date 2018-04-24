@@ -15,6 +15,7 @@ class PowerStateService : Service() {
     var pConRec: PowerConnectionReceiver = PowerConnectionReceiver()
     private var ifilter: IntentFilter? = null
 
+    // Setting to true will show toasts on start and stop of the service
     private var debug: Boolean = true
 
     override fun onCreate() {

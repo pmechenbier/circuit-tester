@@ -7,6 +7,7 @@ import android.content.ServiceConnection;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.RadioButton;
@@ -49,17 +50,13 @@ public class MainActivity extends AppCompatActivity {
         setMute(isChecked);
       }
     });
+    startService();
   }
 
   @Override
-  protected void onDestroy() {
-    stopService();
-    super.onDestroy();
-  }
-
-  @Override
-  protected void onPause() {
-    super.onPause();
+  protected void onStart() {
+    super.onStart();
+    bindService();
   }
 
   @Override
@@ -68,17 +65,40 @@ public class MainActivity extends AppCompatActivity {
   }
 
 
+  @Override
+  protected void onPause() {
+    super.onPause();
+  }
+
+
+  @Override
+  protected void onStop() {
+    super.onStop();
+    unbindService();
+  }
+
+
+  @Override
+  protected void onDestroy() {
+    stopService();
+    super.onDestroy();
+  }
+
+
   public void startService(View view) {
     startService();
+    bindService();
   }
 
   public void startService() {
     Intent intent = new Intent(this, PowerStateService.class);
     startService(intent);
+  }
 
+  public void bindService() {
     // Bind to LocalService
-    Intent intent2 = new Intent(this, PowerStateService.class);
-    bindService(intent2, mConnection, Context.BIND_AUTO_CREATE);
+    Intent intent = new Intent(this, PowerStateService.class);
+    bindService(intent, mConnection, Context.BIND_AUTO_CREATE);
   }
 
   public void stopService(View view) {
@@ -86,10 +106,18 @@ public class MainActivity extends AppCompatActivity {
   }
 
   private void stopService() {
-    unbindService(mConnection);
-    mBound = false;
+    unbindService();
     Intent intent = new Intent(this, PowerStateService.class);
     stopService(intent);
+  }
+
+  private void unbindService() {
+    try {
+      unbindService(mConnection);
+    } catch (Exception e) {
+      Log.e("SERVICE", "Issue unbinding the service");
+    }
+    mBound = false;
   }
 
 
