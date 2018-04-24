@@ -7,63 +7,65 @@ import android.media.MediaPlayer;
  * Created by tgrannen on 5/15/2016.
  */
 public class PowerStateAudio {
-    private MediaPlayer mp;
-    public Context parentContext;
-    private boolean Muted;
-    private boolean SoundOnPowered = true;
-    public boolean isCharging;
 
-    public void AlterAudioState() {
-        if(isCharging){
-            if(SoundOnPowered){
-                StartMP();
-            }
-            else{
-                StopMP();
-            }
+  private MediaPlayer mp;
+  public Context parentContext;
+  private boolean Muted;
+  private boolean SoundOnPowered = true;
+  public boolean isCharging;
 
-        }
-        else{
-            if(SoundOnPowered){
-                StopMP();
-            }
-            else{
-                StartMP();
-            }
-        }
+  public void AlterAudioState() {
+    if (isCharging) {
+      if (SoundOnPowered) {
+        StartMP();
+      } else {
+        StopMP();
+      }
+
+    } else {
+      if (SoundOnPowered) {
+        StopMP();
+      } else {
+        StartMP();
+      }
     }
+  }
 
-    public void SetSoundOnPowered(boolean isSoundOnPowered){
-        SoundOnPowered = isSoundOnPowered;
-        AlterAudioState();
-    }
+  public void SetSoundOnPowered(boolean isSoundOnPowered) {
+    SoundOnPowered = isSoundOnPowered;
+    AlterAudioState();
+  }
 
-    public void SetMuted(boolean isMuted){
-        Muted = isMuted;
-        if(Muted){
-            StopMP();
-        }
-        else{
-            AlterAudioState();
-        }
+  public void SetMuted(boolean isMuted) {
+    Muted = isMuted;
+    if (Muted) {
+      StopMP();
+    } else {
+      AlterAudioState();
     }
+  }
 
-    public void InitMP() {
-        mp = MediaPlayer.create(parentContext, R.raw.test_alert);
-        mp.setLooping(true);
-    }
+  public void InitMP() {
+    mp = MediaPlayer.create(parentContext, R.raw.test_alert);
+    mp.setLooping(true);
+  }
 
-    private void StartMP() {
-        if(!mp.isPlaying() && !Muted){
-            InitMP();
-            mp.start();
-        }
-    }
+  public void InitMP(Context context) {
+    parentContext = context;
+    InitMP();
+  }
 
-    private void StopMP() {
-        if(mp.isPlaying()){
-            mp.stop();
-            mp.reset();
-        }
+  private void StartMP() {
+    if (mp != null && !mp.isPlaying() && !Muted) {
+      InitMP();
+      mp.start();
     }
+  }
+
+  private void StopMP() {
+    if (mp != null && mp.isPlaying()) {
+      mp.stop();
+      mp.reset();
+    }
+  }
 }

@@ -19,15 +19,15 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        pConRec.init(this);
+//        pConRec.init(this);
 
         ifilter = new IntentFilter(Intent.ACTION_BATTERY_CHANGED);
-        pConRec.init(this);
+//        pConRec.init(this);
 
         ToggleButton  muteToggleButton = (ToggleButton ) findViewById(R.id.toggle_mute);
         muteToggleButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                pConRec.audio.SetMuted(isChecked);
+//                pConRec.audio.SetMuted(isChecked);
             }
         });
     }
@@ -35,15 +35,20 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume(){
         this.registerReceiver(pConRec, ifilter);
-        pConRec.Resume();
+//        pConRec.Resume();
         super.onResume();
     }
 
     @Override
     protected void onPause(){
         this.unregisterReceiver(pConRec);
-        pConRec.Pause();
+//        pConRec.Pause();
         super.onPause();
+    }
+
+    public void startService(View view){
+        Intent intent = new Intent(this, PowerStateService.class);
+        startService(intent);
     }
 
     public void onRadioButtonClicked(View view) {

@@ -23,8 +23,7 @@ public class PowerConnectionReceiver extends BroadcastReceiver {
     protected final PowerStateAudio audio = new PowerStateAudio();
 
     public void init(Context context){
-        audio.parentContext = context;
-        audio.InitMP();
+        audio.InitMP(context);
     }
 
     @Override
@@ -48,6 +47,10 @@ public class PowerConnectionReceiver extends BroadcastReceiver {
         View dv = ((Activity)audio.parentContext).getWindow().getDecorView();
         ToggleButton muteToggleButton = (ToggleButton ) dv.findViewById(R.id.toggle_mute);
         audio.SetMuted(muteToggleButton.isChecked());
+    }
+
+    public void Resume(boolean muted){
+        audio.SetMuted(muted);
     }
 
     public void SoundButtonClicked(View view){

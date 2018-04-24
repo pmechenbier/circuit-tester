@@ -1,8 +1,11 @@
 package xyz.mechenbier.circuittester;
 
 import android.app.IntentService;
-import android.content.Intent;
+import android.app.Service;
 import android.content.Context;
+import android.content.Intent;
+import android.os.IBinder;
+import android.widget.Toast;
 
 /**
  * An {@link IntentService} subclass for handling asynchronous task requests in
@@ -11,7 +14,7 @@ import android.content.Context;
  * TODO: Customize class - update intent actions, extra parameters and static
  * helper methods.
  */
-public class PowerStateService extends IntentService {
+public class PowerStateService extends Service {
 
   private PowerConnectionReceiver pConRec = new PowerConnectionReceiver();
 
@@ -22,7 +25,7 @@ public class PowerStateService extends IntentService {
   private static final String ACTION_MUTE = "xyz.mechenbier.circuittester.action.MUTE";
 
   public PowerStateService() {
-    super("PowerStateService");
+    super();
   }
 
   /**
@@ -52,16 +55,33 @@ public class PowerStateService extends IntentService {
   }
 
   @Override
-  protected void onHandleIntent(Intent intent) {
-    if (intent != null) {
-      final String action = intent.getAction();
-      if (ACTION_RESUME.equals(action)) {
-        handleResume();
-      } else if (ACTION_PAUSE.equals(action)) {
-        handlePause();
-      }
-    }
+  public void onCreate() {
+    // Start up the thread running the service.  Note that we create a
+    // separate thread because the service normally runs in the process's
+    // main thread, which we don't want to block.  We also make it
+    // background priority so CPU-intensive work will not disrupt our UI.
+    pConRec.init(this);
   }
+
+  @Override
+  public int onStartCommand(Intent intent, int flags, int startId) {
+    Toast.makeText(this, "service starting", Toast.LENGTH_SHORT).show();
+    pConRec.init(this);
+    pConRec.Resume(false);
+    return super.onStartCommand(intent, flags, startId);
+  }
+
+//  @Override
+//  protected void onHandleIntent(Intent intent) {
+//    if (intent != null) {
+//      final String action = intent.getAction();
+//      if (ACTION_RESUME.equals(action)) {
+//        handleResume();
+//      } else if (ACTION_PAUSE.equals(action)) {
+//        handlePause();
+//      }
+//    }
+//  }
 
   private void handleResume() {
     // TODO: Handle action Foo
@@ -71,5 +91,16 @@ public class PowerStateService extends IntentService {
   private void handlePause() {
     // TODO: Handle action Baz
     throw new UnsupportedOperationException("Not yet implemented");
+  }
+
+  @Override
+  public IBinder onBind(Intent intent) {
+    // We don't provide binding, so return null
+    return null;
+  }
+
+  @Override
+  public void onDestroy() {
+    Toast.makeText(this, "service done", Toast.LENGTH_SHORT).show();
   }
 }

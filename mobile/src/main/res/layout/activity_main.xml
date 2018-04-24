@@ -29,7 +29,20 @@
         android:checked="false"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+      />
+
+    <Button
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="Start Service"
+      android:id="@+id/start_service"
+      android:checked="false"
+      android:layout_alignParentBottom="true"
+      android:layout_alignParentRight="true"
+      android:layout_alignParentEnd="true"
+      android:onClick="startService"/>
+
 
     <RadioGroup
         android:layout_width="match_parent"
