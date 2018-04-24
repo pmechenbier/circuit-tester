@@ -3,27 +3,29 @@ package xyz.mechenbier.circuittester
 import android.app.Service
 import android.content.Intent
 import android.content.IntentFilter
+import android.os.Binder
 import android.os.IBinder
 import android.widget.Toast
 
+
 class PowerStateService : Service() {
     var mStartMode: Int = 0       // indicates how to behave if the service is killed
-    var mBinder: IBinder? = null      // interface for clients that bind
+    private val mBinder = LocalBinder()     // interface for clients that bind
     var mAllowRebind: Boolean = false // indicates whether onRebind should be used
     var pConRec: PowerConnectionReceiver = PowerConnectionReceiver()
     private var ifilter: IntentFilter? = null
 
     override fun onCreate() {
         // The service is being created
+        pConRec.init(this)
+        ifilter = IntentFilter(Intent.ACTION_BATTERY_CHANGED)
     }
 
     override fun onStartCommand(intent: Intent, flags: Int, startId: Int): Int {
         // The service is starting, due to a call to startService()
         Toast.makeText(this, "service starting", Toast.LENGTH_SHORT).show()
-        pConRec.init(this)
-        ifilter = IntentFilter(Intent.ACTION_BATTERY_CHANGED)
         pConRec.Resume(false)
-        registerReceiver(pConRec, ifilter);
+        registerReceiver(pConRec, ifilter)
         return mStartMode
     }
 
@@ -45,7 +47,26 @@ class PowerStateService : Service() {
     override fun onDestroy() {
         // The service is no longer used and is being destroyed
         Toast.makeText(this, "service stopping", Toast.LENGTH_SHORT).show()
-        unregisterReceiver(pConRec);
+        unregisterReceiver(pConRec)
         pConRec.Pause()
+    }
+
+    fun setMute(muted: Boolean) {
+        pConRec.audio.SetMuted(muted)
+    }
+
+    fun SetSoundOnPowered(checked: Boolean) {
+        pConRec.SetOnPowered(checked)
+    }
+
+    /**
+     * Class used for the client Binder.  Because we know this service always
+     * runs in the same process as its clients, we don't need to deal with IPC.
+     */
+    inner class LocalBinder : Binder() {
+        // Return this instance of LocalService so clients can call public methods
+        fun getService(): PowerStateService {
+            return this@PowerStateService
+        }
     }
 }
