@@ -33,21 +33,22 @@
       />
 
     <Button
+      android:id="@+id/start_service"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:text="Start Service"
-      android:id="@+id/start_service"
-      android:checked="false"
+      android:layout_marginBottom="80dp"
       android:layout_alignParentBottom="true"
-      android:layout_alignParentRight="true"
       android:layout_alignParentEnd="true"
-      android:onClick="startService"/>
+      android:layout_alignParentRight="true"
+      android:checked="false"
+      android:onClick="startService"
+      android:text="Start Service" />
 
     <Button
       android:id="@+id/stop_service"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:layout_marginBottom="@dimen/place_autocomplete_powered_by_google_height"
+      android:layout_marginBottom="40dp"
       android:layout_alignParentBottom="true"
       android:layout_alignParentEnd="true"
       android:layout_alignParentRight="true"
