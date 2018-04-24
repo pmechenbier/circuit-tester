@@ -17,8 +17,9 @@
     </activity>
 
     <service
+      android:enabled="true"
       android:exported="false"
-      android:name=".PowerStateService"></service>
+      android:name=".PowerStateService" />
   </application>
 
 </manifest>

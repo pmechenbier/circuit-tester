@@ -43,6 +43,18 @@
       android:layout_alignParentEnd="true"
       android:onClick="startService"/>
 
+    <Button
+      android:id="@+id/stop_service"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginBottom="@dimen/place_autocomplete_powered_by_google_height"
+      android:layout_alignParentBottom="true"
+      android:layout_alignParentEnd="true"
+      android:layout_alignParentRight="true"
+      android:checked="false"
+      android:onClick="stopService"
+      android:text="Stop Service" />
+
 
     <RadioGroup
         android:layout_width="match_parent"

@@ -46,6 +46,9 @@ public class PowerStateAudio {
   }
 
   public void InitMP() {
+    if (parentContext == null) {
+      return;
+    }
     mp = MediaPlayer.create(parentContext, R.raw.test_alert);
     mp.setLooping(true);
   }
@@ -56,6 +59,9 @@ public class PowerStateAudio {
   }
 
   private void StartMP() {
+    if (mp == null) {
+      InitMP();
+    }
     if (mp != null && !mp.isPlaying() && !Muted) {
       InitMP();
       mp.start();

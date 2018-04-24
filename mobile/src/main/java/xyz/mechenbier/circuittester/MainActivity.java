@@ -13,7 +13,7 @@ import android.widget.ToggleButton;
 public class MainActivity extends AppCompatActivity {
 
     private PowerConnectionReceiver pConRec = new PowerConnectionReceiver();
-    private IntentFilter ifilter;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 //        pConRec.init(this);
 
-        ifilter = new IntentFilter(Intent.ACTION_BATTERY_CHANGED);
+//        ifilter = new IntentFilter(Intent.ACTION_BATTERY_CHANGED);
 //        pConRec.init(this);
 
         ToggleButton  muteToggleButton = (ToggleButton ) findViewById(R.id.toggle_mute);
@@ -34,14 +34,14 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onResume(){
-        this.registerReceiver(pConRec, ifilter);
+//        this.registerReceiver(pConRec, ifilter);
 //        pConRec.Resume();
         super.onResume();
     }
 
     @Override
     protected void onPause(){
-        this.unregisterReceiver(pConRec);
+//        this.unregisterReceiver(pConRec);
 //        pConRec.Pause();
         super.onPause();
     }
@@ -49,6 +49,11 @@ public class MainActivity extends AppCompatActivity {
     public void startService(View view){
         Intent intent = new Intent(this, PowerStateService.class);
         startService(intent);
+    }
+
+    public void stopService(View view){
+        Intent intent = new Intent(this, PowerStateService.class);
+        stopService(intent);
     }
 
     public void onRadioButtonClicked(View view) {
