@@ -16,7 +16,7 @@ class PowerStateService : Service() {
     private var ifilter: IntentFilter? = null
 
     // Setting to true will show toasts on start and stop of the service
-    private var debug: Boolean = true
+    private var debug: Boolean = false
 
     override fun onCreate() {
         // The service is being created
