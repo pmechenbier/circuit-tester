@@ -42,7 +42,8 @@
       android:layout_alignParentRight="true"
       android:checked="false"
       android:onClick="startService"
-      android:text="Start Service" />
+      android:text="Start Service"
+      android:visibility="invisible" />
 
     <Button
       android:id="@+id/stop_service"
@@ -54,7 +55,8 @@
       android:layout_alignParentRight="true"
       android:checked="false"
       android:onClick="stopService"
-      android:text="Stop Service" />
+      android:text="Stop Service"
+      android:visibility="invisible" />
 
 
     <RadioGroup
