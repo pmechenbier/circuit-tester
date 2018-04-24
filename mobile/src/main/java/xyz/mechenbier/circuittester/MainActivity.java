@@ -107,8 +107,7 @@ public class MainActivity extends AppCompatActivity {
         .getActivity(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
 
     NotificationCompat.Builder b = new NotificationCompat.Builder(this);
-    b.setAutoCancel(true)
-        .setDefaults(NotificationCompat.DEFAULT_ALL)
+    b.setDefaults(NotificationCompat.DEFAULT_ALL)
         .setWhen(System.currentTimeMillis())
         .setOngoing(true)
         .setSmallIcon(R.drawable.bolt)
