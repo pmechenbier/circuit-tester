@@ -1,11 +1,14 @@
 package xyz.mechenbier.circuittester;
 
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
 import android.os.Bundle;
 import android.os.IBinder;
+import android.support.v4.app.NotificationCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -18,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
 
   PowerStateService mService;
   boolean mBound = false;
+  private static int notificationID = 5000;
 
   /**
    * Defines callbacks for service binding, passed to bindService()
@@ -93,6 +97,34 @@ public class MainActivity extends AppCompatActivity {
   public void startService() {
     Intent intent = new Intent(this, PowerStateService.class);
     startService(intent);
+    createNotification();
+  }
+
+  public void createNotification() {
+
+    Intent intent = new Intent(this, MainActivity.class);
+    PendingIntent contentIntent = PendingIntent
+        .getActivity(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+
+    NotificationCompat.Builder b = new NotificationCompat.Builder(this);
+    b.setAutoCancel(true)
+        .setDefaults(NotificationCompat.DEFAULT_ALL)
+        .setWhen(System.currentTimeMillis())
+        .setOngoing(true)
+        .setSmallIcon(R.drawable.bolt)
+        .setContentTitle(getString(R.string.ApplicationTitle))
+        .setContentText(getString(R.string.notification_details))
+        .setContentIntent(contentIntent);
+
+    NotificationManager nm = (NotificationManager) this
+        .getSystemService(Context.NOTIFICATION_SERVICE);
+    nm.notify(notificationID, b.build());
+  }
+
+  public void dismissNotification() {
+    NotificationManager nm = (NotificationManager) this
+        .getSystemService(Context.NOTIFICATION_SERVICE);
+    nm.cancel(notificationID);
   }
 
   public void bindService() {
@@ -107,6 +139,7 @@ public class MainActivity extends AppCompatActivity {
 
   private void stopService() {
     unbindService();
+    dismissNotification();
     Intent intent = new Intent(this, PowerStateService.class);
     stopService(intent);
   }
