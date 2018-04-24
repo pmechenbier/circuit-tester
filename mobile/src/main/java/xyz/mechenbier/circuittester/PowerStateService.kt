@@ -15,6 +15,8 @@ class PowerStateService : Service() {
     var pConRec: PowerConnectionReceiver = PowerConnectionReceiver()
     private var ifilter: IntentFilter? = null
 
+    private var debug: Boolean = true
+
     override fun onCreate() {
         // The service is being created
         pConRec.init(this)
@@ -23,7 +25,7 @@ class PowerStateService : Service() {
 
     override fun onStartCommand(intent: Intent, flags: Int, startId: Int): Int {
         // The service is starting, due to a call to startService()
-        Toast.makeText(this, "service starting", Toast.LENGTH_SHORT).show()
+        showToast("Service Starting")
         pConRec.Resume(false)
         registerReceiver(pConRec, ifilter)
         return mStartMode
@@ -46,7 +48,7 @@ class PowerStateService : Service() {
 
     override fun onDestroy() {
         // The service is no longer used and is being destroyed
-        Toast.makeText(this, "service stopping", Toast.LENGTH_SHORT).show()
+        showToast("Service Stopping")
         unregisterReceiver(pConRec)
         pConRec.Pause()
     }
@@ -55,8 +57,14 @@ class PowerStateService : Service() {
         pConRec.audio.SetMuted(muted)
     }
 
-    fun SetSoundOnPowered(checked: Boolean) {
+    fun setSoundOnPowered(checked: Boolean) {
         pConRec.SetOnPowered(checked)
+    }
+
+    private fun showToast(message: String) {
+        if (debug) {
+            Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+        }
     }
 
     /**

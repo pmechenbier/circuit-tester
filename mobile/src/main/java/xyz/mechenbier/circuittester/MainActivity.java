@@ -17,6 +17,7 @@ public class MainActivity extends AppCompatActivity {
 
   PowerStateService mService;
   boolean mBound = false;
+
   /**
    * Defines callbacks for service binding, passed to bindService()
    */
@@ -56,19 +57,6 @@ public class MainActivity extends AppCompatActivity {
     super.onDestroy();
   }
 
-  private void stopService() {
-    unbindService(mConnection);
-    mBound = false;
-    Intent intent = new Intent(this, PowerStateService.class);
-    stopService(intent);
-  }
-
-  private void setMute(boolean muted) {
-    if (mBound) {
-      mService.setMute(muted);
-    }
-  }
-
   @Override
   protected void onPause() {
     super.onPause();
@@ -79,7 +67,12 @@ public class MainActivity extends AppCompatActivity {
     super.onResume();
   }
 
+
   public void startService(View view) {
+    startService();
+  }
+
+  public void startService() {
     Intent intent = new Intent(this, PowerStateService.class);
     startService(intent);
 
@@ -91,6 +84,14 @@ public class MainActivity extends AppCompatActivity {
   public void stopService(View view) {
     stopService();
   }
+
+  private void stopService() {
+    unbindService(mConnection);
+    mBound = false;
+    Intent intent = new Intent(this, PowerStateService.class);
+    stopService(intent);
+  }
+
 
   public void onRadioButtonClicked(View view) {
     boolean checked = ((RadioButton) view).isChecked();
@@ -106,9 +107,15 @@ public class MainActivity extends AppCompatActivity {
     }
   }
 
+  private void setMute(boolean muted) {
+    if (mBound) {
+      mService.setMute(muted);
+    }
+  }
+
   private void SetSoundOnPowered(boolean checked) {
     if (mBound) {
-      mService.SetSoundOnPowered(checked);
+      mService.setSoundOnPowered(checked);
     }
   }
 }
