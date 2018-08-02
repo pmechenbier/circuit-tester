@@ -6,7 +6,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.BatteryManager;
 import android.view.View;
-import android.widget.RadioButton;
 import android.widget.ToggleButton;
 
 /**
@@ -15,8 +14,9 @@ import android.widget.ToggleButton;
 public class PowerConnectionReceiver extends BroadcastReceiver {
 
   protected final PowerStateAudio audio = new PowerStateAudio();
-
+  private Context Context;
   public void init(Context context) {
+    Context = context;
     audio.InitMP(context);
   }
 
@@ -30,6 +30,11 @@ public class PowerConnectionReceiver extends BroadcastReceiver {
     audio.isCharging =
         status == BatteryManager.BATTERY_STATUS_CHARGING ||
             status == BatteryManager.BATTERY_STATUS_FULL;
+
+    Intent powerIntent = new Intent("xyz.mechenbier.circuittester.charging");
+    powerIntent.putExtra("isCharging", audio.isCharging);
+    Context.sendBroadcast(powerIntent);
+
     audio.AlterAudioState();
   }
 
@@ -47,22 +52,7 @@ public class PowerConnectionReceiver extends BroadcastReceiver {
     audio.SetMuted(muted);
   }
 
-  public void SoundButtonClicked(View view) {
-    boolean checked = ((RadioButton) view).isChecked();
-
-    // Check which radio button was clicked
-    switch (view.getId()) {
-      case R.id.rb_sound_when_powered:
-        audio.SetSoundOnPowered(checked);
-        break;
-      case R.id.rb_sound_when_not_powered:
-        audio.SetSoundOnPowered(!checked);
-        break;
-    }
-  }
-
   public void SetOnPowered(boolean checked) {
     audio.SetSoundOnPowered(!checked);
   }
-
 }

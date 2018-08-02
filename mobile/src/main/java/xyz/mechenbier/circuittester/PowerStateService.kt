@@ -7,14 +7,12 @@ import android.os.Binder
 import android.os.IBinder
 import android.widget.Toast
 
-
 class PowerStateService : Service() {
     var mStartMode: Int = 0       // indicates how to behave if the service is killed
     private val mBinder = LocalBinder()     // interface for clients that bind
     var mAllowRebind: Boolean = false // indicates whether onRebind should be used
     var pConRec: PowerConnectionReceiver = PowerConnectionReceiver()
     private var ifilter: IntentFilter? = null
-
     // Setting to true will show toasts on start and stop of the service
     private var debug: Boolean = false
 

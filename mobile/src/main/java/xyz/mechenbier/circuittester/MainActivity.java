@@ -15,13 +15,19 @@ import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.RadioButton;
 import android.widget.ToggleButton;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.MobileAds;
+
 import xyz.mechenbier.circuittester.PowerStateService.LocalBinder;
 
 public class MainActivity extends AppCompatActivity {
 
   PowerStateService mService;
   boolean mBound = false;
+  private UiUpdateReceiver uiUpdateReceiver;
   private static int notificationID = 5000;
+  private static MainActivity instance;
 
   /**
    * Defines callbacks for service binding, passed to bindService()
@@ -48,6 +54,15 @@ public class MainActivity extends AppCompatActivity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
 
+    instance = this;
+
+    MobileAds.initialize(this, "ca-app-pub-3940256099942544~3347511713");
+    AdView adView = (AdView)findViewById(R.id.adView);
+    AdRequest adRequest = new AdRequest.Builder()
+            .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
+            .build();
+    adView.loadAd(adRequest);
+
     ToggleButton muteToggleButton = (ToggleButton) findViewById(R.id.toggle_mute);
     muteToggleButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
       public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -65,15 +80,22 @@ public class MainActivity extends AppCompatActivity {
 
   @Override
   protected void onResume() {
+    if (uiUpdateReceiver == null){
+      uiUpdateReceiver = new UiUpdateReceiver();
+    }
+    android.content.IntentFilter intentFilter = new android.content.IntentFilter("xyz.mechenbier.circuittester.charging");
+    registerReceiver(uiUpdateReceiver, intentFilter);
+
     super.onResume();
   }
 
-
   @Override
   protected void onPause() {
-    super.onPause();
+      if (uiUpdateReceiver != null){
+          unregisterReceiver(uiUpdateReceiver);
+      }
+      super.onPause();
   }
-
 
   @Override
   protected void onStop() {
@@ -81,13 +103,15 @@ public class MainActivity extends AppCompatActivity {
     unbindService();
   }
 
-
   @Override
   protected void onDestroy() {
     stopService();
     super.onDestroy();
   }
 
+  public static MainActivity getInstance(){
+    return instance;
+  }
 
   public void startService(View view) {
     startService();
