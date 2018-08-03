@@ -13,6 +13,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.CompoundButton;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.ToggleButton;
 import com.google.android.gms.ads.AdView;
@@ -83,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
     if (uiUpdateReceiver == null){
       uiUpdateReceiver = new UiUpdateReceiver();
     }
-    android.content.IntentFilter intentFilter = new android.content.IntentFilter("xyz.mechenbier.circuittester.charging");
+    android.content.IntentFilter intentFilter = new android.content.IntentFilter(getString(R.string.charging_intent_name));
     registerReceiver(uiUpdateReceiver, intentFilter);
 
     super.onResume();
@@ -176,6 +177,14 @@ public class MainActivity extends AppCompatActivity {
     mBound = false;
   }
 
+  public void setChargingIconColor(boolean isCharging) {
+    ImageView image = (ImageView)findViewById(R.id.image_powerstate);
+    if (isCharging){
+      image.setColorFilter(getResources().getColor(R.color.image_charging));
+    } else {
+      image.setColorFilter(getResources().getColor(R.color.image_not_charging));
+    }
+  }
 
   public void onRadioButtonClicked(View view) {
     boolean checked = ((RadioButton) view).isChecked();

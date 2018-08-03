@@ -8,4 +8,6 @@
     <string name="invert_radio_uninvert">Sound when not powered</string>
     <string name="ApplicationTitle">Circuit Tester</string>
     <string name="notification_details">"Click here to silence tester"</string>
+    <string name="charging_intent_name">"xyz.mechenbier.circuittesting.ischarging"</string>
+    <string name="charging_intent_charging_extra_name">"ischarging"</string>
 </resources>
