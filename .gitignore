@@ -35,3 +35,5 @@
 
 # Android Studio Navigation editor temp files
 #.navigation/
+mobile/google-services.json
+mobile/release/output.json
