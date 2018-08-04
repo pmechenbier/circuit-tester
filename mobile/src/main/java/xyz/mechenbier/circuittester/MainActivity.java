@@ -19,6 +19,7 @@ import android.widget.ToggleButton;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.MobileAds;
+import com.google.firebase.analytics.FirebaseAnalytics;
 
 import xyz.mechenbier.circuittester.PowerStateService.LocalBinder;
 
@@ -29,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
   private UiUpdateReceiver uiUpdateReceiver;
   private static int notificationID = 5000;
   private static MainActivity instance;
-
+  private FirebaseAnalytics mFirebaseAnalytics;
   /**
    * Defines callbacks for service binding, passed to bindService()
    */
@@ -57,6 +58,7 @@ public class MainActivity extends AppCompatActivity {
 
     instance = this;
 
+    mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
     MobileAds.initialize(this, BuildConfig.AdMobAppApiKey);
     AdView adView = (AdView)findViewById(R.id.adView);
     AdRequest adRequest = new AdRequest.Builder()
