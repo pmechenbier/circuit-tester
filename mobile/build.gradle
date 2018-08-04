@@ -12,9 +12,15 @@ android {
         versionName "1.0"
     }
     buildTypes {
+        debug {
+            buildConfigField 'String', "AdMobAppApiKey", "\"ca-app-pub-3940256099942544~3347511713\""
+            resValue 'string', "admob_ad_unit_api_key", "\"ca-app-pub-3940256099942544/6300978111\""
+        }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            buildConfigField 'String', "AdMobAppApiKey", CircuitTester_AdMobAppApiKey
+            resValue 'string', "admob_ad_unit_api_key", CircuitTester_AdMobAdUnitApiKey
         }
     }
 }
