@@ -1,11 +1,14 @@
 package xyz.mechenbier.circuittester;
 
+import android.app.Notification;
+import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.support.v4.app.NotificationCompat;
@@ -121,23 +124,35 @@ public class MainActivity extends AppCompatActivity {
 
 
   public void createNotification() {
+    createNotificationChannel(this);
 
     Intent intent = new Intent(this, MainActivity.class);
     PendingIntent contentIntent = PendingIntent
         .getActivity(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
 
-    NotificationCompat.Builder b = new NotificationCompat.Builder(this);
-    b.setDefaults(NotificationCompat.DEFAULT_ALL)
+    NotificationCompat.Builder notifBuilder = new NotificationCompat.Builder(this, getString(R.string.notification_channel_id))
+        .setDefaults(NotificationCompat.DEFAULT_ALL)
+        .setSmallIcon(R.drawable.bolt)
+        .setContentTitle(getString(R.string.app_name))
+        .setContentText(getString(R.string.notification_details))
         .setWhen(System.currentTimeMillis())
         .setOngoing(true)
-        .setSmallIcon(R.drawable.bolt)
-        .setContentTitle(getString(R.string.ApplicationTitle))
-        .setContentText(getString(R.string.notification_details))
         .setContentIntent(contentIntent);
 
     NotificationManager nm = (NotificationManager) this
         .getSystemService(Context.NOTIFICATION_SERVICE);
-    nm.notify(notificationID, b.build());
+    
+    nm.notify(notificationID, notifBuilder.build());
+  }
+
+  private void createNotificationChannel(Context context){
+      // we don't need to do this for devices running Android O or lower but NotificationChannel is not in appcompat so we have to check the version
+      if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+          NotificationManager notificationManager = (NotificationManager)context.getSystemService(Context.NOTIFICATION_SERVICE);
+          NotificationChannel notificationChannel = new NotificationChannel(getString(R.string.notification_channel_id), getString(R.string.notification_channel_name), NotificationManager.IMPORTANCE_DEFAULT);
+          notificationChannel.setDescription(getString(R.string.notification_channel_description));
+          notificationManager.createNotificationChannel((notificationChannel));
+      }
   }
 
   public void dismissNotification() {
