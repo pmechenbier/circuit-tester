@@ -11,15 +11,23 @@
     <activity android:name=".MainActivity" android:launchMode="singleInstance">
       <intent-filter>
         <action android:name="android.intent.action.MAIN" />
-
         <category android:name="android.intent.category.LAUNCHER" />
       </intent-filter>
     </activity>
+
+    <meta-data
+        android:name="firebase_crashlytics_collection_deactivated"
+        android:value="${firebaseDeactivated}" />
+    <meta-data
+      android:name="firebase_analytics_collection_deactivated"
+      android:value="${firebaseDeactivated}" />
+    <meta-data
+      android:name="firebase_performance_collection_deactivated"
+      android:value="${firebaseDeactivated}" />
 
     <service
       android:enabled="true"
       android:exported="false"
       android:name=".PowerStateService" />
   </application>
-
 </manifest>

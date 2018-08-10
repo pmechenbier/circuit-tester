@@ -25,12 +25,13 @@ import xyz.mechenbier.circuittester.PowerStateService.LocalBinder;
 
 public class MainActivity extends AppCompatActivity {
 
-  PowerStateService mService;
-  boolean mBound = false;
+  private PowerStateService mService;
+  private boolean mBound = false;
   private UiUpdateReceiver uiUpdateReceiver;
   private static int notificationID = 5000;
   private static MainActivity instance;
   private FirebaseAnalytics mFirebaseAnalytics;
+
   /**
    * Defines callbacks for service binding, passed to bindService()
    */
@@ -59,6 +60,7 @@ public class MainActivity extends AppCompatActivity {
     instance = this;
 
     mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
+
     MobileAds.initialize(this, BuildConfig.AdMobAppApiKey);
     AdView adView = (AdView)findViewById(R.id.adView);
     AdRequest adRequest = new AdRequest.Builder()
@@ -112,20 +114,11 @@ public class MainActivity extends AppCompatActivity {
     super.onDestroy();
   }
 
+
   public static MainActivity getInstance(){
     return instance;
   }
 
-  public void startService(View view) {
-    startService();
-    bindService();
-  }
-
-  public void startService() {
-    Intent intent = new Intent(this, PowerStateService.class);
-    startService(intent);
-    createNotification();
-  }
 
   public void createNotification() {
 
@@ -153,10 +146,31 @@ public class MainActivity extends AppCompatActivity {
     nm.cancel(notificationID);
   }
 
+
   public void bindService() {
     // Bind to LocalService
     Intent intent = new Intent(this, PowerStateService.class);
     bindService(intent, mConnection, Context.BIND_AUTO_CREATE);
+  }
+
+  private void unbindService() {
+    try {
+      unbindService(mConnection);
+    } catch (Exception e) {
+      Log.e("SERVICE", "Issue unbinding the service");
+    }
+    mBound = false;
+  }
+
+  public void startService(View view) {
+    startService();
+    bindService();
+  }
+
+  public void startService() {
+    Intent intent = new Intent(this, PowerStateService.class);
+    startService(intent);
+    createNotification();
   }
 
   public void stopService(View view) {
@@ -170,23 +184,6 @@ public class MainActivity extends AppCompatActivity {
     stopService(intent);
   }
 
-  private void unbindService() {
-    try {
-      unbindService(mConnection);
-    } catch (Exception e) {
-      Log.e("SERVICE", "Issue unbinding the service");
-    }
-    mBound = false;
-  }
-
-  public void setChargingIconColor(boolean isCharging) {
-    ImageView image = (ImageView)findViewById(R.id.image_powerstate);
-    if (isCharging){
-      image.setColorFilter(getResources().getColor(R.color.image_charging));
-    } else {
-      image.setColorFilter(getResources().getColor(R.color.image_not_charging));
-    }
-  }
 
   public void onRadioButtonClicked(View view) {
     boolean checked = ((RadioButton) view).isChecked();
@@ -199,6 +196,15 @@ public class MainActivity extends AppCompatActivity {
       case R.id.rb_sound_when_not_powered:
         SetSoundOnPowered(checked);
         break;
+    }
+  }
+
+  public void setChargingIconColor(boolean isCharging) {
+    ImageView image = (ImageView)findViewById(R.id.image_powerstate);
+    if (isCharging){
+      image.setColorFilter(getResources().getColor(R.color.image_charging));
+    } else {
+      image.setColorFilter(getResources().getColor(R.color.image_not_charging));
     }
   }
 
