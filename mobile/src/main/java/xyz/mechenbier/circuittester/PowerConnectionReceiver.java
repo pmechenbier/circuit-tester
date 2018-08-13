@@ -31,8 +31,8 @@ public class PowerConnectionReceiver extends BroadcastReceiver {
         status == BatteryManager.BATTERY_STATUS_CHARGING ||
             status == BatteryManager.BATTERY_STATUS_FULL;
 
-    Intent powerIntent = new Intent(Context.getString(R.string.charging_intent_name));
-    powerIntent.putExtra(Context.getString(R.string.charging_intent_charging_extra_name), audio.isCharging);
+    Intent powerIntent = new Intent(Context.getString(R.string.intent_charging_name));
+    powerIntent.putExtra(Context.getString(R.string.intent_charging_extra_name), audio.isCharging);
     Context.sendBroadcast(powerIntent);
 
     audio.AlterAudioState();

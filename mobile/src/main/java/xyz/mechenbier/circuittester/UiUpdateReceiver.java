@@ -12,8 +12,8 @@ class UiUpdateReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
 
-        if (intent.hasExtra(context.getString(R.string.charging_intent_charging_extra_name))){
-            boolean isCharging = intent.getBooleanExtra(context.getString(R.string.charging_intent_charging_extra_name),false);
+        if (intent.hasExtra(context.getString(R.string.intent_charging_extra_name))){
+            boolean isCharging = intent.getBooleanExtra(context.getString(R.string.intent_charging_extra_name),false);
             MainActivity.getInstance().setChargingIconColor(isCharging);
         }
     }

@@ -6,6 +6,7 @@ import android.content.IntentFilter
 import android.os.Binder
 import android.os.IBinder
 import android.widget.Toast
+import com.crashlytics.android.Crashlytics
 
 class PowerStateService : Service() {
     var mStartMode: Int = 0       // indicates how to behave if the service is killed
@@ -48,7 +49,12 @@ class PowerStateService : Service() {
     override fun onDestroy() {
         // The service is no longer used and is being destroyed
         showToast("Service Stopping")
-        unregisterReceiver(pConRec)
+        try{
+            unregisterReceiver(pConRec)
+        } catch (e: IllegalArgumentException){
+            // this as already unregistered at one point
+            Crashlytics.logException(e)
+        }
         pConRec.Pause()
     }
 
