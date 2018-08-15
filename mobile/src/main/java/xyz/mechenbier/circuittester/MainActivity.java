@@ -315,7 +315,7 @@ public class MainActivity extends AppCompatActivity {
         setVisibility(R.id.rating_frame_layout, View.INVISIBLE);
         setVisibility(R.id.text_warning, View.VISIBLE);
         Intent sendEmailIntent = new Intent(Intent.ACTION_SENDTO);
-        String uriText = "mailto:" + Uri.encode("support@mechenbier.xyz") + "?subject=" + Uri.encode("Circuit & Outlet Tester Feedback");
+        String uriText = "mailto:" + Uri.encode(getString(R.string.feedback_email_address)) + "?subject=" + Uri.encode("Circuit & Outlet Tester Feedback");
         Uri uri = Uri.parse(uriText);
         sendEmailIntent.setData(uri);
         startActivity(Intent.createChooser(sendEmailIntent, "Send e-mail..."));

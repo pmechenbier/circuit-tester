@@ -1,8 +1,9 @@
 <resources>
       <string name="app_name">Circuit &#038; Outlet Tester</string>
       <string name="app_package_name">xyz.mechenbier.circuittester</string>
-      <string name="warning">Warning! When doing electrical work, always double check that there is no power to the outlet you are testing after removing your phone charger.</string>
+      <string name="feedback_email_address">circuittester@mechenbier.xyz</string>
       <string name="image_powerstate_content_description">Power State</string>
+      <string name="warning">Warning! When doing electrical work, always double check that there is no power to the outlet you are testing after removing your phone charger.</string>
       <string name="mute_button_muted">Unmute</string>
       <string name="mute_button_unmuted">Mute</string>
       <string name="invert_radio_invert">Sound when powered</string>
