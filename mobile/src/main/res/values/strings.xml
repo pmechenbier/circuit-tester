@@ -1,6 +1,10 @@
 <resources>
       <string name="app_name">Circuit &#038; Outlet Tester</string>
       <string name="app_package_name">xyz.mechenbier.circuittester</string>
+      <string name="nav_help">Help</string>
+      <string name="help_dialog_message">Use your device to test if an electrical circuit or power outlet has power. Simply plug your charger into your device, plug the charger into the outlet, and listen for the sound! For added range, use your device with a pair of Bluetooth headphones or portable speaker!\n\nThis app can help you figure out which outlets are on which circuit breakers within your home or office or if an outlet is powered while doing minor electrical work, especially saving trips up and down the stairs after switching circuit breakers.\n\nAs always, double check before performing any work on any electrical system that power is indeed off.</string>
+      <string name="help_dialog_feedback_button_text">Send Feedback</string>
+      <string name="help_dialog_close_button_text">Close</string>
       <string name="feedback_email_address">circuittester@mechenbier.xyz</string>
       <string name="image_powerstate_content_description">Power State</string>
       <string name="warning">Warning! When doing electrical work, always double check that there is no power to the outlet you are testing after removing your phone charger.</string>

@@ -1,19 +1,20 @@
 package xyz.mechenbier.circuittester
 
+import android.app.AlertDialog
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.app.PendingIntent
-import android.content.ComponentName
-import android.content.Context
-import android.content.Intent
-import android.content.ServiceConnection
+import android.content.*
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.os.IBinder
 import android.support.v4.app.NotificationCompat
+import android.support.v4.content.ContextCompat
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.widget.ImageView
 import android.widget.RadioButton
@@ -30,7 +31,7 @@ class MainActivity : AppCompatActivity() {
     private var mService: PowerStateService? = null
     private var mBound = false
     private var mUiUpdateReceiver: UiUpdateReceiver? = null
-    private var mFirebaseAnalytics: FirebaseAnalytics? = null
+    private lateinit var mFirebaseAnalytics: FirebaseAnalytics
     private val mNotificationID = 5000
     private val mRatingDaysUntilPrompt = 3
     private val mRatingLaunchesUntilPrompt = 3
@@ -61,6 +62,8 @@ class MainActivity : AppCompatActivity() {
         instance = this
 
         mFirebaseAnalytics = FirebaseAnalytics.getInstance(this)
+
+        setSupportActionBar(findViewById(R.id.toolbar))
 
         MobileAds.initialize(this, BuildConfig.AdMobAppApiKey)
         val adView = findViewById<View>(R.id.adView) as AdView
@@ -104,6 +107,34 @@ class MainActivity : AppCompatActivity() {
     override fun onDestroy() {
         stopService()
         super.onDestroy()
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        val inflater = getMenuInflater()
+        inflater.inflate(R.menu.menu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when(item.itemId){
+            R.id.menu_action_help -> {
+
+                val builder = AlertDialog.Builder(this)
+                builder.setMessage(R.string.help_dialog_message)
+                        .setNeutralButton(R.string.help_dialog_feedback_button_text) { dialogInterface, i ->
+                            dialogInterface.cancel()
+                            launchSupportEmailIntent()
+                        }
+                        .setPositiveButton(R.string.help_dialog_close_button_text) { dialogInterface, i ->
+                            dialogInterface.cancel()
+                        }
+                val alertDialog = builder.create()
+                alertDialog.show()
+
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
     }
 
 
@@ -217,9 +248,9 @@ class MainActivity : AppCompatActivity() {
     fun setChargingIconColor(isCharging: Boolean) {
         val image = findViewById<View>(R.id.image_powerstate) as ImageView
         if (isCharging) {
-            image.setColorFilter(resources.getColor(R.color.image_charging))
+            image.setColorFilter(ContextCompat.getColor(this, R.color.image_charging))
         } else {
-            image.setColorFilter(resources.getColor(R.color.image_not_charging))
+            image.setColorFilter(ContextCompat.getColor(this, R.color.image_not_charging))
         }
     }
 
@@ -300,11 +331,7 @@ class MainActivity : AppCompatActivity() {
         preferencesEditor.apply()
         setVisibility(R.id.rating_frame_layout, View.INVISIBLE)
         setVisibility(R.id.text_warning, View.VISIBLE)
-        val sendEmailIntent = Intent(Intent.ACTION_SENDTO)
-        val uriText = "mailto:" + Uri.encode(getString(R.string.feedback_email_address)) + "?subject=" + Uri.encode("Circuit & Outlet Tester Feedback")
-        val uri = Uri.parse(uriText)
-        sendEmailIntent.data = uri
-        startActivity(Intent.createChooser(sendEmailIntent, "Send e-mail..."))
+        launchSupportEmailIntent()
     }
 
     // when a user clicks the "no rating" rating button, hide the rating prompt
@@ -335,5 +362,13 @@ class MainActivity : AppCompatActivity() {
             startActivity(googlePlayBrowserIntent)
         }
 
+    }
+
+    private fun launchSupportEmailIntent(){
+        val sendEmailIntent = Intent(Intent.ACTION_SENDTO)
+        val uriText = "mailto:" + Uri.encode(getString(R.string.feedback_email_address)) + "?subject=" + Uri.encode("Circuit & Outlet Tester Feedback")
+        val uri = Uri.parse(uriText)
+        sendEmailIntent.data = uri
+        startActivity(Intent.createChooser(sendEmailIntent, "Send e-mail..."))
     }
 }

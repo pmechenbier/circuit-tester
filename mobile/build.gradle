@@ -14,6 +14,7 @@ android {
         versionCode 1
         versionName "1.0"
     }
+
     buildTypes {
         debug {
             buildConfigField 'String', "AdMobAppApiKey", "\"ca-app-pub-3940256099942544~3347511713\""
@@ -28,6 +29,17 @@ android {
             manifestPlaceholders = [firebaseDeactivated: false, crashlyticsEnabled: true]
         }
     }
+
+    configurations.all {
+        resolutionStrategy.eachDependency { DependencyResolveDetails details ->
+            def requested = details.requested
+            if (requested.group == "com.android.support") {
+                if (!requested.name.startsWith("multidex")) {
+                    details.useVersion "27.+"
+                }
+            }
+        }
+    }
 }
 
 dependencies {
@@ -38,6 +50,7 @@ dependencies {
     implementation "com.android.support:customtabs:28.0.0-rc01"
     implementation "com.android.support:support-media-compat:28.0.0-rc01"
     implementation "com.android.support:support-v4:28.0.0-rc01"
+    implementation "com.android.support:design:28.0.0-rc01"
     implementation 'com.google.android.gms:play-services-ads:15.0.1'
     implementation 'com.google.firebase:firebase-core:16.0.1'
     implementation 'com.google.firebase:firebase-perf:16.0.0'
