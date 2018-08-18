@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Circuit &#038; Outlet Tester</string>
     <string name="nav_help">সাহায্য</string>
     <string name="rating_yes">হ্যাঁ!</string>
     <string name="help_dialog_close_button_text">বন্ধ করা</string>
+    <string name="help_dialog_feedback_button_text">মতামত পাঠানো</string>
 </resources>

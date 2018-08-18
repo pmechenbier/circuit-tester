@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Circuit &#038; Outlet Tester</string>
     <string name="nav_help">帮助</string>
     <string name="rating_yes">是！</string>
     <string name="help_dialog_close_button_text">关</string>
+    <string name="help_dialog_feedback_button_text">发送反馈</string>
 </resources>
