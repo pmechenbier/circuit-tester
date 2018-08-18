@@ -3,4 +3,5 @@
     <string name="app_name">Circuit &#038; Outlet Tester</string>
     <string name="nav_help">Help</string>
     <string name="rating_yes">Yes!</string>
+    <string name="help_dialog_close_button_text">Close</string>
 </resources>

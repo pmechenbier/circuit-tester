@@ -3,4 +3,5 @@
     <string name="app_name">Circuit &#038; Outlet Tester</string>
     <string name="nav_help">βοήθεια</string>
     <string name="rating_yes">Ναί!</string>
+    <string name="help_dialog_close_button_text">Κοντά</string>
 </resources>

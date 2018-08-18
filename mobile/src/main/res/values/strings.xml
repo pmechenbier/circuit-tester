@@ -23,7 +23,7 @@
       <string name="notification_channel_name">Show notification while running</string>
       <string name="notification_channel_description">Show a notification while Circuit &#038; Outlet Tester is running.</string>
       <string name="notification_details">Click here to silence tester</string>
-      <string name="intent_charging_name">xyz.mechenbier.circuittester.intents.ischarging</string>
+      <string name="intent_charging_name" translatable="false">xyz.mechenbier.circuittester.intents.ischarging</string>
       <string name="intent_charging_extra_name" translatable="false">ischarging</string>
       <string name="preference_shared_key_name_rating" translatable="false">xyz.mechenbier.circuittester.preferences.apprating</string>
       <string name="preference_name_rating_dont_show_rating_prompt" translatable="false">dont_show_rating_prompt</string>

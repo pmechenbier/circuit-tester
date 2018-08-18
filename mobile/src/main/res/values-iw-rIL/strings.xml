@@ -3,4 +3,5 @@
     <string name="app_name">Circuit &#038; Outlet Tester</string>
     <string name="nav_help">עֶזרָה</string>
     <string name="rating_yes">כן!</string>
+    <string name="help_dialog_close_button_text">לִסְגוֹר</string>
 </resources>
