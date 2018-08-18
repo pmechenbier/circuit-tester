@@ -2,4 +2,5 @@
 <resources>
     <string name="app_name">Circuit &#038; Outlet Tester</string>
     <string name="nav_help">帮助</string>
+    <string name="rating_yes">是！</string>
 </resources>

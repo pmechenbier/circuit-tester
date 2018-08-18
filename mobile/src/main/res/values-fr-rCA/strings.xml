@@ -2,4 +2,5 @@
 <resources>
     <string name="app_name">Circuit &#038; Outlet Tester</string>
     <string name="nav_help">aider</string>
+    <string name="rating_yes">Oui!</string>
 </resources>

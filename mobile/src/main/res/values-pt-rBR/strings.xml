@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Circuit &#038; Outlet Tester</string>
+    <string name="nav_help">ajuda</string>
+    <string name="rating_yes">Sim!</string>
 </resources>
