@@ -2,5 +2,22 @@
 <resources>
     <string name="rating_yes">Oui!</string>
     <string name="help_dialog_close_button_text">Fermer</string>
-    <string name="help_dialog_feedback_button_text">Envoyer des commentaires</string>
+    <string name="app_name">Testeur de circuit et de sortie</string>
+    <string name="help_dialog_message">Utilisez votre appareil pour tester si un circuit électrique ou une prise de courant est alimenté. Branchez simplement votre chargeur sur votre appareil, branchez le chargeur dans la prise et écoutez le son! Pour plus de portée, utilisez votre appareil avec une paire d\'écouteurs Bluetooth ou un haut-parleur portable!  Cette application peut vous aider à identifier les prises de courant sur votre domicile ou votre bureau, ou si une prise de courant est alimentée en faisant des travaux électriques mineurs, en particulier lors de la commutation de disjoncteurs.  Comme toujours, vérifiez avant d\'effectuer tout travail sur un système électrique que le courant est effectivement éteint.</string>
+    <string name="image_powerstate_content_description">État de puissance</string>
+    <string name="help_dialog_feedback_button_text">envoyer des commentaires</string>
+    <string name="warning">Attention! Lorsque vous effectuez des travaux électriques, vérifiez toujours que la prise que vous testez n’est pas sous tension après avoir retiré le chargeur de votre téléphone.</string>
+    <string name="mute_button_unmuted">muet</string>
+    <string name="mute_button_muted">muet</string>
+    <string name="invert_radio_invert">Son quand alimenté</string>
+    <string name="invert_radio_uninvert">Son quand pas alimenté</string>
+    <string name="rating_enjoying_app_prompt">Bénéficiant d\'un testeur de circuit et de sortie?</string>
+    <string name="rating_feedback_app_prompt">Cela vous dérangerait-il de nous donner votre avis?</string>
+    <string name="rating_rating_app_prompt">Que diriez-vous d\'une note sur le Play Store, alors?</string>
+    <string name="rating_not_really">Pas vraiment</string>
+    <string name="rating_no_thanks">Non merci</string>
+    <string name="rating_ok_sure">OK, bien sûr</string>
+    <string name="notification_channel_name">Afficher la notification en cours d\'exécution</string>
+    <string name="notification_channel_description">Afficher une notification pendant que le testeur de circuit et de sortie est en cours d\'exécution.</string>
+    <string name="notification_details">Cliquez ici pour faire taire le testeur</string>
 </resources>
