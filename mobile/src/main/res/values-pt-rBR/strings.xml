@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="nav_help">ajuda</string>
     <string name="rating_yes">Sim!</string>
     <string name="help_dialog_close_button_text">Fechar</string>
     <string name="help_dialog_feedback_button_text">Enviar comentários</string>

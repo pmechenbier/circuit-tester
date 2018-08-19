@@ -1,7 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="nav_help">النجدة!</string>
     <string name="rating_yes">نعم فعلا!</string>
     <string name="help_dialog_close_button_text">أغلق</string>
     <string name="help_dialog_feedback_button_text">ارسل رأيك</string>
+    <string name="app_name">اختبار الدوائر والمخارج</string>
+    <string name="help_dialog_message">استخدم جهازك لاختبار ما إذا كانت هناك دائرة كهربائية أو مأخذ تيار كهربائي بالطاقة. ما عليك سوى توصيل الشاحن بجهازك ، وتوصيل الشاحن بالمأخذ ، والاستماع إلى الصوت! للحصول على نطاق مضاف ، استخدم جهازك مع زوج من سماعات الرأس أو السماعات المحمولة التي تعمل بالبلوتوث!  يمكن أن يساعدك هذا التطبيق في معرفة أي منافذ موجودة في أي قواطع للدارة داخل المنزل أو المكتب أو إذا كان منفذ الطاقة يعمل أثناء القيام بأعمال كهربائية بسيطة ، خاصةً حفظ الرحلات إلى الأعلى والأسفل بعد تبديل قواطع الدائرة.  كما هو الحال دائمًا ، تحقق مرة أخرى قبل إجراء أي عمل على أي نظام كهربائي يتم إيقاف تشغيله بالفعل.</string>
+    <string name="image_powerstate_content_description">دولة السلطة</string>
+    <string name="warning">تحذير! عند القيام بالأعمال الكهربائية ، تأكد دائمًا من عدم وجود طاقة للمأخذ الذي تختبره بعد إزالة شاحن هاتفك.</string>
+    <string name="mute_button_muted">غير صامت</string>
+    <string name="mute_button_unmuted">صامت</string>
+    <string name="invert_radio_invert">الصوت عند تشغيله</string>
+    <string name="invert_radio_uninvert">الصوت عندما لا تعمل بالطاقة</string>
+    <string name="rating_enjoying_app_prompt">تتمتع اختبار الدوائر والمخارج؟</string>
+    <string name="rating_feedback_app_prompt">هل تمانع في منحنا بعض التعليقات؟</string>
+    <string name="rating_rating_app_prompt">ماذا عن تصنيف على متجر اللعب ، ثم؟</string>
+    <string name="rating_not_really">ليس صحيحا</string>
+    <string name="rating_no_thanks">لا شكرا</string>
+    <string name="rating_ok_sure">حسنا بالتأكيد</string>
+    <string name="notification_channel_name">عرض الإخطار أثناء التشغيل</string>
+    <string name="notification_channel_description">عرض إشعار أثناء تشغيل اختبار الدوائر والمخارج.</string>
+    <string name="notification_details">انقر هنا لإسكات اختبار</string>
 </resources>

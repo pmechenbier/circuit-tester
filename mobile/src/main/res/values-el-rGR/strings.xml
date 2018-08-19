@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="nav_help">βοήθεια</string>
     <string name="rating_yes">Ναί!</string>
     <string name="help_dialog_close_button_text">Κοντά</string>
     <string name="help_dialog_feedback_button_text">Στείλετε τα σχόλιά σας</string>

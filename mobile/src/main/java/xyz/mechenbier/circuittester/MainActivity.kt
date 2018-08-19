@@ -366,7 +366,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun launchSupportEmailIntent(){
         val sendEmailIntent = Intent(Intent.ACTION_SENDTO)
-        val uriText = "mailto:" + Uri.encode(getString(R.string.feedback_email_address)) + "?subject=" + Uri.encode("Circuit & Outlet Tester Feedback")
+        val uriText = "mailto:" + Uri.encode(getString(R.string.feedback_email_address)) + "?subject=" + Uri.encode(getString(R.string.app_name) + " " + getString(R.string.help_dialog_feedback_button_text))
         val uri = Uri.parse(uriText)
         sendEmailIntent.data = uri
         startActivity(Intent.createChooser(sendEmailIntent, "Send e-mail..."))

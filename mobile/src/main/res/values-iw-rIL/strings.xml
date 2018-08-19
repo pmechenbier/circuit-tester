@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="nav_help">עֶזרָה</string>
     <string name="rating_yes">כן!</string>
     <string name="help_dialog_close_button_text">לִסְגוֹר</string>
     <string name="help_dialog_feedback_button_text">שלח משוב</string>
