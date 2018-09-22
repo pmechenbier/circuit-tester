@@ -20,4 +20,5 @@
     <string name="notification_channel_name">Εμφάνιση ειδοποίησης κατά την εκτέλεση</string>
     <string name="notification_channel_description">Παρουσιάστε μια ειδοποίηση ενώ λειτουργεί ο ελεγκτής κυκλώματος και εξόδου.</string>
     <string name="notification_details">Κάντε κλικ εδώ για να σιωπήσετε τον ελεγκτή</string>
+    <string name="nav_help">βοήθεια</string>
 </resources>

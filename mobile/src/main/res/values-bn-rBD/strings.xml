@@ -20,4 +20,5 @@
     <string name="rating_ok_sure">নিশ্চিত ঠিক আছে</string>
     <string name="notification_channel_name">চলমান সময় বিজ্ঞপ্তি দেখান</string>
     <string name="notification_channel_description">সার্কিট এবং আউটলেট পরীক্ষক চলছে যখন একটি বিজ্ঞপ্তি দেখান।</string>
+    <string name="nav_help">সাহায্য</string>
 </resources>

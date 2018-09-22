@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">सर्किट और आउटलेट परीक्षक</string>
+    <string name="nav_help">मदद</string>
+    <string name="help_dialog_close_button_text">बंद करे</string>
+    <string name="help_dialog_feedback_button_text">प्रतिक्रिया भेजें</string>
+    <string name="help_dialog_message">बिजली के सर्किट या पावर आउटलेट में बिजली होने पर परीक्षण करने के लिए अपने डिवाइस का प्रयोग करें। बस अपने चार्जर को अपने डिवाइस में प्लग करें, चार्जर को आउटलेट में प्लग करें, और ध्वनि सुनें! अतिरिक्त सीमा के लिए, ब्लूटूथ हेडफ़ोन या पोर्टेबल स्पीकर की एक जोड़ी के साथ अपने डिवाइस का उपयोग करें! यह ऐप आपको यह पता लगाने में मदद कर सकता है कि कौन से आउटलेट आपके घर या कार्यालय के भीतर सर्किट ब्रेकर हैं या यदि मामूली विद्युत कार्य करते समय आउटलेट संचालित होता है, विशेष रूप से सर्किट ब्रेकर स्विच करने के बाद सीढ़ियों को ऊपर और नीचे यात्रा की बचत करता है। हमेशा के रूप में, किसी भी विद्युत प्रणाली पर किसी भी काम करने से पहले दोहरी जांच करें कि वास्तव में बिजली बंद है।</string>
+    <string name="image_powerstate_content_description">पावर स्टेट</string>
+    <string name="invert_radio_invert">संचालित होने पर ध्वनि</string>
+    <string name="invert_radio_uninvert">संचालित नहीं होने पर ध्वनि</string>
+    <string name="mute_button_muted">अनम्यूट</string>
+    <string name="mute_button_unmuted">मूक</string>
+    <string name="notification_channel_description">सर्किट और आउटलेट परीक्षक चल रहा है, जबकि एक अधिसूचना दिखाएं।</string>
+    <string name="notification_channel_name">चलते समय अधिसूचना दिखाएं</string>
+    <string name="notification_details">परीक्षक चुप करने के लिए यहां क्लिक करें</string>
+    <string name="rating_enjoying_app_prompt">सर्किट और आउटलेट परीक्षक का आनंद ले रहे हैं?</string>
+    <string name="rating_feedback_app_prompt">क्या आप हमें कुछ प्रतिक्रिया देना चाहते हैं?</string>
+    <string name="rating_no_thanks">जी नहीं, धन्यवाद</string>
+    <string name="rating_not_really">ज़रुरी नहीं</string>
+    <string name="rating_ok_sure">यकीनन ठीक</string>
+    <string name="rating_rating_app_prompt">फिर Play Store पर रेटिंग के बारे में कैसे?</string>
+    <string name="rating_yes">हाँ!</string>
+    <string name="warning">चेतावनी! विद्युत कार्य करते समय, हमेशा दोबारा जांच करें कि आपके फोन चार्जर को हटाने के बाद आप जिस आउटलेट का परीक्षण कर रहे हैं उसमें कोई शक्ति नहीं है।</string>
+</resources>

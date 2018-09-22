@@ -20,4 +20,5 @@
     <string name="notification_channel_name">Mostrar notificação durante a execução</string>
     <string name="notification_channel_description">Mostrar uma notificação enquanto o testador de circuito e tomada está em execução.</string>
     <string name="notification_details">Clique aqui para silenciar o testador</string>
+    <string name="nav_help">Socorro</string>
 </resources>

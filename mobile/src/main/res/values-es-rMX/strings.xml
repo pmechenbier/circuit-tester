@@ -20,4 +20,5 @@
     <string name="help_dialog_message">Use su dispositivo para probar si un circuito eléctrico o toma de corriente tiene energía. Simplemente conecte su cargador a su dispositivo, enchufe el cargador a la toma de corriente y ¡escuche el sonido! Para un rango adicional, ¡use su dispositivo con un par de auriculares Bluetooth o un parlante portátil!  Esta aplicación puede ayudarlo a determinar qué tomacorrientes tienen en qué disyuntores dentro de su hogar u oficina o si una toma de corriente funciona mientras realiza trabajos eléctricos menores, especialmente al guardar viajes hacia arriba y hacia abajo de las escaleras después de cambiar los interruptores automáticos.  Como siempre, compruebe dos veces antes de realizar cualquier trabajo en cualquier sistema eléctrico que la potencia está apagada.</string>
     <string name="help_dialog_feedback_button_text">Enviar comentarios</string>
     <string name="app_name">Circuito y probador de salida</string>
+    <string name="nav_help">ayuda</string>
 </resources>

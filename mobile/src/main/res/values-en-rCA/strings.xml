@@ -20,4 +20,5 @@
     <string name="notification_channel_description">Show a notification while Circuit &#038; Outlet Tester is running.</string>
     <string name="notification_details">Click here to silence tester</string>
     <string name="help_dialog_feedback_button_text">Send Feedback</string>
+    <string name="nav_help">Help</string>
 </resources>

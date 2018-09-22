@@ -20,4 +20,5 @@
     <string name="notification_channel_name">عرض الإخطار أثناء التشغيل</string>
     <string name="notification_channel_description">عرض إشعار أثناء تشغيل اختبار الدوائر والمخارج.</string>
     <string name="notification_details">انقر هنا لإسكات اختبار</string>
+    <string name="nav_help">مساعدة</string>
 </resources>

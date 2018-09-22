@@ -20,4 +20,5 @@
     <string name="notification_channel_name">Afficher la notification en cours d\'exécution</string>
     <string name="notification_channel_description">Afficher une notification pendant que le testeur de circuit et de sortie est en cours d\'exécution.</string>
     <string name="notification_details">Cliquez ici pour faire taire le testeur</string>
+    <string name="nav_help">aider</string>
 </resources>

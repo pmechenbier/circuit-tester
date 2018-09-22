@@ -20,4 +20,5 @@
     <string name="notification_channel_name">运行时显示通知</string>
     <string name="notification_channel_description">在电路和插座测试仪运行时显示通知。</string>
     <string name="notification_details">点击这里静音测试仪</string>
+    <string name="nav_help">帮帮我</string>
 </resources>
