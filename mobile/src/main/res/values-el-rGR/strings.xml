@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="rating_yes">Ναί!</string>
+    <string name="help_dialog_close_button_text">Κοντά</string>
+    <string name="help_dialog_feedback_button_text">Στείλετε τα σχόλιά σας</string>
+    <string name="app_name">Έλεγχος κυκλώματος και εξόδου</string>
+    <string name="help_dialog_message">Χρησιμοποιήστε τη συσκευή σας για να ελέγξετε αν υπάρχει ηλεκτρικό κύκλωμα ή πρίζα. Απλά συνδέστε το φορτιστή στη συσκευή σας, συνδέστε το φορτιστή στην πρίζα και ακούστε τον ήχο! Για πρόσθετη εμβέλεια, χρησιμοποιήστε τη συσκευή σας με ένα ακουστικό Bluetooth ή φορητό ηχείο!  Αυτή η εφαρμογή μπορεί να σας βοηθήσει να καταλάβετε ποια σημεία πώλησης υπάρχουν σε ποιοι διακόπτες κυκλώματος στο σπίτι ή στο γραφείο σας ή αν μια πρίζα τροφοδοτείται ενώ εκτελείτε μικρές ηλεκτρικές εργασίες, ειδικά εξοικονομώντας ταξίδια πάνω και κάτω από τις σκάλες μετά από την διακοπή των διακοπτών.  Όπως πάντα, κάντε διπλό έλεγχο πριν από την εκτέλεση οποιασδήποτε εργασίας σε οποιοδήποτε ηλεκτρικό σύστημα που είναι πραγματικά εκτός λειτουργίας.</string>
+    <string name="image_powerstate_content_description">Κατάσταση ισχύος</string>
+    <string name="warning">Προειδοποίηση! Όταν κάνετε ηλεκτρικές εργασίες, ελέγχετε πάντα ότι δεν υπάρχει καμία τάση στην έξοδο που δοκιμάζετε μετά την αφαίρεση του φορτιστή τηλεφώνου.</string>
+    <string name="mute_button_muted">Αναίρεση σίγασης</string>
+    <string name="mute_button_unmuted">Βουβός</string>
+    <string name="invert_radio_invert">Ήχος όταν τροφοδοτείται</string>
+    <string name="invert_radio_uninvert">Ήχος όταν δεν τροφοδοτείται</string>
+    <string name="rating_enjoying_app_prompt">Απολαύστε τον ελεγκτή κυκλώματος και εξόδου;</string>
+    <string name="rating_feedback_app_prompt">Σας παρακαλούμε να μας δώσετε κάποια σχόλια;</string>
+    <string name="rating_rating_app_prompt">Τι γίνεται με μια βαθμολογία στο κατάστημα παιχνιδιού, τότε;</string>
+    <string name="rating_not_really">Δεν είναι πραγματικά</string>
+    <string name="rating_no_thanks">Οχι ευχαριστώ</string>
+    <string name="rating_ok_sure">ΕΝΤΑΞΕΙ σίγουρα</string>
+    <string name="notification_channel_name">Εμφάνιση ειδοποίησης κατά την εκτέλεση</string>
+    <string name="notification_channel_description">Παρουσιάστε μια ειδοποίηση ενώ λειτουργεί ο ελεγκτής κυκλώματος και εξόδου.</string>
+    <string name="notification_details">Κάντε κλικ εδώ για να σιωπήσετε τον ελεγκτή</string>
+</resources>

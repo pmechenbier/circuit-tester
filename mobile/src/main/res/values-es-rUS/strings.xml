@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="notification_details">Haga clic aquí para silenciar al probador</string>
+    <string name="notification_channel_description">Muestra una notificación mientras el circuito y el comprobador de salida están funcionando.</string>
+    <string name="notification_channel_name">Mostrar notificación mientras se ejecuta</string>
+    <string name="rating_ok_sure">Claro</string>
+    <string name="rating_no_thanks">No, gracias</string>
+    <string name="rating_yes">¡Sí!</string>
+    <string name="rating_not_really">Realmente no</string>
+    <string name="rating_rating_app_prompt">¿Qué tal una calificación en la tienda de juegos, entonces?</string>
+    <string name="rating_feedback_app_prompt">¿Te importaría darnos algunos comentarios?</string>
+    <string name="rating_enjoying_app_prompt">¿Disfruta de un probador de circuito y salida?</string>
+    <string name="invert_radio_uninvert">Sonido cuando no funciona</string>
+    <string name="invert_radio_invert">Sonido cuando funciona</string>
+    <string name="mute_button_unmuted">silencioso</string>
+    <string name="mute_button_muted">dejar de silenciar</string>
+    <string name="warning">¡Advertencia! Cuando realice trabajos eléctricos, siempre verifique que no haya corriente en la toma de corriente que está probando después de retirar el cargador del teléfono.</string>
+    <string name="image_powerstate_content_description">Estado de energía</string>
+    <string name="help_dialog_close_button_text">Cerca</string>
+    <string name="help_dialog_message">Use su dispositivo para probar si un circuito eléctrico o toma de corriente tiene energía. Simplemente conecte su cargador a su dispositivo, enchufe el cargador a la toma de corriente y ¡escuche el sonido! Para un rango adicional, ¡use su dispositivo con un par de auriculares Bluetooth o un parlante portátil!  Esta aplicación puede ayudarlo a determinar qué tomacorrientes tienen en qué disyuntores dentro de su hogar u oficina o si una toma de corriente funciona mientras realiza trabajos eléctricos menores, especialmente al guardar viajes hacia arriba y hacia abajo de las escaleras después de cambiar los interruptores automáticos.  Como siempre, compruebe dos veces antes de realizar cualquier trabajo en cualquier sistema eléctrico que la potencia está apagada.</string>
+    <string name="help_dialog_feedback_button_text">Enviar comentarios</string>
+    <string name="app_name">Circuito y probador de salida</string>
+</resources>

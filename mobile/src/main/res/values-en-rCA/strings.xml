@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="rating_yes">Yes!</string>
+    <string name="help_dialog_close_button_text">Close</string>
+    <string name="image_powerstate_content_description">Power State</string>
+    <string name="warning">Warning! When doing electrical work, always double check that there is no power to the outlet you are testing after removing your phone charger.</string>
+    <string name="mute_button_muted">Unmute</string>
+    <string name="mute_button_unmuted">Mute</string>
+    <string name="invert_radio_invert">Sound when powered</string>
+    <string name="invert_radio_uninvert">Sound when not powered</string>
+    <string name="rating_enjoying_app_prompt">Enjoying Circuit &#038; Outlet Tester?</string>
+    <string name="rating_feedback_app_prompt">Would you mind giving us some feedback?</string>
+    <string name="rating_rating_app_prompt">How about a rating on the Play Store, then?</string>
+    <string name="rating_not_really">Not Really</string>
+    <string name="app_name">Circuit &#038; Outlet Tester</string>
+    <string name="help_dialog_message">Use your device to test if an electrical circuit or power outlet has power. Simply plug your charger into your device, plug the charger into the outlet, and listen for the sound! For added range, use your device with a pair of Bluetooth headphones or portable speaker!  This app can help you figure out which outlets are on which circuit breakers within your home or office or if an outlet is powered while doing minor electrical work, especially saving trips up and down the stairs after switching circuit breakers.  As always, double check before performing any work on any electrical system that power is indeed off.</string>
+    <string name="rating_no_thanks">No, thanks</string>
+    <string name="rating_ok_sure">Ok, sure</string>
+    <string name="notification_channel_name">Show notification while running</string>
+    <string name="notification_channel_description">Show a notification while Circuit &#038; Outlet Tester is running.</string>
+    <string name="notification_details">Click here to silence tester</string>
+    <string name="help_dialog_feedback_button_text">Send Feedback</string>
+</resources>

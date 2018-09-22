@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="rating_yes">כן!</string>
+    <string name="help_dialog_close_button_text">לִסְגוֹר</string>
+    <string name="help_dialog_feedback_button_text">שלח משוב</string>
+    <string name="notification_channel_description">הצג הודעה כאשר בודק מעגל ובורר פועל.</string>
+    <string name="notification_details">לחץ כאן כדי להשתיק את הבוחן</string>
+    <string name="notification_channel_name">הצג הודעה בזמן ריצה</string>
+    <string name="rating_ok_sure">אוקיי בטח</string>
+    <string name="rating_no_thanks">לא תודה</string>
+    <string name="rating_not_really">לא באמת</string>
+    <string name="rating_rating_app_prompt">מה דעתך על דירוג בחנות לשחק, אז?</string>
+    <string name="rating_feedback_app_prompt">אכפת לך לתת לנו משוב?</string>
+    <string name="rating_enjoying_app_prompt">נהנה בודק מעגל מוצא?</string>
+    <string name="invert_radio_uninvert">צליל כאשר אינו מופעל</string>
+    <string name="invert_radio_invert">צליל כאשר מופעל</string>
+    <string name="mute_button_unmuted">לְהַשְׁתִיק</string>
+    <string name="mute_button_muted">בטל השתקה</string>
+    <string name="warning">אַזהָרָה! כאשר אתה עושה עבודה חשמלית, תמיד לבדוק פעמיים כי אין כוח לשקע אתה בודק לאחר הסרת המטען הטלפון.</string>
+    <string name="image_powerstate_content_description">מצב כוח</string>
+    <string name="help_dialog_message">השתמש במכשיר כדי לבדוק אם יש למעגל חשמלי או לשקע חשמל. פשוט חבר את המטען למכשיר שלך, חבר את המטען לשקע, והקשב לצליל! עבור טווח נוסף, השתמש במכשיר שלך עם זוג אוזניות Bluetooth או רמקול נייד!  יישום זה יכול לעזור לך להבין אילו שקעים נמצאים בהם פורעי מעגל בתוך הבית או המשרד שלך או אם מוצא הוא מופעל בזמן ביצוע עבודה חשמלית קלה, במיוחד שמירת נסיעות למעלה ולמטה במדרגות לאחר החלפת מפסקי זרם.  כמו תמיד, לבדוק פעמיים לפני ביצוע כל עבודה על כל מערכת החשמל כי הכוח הוא אכן כבוי.</string>
+    <string name="app_name">מעגל ו בוחן מוצא</string>
+</resources>
