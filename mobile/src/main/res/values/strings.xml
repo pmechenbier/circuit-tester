@@ -6,6 +6,7 @@
       <string name="help_dialog_feedback_button_text">Send Feedback</string>
       <string name="help_dialog_close_button_text">Close</string>
       <string name="feedback_email_address" translatable="false">circuittester@mechenbier.xyz</string>
+      <string name="privacy_policy_url" translatable="false">http://mechenbier.xyz/CircuitTesterPrivacyPolicy.html</string>
       <string name="image_powerstate_content_description">Power State</string>
       <string name="warning">Warning! When doing electrical work, always double check that there is no power to the outlet you are testing after removing your phone charger.</string>
       <string name="mute_button_muted">Unmute</string>
