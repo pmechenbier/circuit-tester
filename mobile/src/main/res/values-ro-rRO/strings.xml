@@ -18,7 +18,7 @@
     <string name="rating_no_thanks">Nu multumesc</string>
     <string name="rating_ok_sure">OK sigur</string>
     <string name="notification_channel_name">Afișați notificarea în timp ce rulează</string>
-    <string name="notification_channel_description">Show a notification while Circuit and Outlet Tester is running.</string>
+    <string name="notification_channel_description">"Afișați o notificare în timp ce funcția Tester Circuit și Outlet funcționează. "</string>
     <string name="notification_details">Faceți clic aici pentru a tace tester</string>
     <string name="nav_help">Ajutor</string>
 </resources>
