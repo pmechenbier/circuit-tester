@@ -125,6 +125,10 @@ class MainActivity : AppCompatActivity() {
                             dialogInterface.cancel()
                             launchSupportEmailIntent()
                         }
+                        .setNegativeButton(R.string.help_dialog_privacy_policy_button_text) { dialogInterface, i ->
+                            dialogInterface.cancel()
+                            launchPrivacyPolicyIntent()
+                        }
                         .setPositiveButton(R.string.help_dialog_close_button_text) { dialogInterface, i ->
                             dialogInterface.cancel()
                         }
@@ -370,5 +374,10 @@ class MainActivity : AppCompatActivity() {
         val uri = Uri.parse(uriText)
         sendEmailIntent.data = uri
         startActivity(Intent.createChooser(sendEmailIntent, "Send e-mail..."))
+    }
+
+    private fun launchPrivacyPolicyIntent(){
+        val openPrivacyPolicyIntent = Intent(Intent.ACTION_VIEW, Uri.parse(getString(R.string.privacy_policy_url)))
+        startActivity(openPrivacyPolicyIntent)
     }
 }
