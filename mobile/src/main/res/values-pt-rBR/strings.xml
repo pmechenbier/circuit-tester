@@ -4,7 +4,7 @@
     <string name="help_dialog_close_button_text">Fechar</string>
     <string name="help_dialog_feedback_button_text">Enviar comentários</string>
     <string name="app_name">Verificador de circuito e saída</string>
-    <string name="help_dialog_message">Use o seu dispositivo para testar se um circuito elétrico ou tomada elétrica tem energia. Basta conectar o carregador ao dispositivo, conectar o carregador à tomada e ouvir o som! Para alcance adicional, use seu dispositivo com um par de fones de ouvido bluetooth ou alto-falante portátil!  Este aplicativo pode ajudá-lo a descobrir quais tomadas estão em quais disjuntores dentro de sua casa ou escritório ou se uma tomada é alimentada enquanto se faz um trabalho elétrico menor, especialmente as viagens de poupança subir e descer as escadas após a troca de disjuntores.  Como sempre, verifique novamente antes de executar qualquer trabalho em qualquer sistema elétrico que a energia esteja de fato desligada.</string>
+    <string name="help_dialog_message">Use o seu dispositivo para testar se um circuito elétrico ou tomada elétrica tem energia. Basta conectar o carregador ao dispositivo, conectar o carregador à tomada e ouvir o som! Para alcance adicional, use seu dispositivo com um par de fones de ouvido bluetooth ou alto-falante portátil!\n\nEste aplicativo pode ajudá-lo a descobrir quais tomadas estão em quais disjuntores dentro de sua casa ou escritório ou se uma tomada é alimentada enquanto se faz um trabalho elétrico menor, especialmente as viagens de poupança subir e descer as escadas após a troca de disjuntores.\n\nComo sempre, verifique novamente antes de executar qualquer trabalho em qualquer sistema elétrico que a energia esteja de fato desligada.</string>
     <string name="image_powerstate_content_description">Estado de potência</string>
     <string name="warning">Atenção! Ao fazer o trabalho elétrico, verifique sempre se não há energia na tomada que você está testando depois de remover o carregador do telefone.</string>
     <string name="mute_button_muted">Cancelar mudo</string>
@@ -20,5 +20,6 @@
     <string name="notification_channel_name">Mostrar notificação durante a execução</string>
     <string name="notification_channel_description">Mostrar uma notificação enquanto o testador de circuito e tomada está em execução.</string>
     <string name="notification_details">Clique aqui para silenciar o testador</string>
-    <string name="nav_help">Socorro</string>
+    <string name="nav_help_icon_title">Socorro</string>
+    <string name="help_dialog_privacy_policy_button_text">Política de Privacidade</string>
 </resources>
