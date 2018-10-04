@@ -22,4 +22,6 @@
     <string name="help_dialog_feedback_button_text">Send Feedback</string>
     <string name="nav_help_icon_title">Help</string>
     <string name="help_dialog_privacy_policy_button_text">Privacy Policy</string>
+    <string name="intent_title_send_email">Send e-mail...</string>
+    <string name="intent_title_launch_privacy_policy">Open browser...</string>
 </resources>

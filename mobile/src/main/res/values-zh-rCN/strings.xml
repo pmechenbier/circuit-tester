@@ -22,4 +22,6 @@
     <string name="notification_details">点击这里静音测试仪</string>
     <string name="nav_help_icon_title">帮帮我</string>
     <string name="help_dialog_privacy_policy_button_text">隐私政策</string>
+    <string name="intent_title_send_email">发送电子邮件...</string>
+    <string name="intent_title_launch_privacy_policy">打开浏览器...</string>
 </resources>

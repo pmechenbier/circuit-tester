@@ -21,6 +21,8 @@
       <string name="rating_yes">Yes!</string>
       <string name="rating_no_thanks">No, thanks</string>
       <string name="rating_ok_sure">Ok, sure</string>
+      <string name="intent_title_send_email">Send e-mail...</string>
+      <string name="intent_title_launch_privacy_policy">Op browser...</string>
       <string name="notification_channel_id" translatable="false">xyx.mechenbier.circuittester.notifications.defaultchannel</string>
       <string name="notification_channel_name">Show notification while running</string>
       <string name="notification_channel_description">Show a notification while Circuit &#038; Outlet Tester is running.</string>

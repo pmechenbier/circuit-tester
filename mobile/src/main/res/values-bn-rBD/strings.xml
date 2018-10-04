@@ -22,4 +22,6 @@
     <string name="notification_channel_description">সার্কিট এবং আউটলেট পরীক্ষক চলছে যখন একটি বিজ্ঞপ্তি দেখান।</string>
     <string name="nav_help_icon_title">সাহায্য</string>
     <string name="help_dialog_privacy_policy_button_text">গোপনীয়তা নীতি</string>
+    <string name="intent_title_send_email">ইমেইল পাঠান...</string>
+    <string name="intent_title_launch_privacy_policy">ব্রাউজার খুলুন ...</string>
 </resources>

@@ -22,4 +22,6 @@
     <string name="notification_details">Κάντε κλικ εδώ για να σιωπήσετε τον ελεγκτή</string>
     <string name="nav_help_icon_title">βοήθεια</string>
     <string name="help_dialog_privacy_policy_button_text">Πολιτική Απορρήτου</string>
+    <string name="intent_title_send_email">Να στείλετε e-mail...</string>
+    <string name="intent_title_launch_privacy_policy">Άνοιγμα προγράμματος περιήγησης ...</string>
 </resources>

@@ -22,4 +22,6 @@
     <string name="rating_yes">हाँ!</string>
     <string name="warning">चेतावनी! विद्युत कार्य करते समय, हमेशा दोबारा जांच करें कि आपके फोन चार्जर को हटाने के बाद आप जिस आउटलेट का परीक्षण कर रहे हैं उसमें कोई शक्ति नहीं है।</string>
     <string name="help_dialog_privacy_policy_button_text">गोपनीयता नीति</string>
+    <string name="intent_title_send_email">ईमेल भेजें...</string>
+    <string name="intent_title_launch_privacy_policy">खुला ब्राउज़र...</string>
 </resources>

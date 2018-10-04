@@ -373,11 +373,11 @@ class MainActivity : AppCompatActivity() {
         val uriText = "mailto:" + Uri.encode(getString(R.string.feedback_email_address)) + "?subject=" + Uri.encode(getString(R.string.app_name) + " " + getString(R.string.help_dialog_feedback_button_text))
         val uri = Uri.parse(uriText)
         sendEmailIntent.data = uri
-        startActivity(Intent.createChooser(sendEmailIntent, "Send e-mail..."))
+        startActivity(Intent.createChooser(sendEmailIntent, getString(R.string.intent_title_send_email)))
     }
 
     private fun launchPrivacyPolicyIntent(){
         val openPrivacyPolicyIntent = Intent(Intent.ACTION_VIEW, Uri.parse(getString(R.string.privacy_policy_url)))
-        startActivity(Intent.createChooser(openPrivacyPolicyIntent, "Open browser..."))
+        startActivity(Intent.createChooser(openPrivacyPolicyIntent, getString(R.string.intent_title_launch_privacy_policy)))
     }
 }

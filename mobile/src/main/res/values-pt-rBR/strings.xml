@@ -22,4 +22,6 @@
     <string name="notification_details">Clique aqui para silenciar o testador</string>
     <string name="nav_help_icon_title">Socorro</string>
     <string name="help_dialog_privacy_policy_button_text">Política de Privacidade</string>
+    <string name="intent_title_send_email">Enviar email...</string>
+    <string name="intent_title_launch_privacy_policy">Navegador aberto...</string>
 </resources>

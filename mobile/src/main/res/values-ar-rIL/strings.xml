@@ -22,4 +22,6 @@
     <string name="notification_details">انقر هنا لإسكات اختبار</string>
     <string name="nav_help_icon_title">مساعدة</string>
     <string name="help_dialog_privacy_policy_button_text">"سياسة الخصوصية "</string>
+    <string name="intent_title_send_email">ارسل بريد الكتروني...</string>
+    <string name="intent_title_launch_privacy_policy">المتصفح المفتوحة...</string>
 </resources>

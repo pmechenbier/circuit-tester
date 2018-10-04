@@ -22,4 +22,6 @@
     <string name="app_name">Circuito y probador de salida</string>
     <string name="nav_help_icon_title">ayuda</string>
     <string name="help_dialog_privacy_policy_button_text">Política de privacidad</string>
+    <string name="intent_title_send_email">Enviar correo electrónico...</string>
+    <string name="intent_title_launch_privacy_policy">Navegador abierto...</string>
 </resources>

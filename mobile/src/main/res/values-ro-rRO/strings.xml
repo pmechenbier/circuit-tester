@@ -22,4 +22,6 @@
     <string name="notification_details">Faceți clic aici pentru a tace tester</string>
     <string name="nav_help_icon_title">Ajutor</string>
     <string name="help_dialog_privacy_policy_button_text">"Politica de confidentialitate "</string>
+    <string name="intent_title_send_email">Trimite email...</string>
+    <string name="intent_title_launch_privacy_policy">Deschideți browserul ...</string>
 </resources>
