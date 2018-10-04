@@ -378,6 +378,6 @@ class MainActivity : AppCompatActivity() {
 
     private fun launchPrivacyPolicyIntent(){
         val openPrivacyPolicyIntent = Intent(Intent.ACTION_VIEW, Uri.parse(getString(R.string.privacy_policy_url)))
-        startActivity(openPrivacyPolicyIntent)
+        startActivity(Intent.createChooser(openPrivacyPolicyIntent, "Open browser..."))
     }
 }
