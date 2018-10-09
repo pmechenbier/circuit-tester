@@ -2,7 +2,7 @@
 <resources>
     <string name="rating_yes">是！</string>
     <string name="help_dialog_close_button_text">关</string>
-    <string name="help_dialog_feedback_button_text">发送反馈</string>
+    <string name="launch_feedback_text">发送反馈</string>
     <string name="app_name">电路和插座测试仪</string>
     <string name="help_dialog_message">使用您的设备测试电路或电源插座是否有电。 只需将充电器插入设备，将充电器插入插座，然后听取声音！ 如需增加射程，请将您的设备与一副蓝牙耳机或便携式扬声器配合使用！\n\n此应用程序可以帮助您确定哪些插座位于家中或办公室内的断路器上，或者在进行小电力工作时是否为插座供电，尤其是在切换断路器后上下楼梯。\n\n一如往常，在对电源确实关闭的任何电气系统执行任何工作之前，请仔细检查。</string>
     <string name="image_powerstate_content_description">动力状态</string>
@@ -21,7 +21,14 @@
     <string name="notification_channel_description">在电路和插座测试仪运行时显示通知。</string>
     <string name="notification_details">点击这里静音测试仪</string>
     <string name="nav_help_icon_title">帮帮我</string>
-    <string name="help_dialog_privacy_policy_button_text">隐私政策</string>
+    <string name="launch_privacy_policy_text">隐私政策</string>
     <string name="intent_title_send_email">发送电子邮件...</string>
-    <string name="intent_title_launch_privacy_policy">打开浏览器...</string>
+    <string name="intent_title_launch_browser">打开浏览器...</string>
+    <string name="nav_settings_icon_title">设置</string>
+    <string name="preference_title_show_text_state">显示电源状态说明</string>
+    <string name="preference_summary_show_text_state">显示描述设备电源状态的描述性文本</string>
+    <string name="preference_title_sound_when_powered">通电后发出声音</string>
+    <string name="preference_summary_sound_when_powered">如果选中，设备通电时设备将发出声音，否则在未通电时会发出声音</string>
+    <string name="preference_title_sound_mute">静音电路和插座测试仪</string>
+    <string name="preference_summary_sound_mute">从Circuit and Outlet Tester播放静音</string>
 </resources>

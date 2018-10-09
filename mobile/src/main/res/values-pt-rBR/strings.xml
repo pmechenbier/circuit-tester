@@ -2,7 +2,7 @@
 <resources>
     <string name="rating_yes">Sim!</string>
     <string name="help_dialog_close_button_text">Fechar</string>
-    <string name="help_dialog_feedback_button_text">Enviar comentários</string>
+    <string name="launch_feedback_text">Enviar comentários</string>
     <string name="app_name">Verificador de circuito e saída</string>
     <string name="help_dialog_message">Use o seu dispositivo para testar se um circuito elétrico ou tomada elétrica tem energia. Basta conectar o carregador ao dispositivo, conectar o carregador à tomada e ouvir o som! Para alcance adicional, use seu dispositivo com um par de fones de ouvido bluetooth ou alto-falante portátil!\n\nEste aplicativo pode ajudá-lo a descobrir quais tomadas estão em quais disjuntores dentro de sua casa ou escritório ou se uma tomada é alimentada enquanto se faz um trabalho elétrico menor, especialmente as viagens de poupança subir e descer as escadas após a troca de disjuntores.\n\nComo sempre, verifique novamente antes de executar qualquer trabalho em qualquer sistema elétrico que a energia esteja de fato desligada.</string>
     <string name="image_powerstate_content_description">Estado de potência</string>
@@ -21,7 +21,14 @@
     <string name="notification_channel_description">Mostrar uma notificação enquanto o testador de circuito e tomada está em execução.</string>
     <string name="notification_details">Clique aqui para silenciar o testador</string>
     <string name="nav_help_icon_title">Socorro</string>
-    <string name="help_dialog_privacy_policy_button_text">Política de Privacidade</string>
+    <string name="launch_privacy_policy_text">Política de Privacidade</string>
     <string name="intent_title_send_email">Enviar email...</string>
-    <string name="intent_title_launch_privacy_policy">Navegador aberto...</string>
+    <string name="intent_title_launch_browser">Navegador aberto...</string>
+    <string name="nav_settings_icon_title">Configurações</string>
+    <string name="preference_title_show_text_state">Mostrar descrição do estado de energia</string>
+    <string name="preference_summary_show_text_state">Mostra um texto descritivo que explica o estado de energia do dispositivo</string>
+    <string name="preference_title_sound_when_powered">Som quando ligado</string>
+    <string name="preference_summary_sound_when_powered">Se marcado, o dispositivo reproduzirá um som quando o dispositivo estiver ligado, caso contrário, ele reproduzirá um som quando não estiver ligado</string>
+    <string name="preference_title_sound_mute">Circuito mudo e testador de saída</string>
+    <string name="preference_summary_sound_mute">Som mudo tocando do Circuit and Outlet Tester</string>
 </resources>

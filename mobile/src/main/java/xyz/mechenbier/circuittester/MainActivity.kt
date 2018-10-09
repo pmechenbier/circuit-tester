@@ -9,6 +9,7 @@ import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.os.IBinder
+import android.preference.PreferenceManager
 import android.support.v4.app.NotificationCompat
 import android.support.v4.content.ContextCompat
 import android.support.v7.app.AppCompatActivity
@@ -37,7 +38,7 @@ class MainActivity : AppCompatActivity() {
     private val mRatingLaunchesUntilPrompt = 3
 
     companion object {
-        lateinit var instance: MainActivity
+        lateinit var mInstance: MainActivity
     }
 
     //Defines callbacks for service binding, passed to bindService()
@@ -59,11 +60,10 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        instance = this
+        PreferenceManager.setDefaultValues(this, R.xml.preferences, false)
 
+        mInstance = this
         mFirebaseAnalytics = FirebaseAnalytics.getInstance(this)
-
-        setSupportActionBar(findViewById(R.id.toolbar))
 
         MobileAds.initialize(this, BuildConfig.AdMobAppApiKey)
         val adView = findViewById<View>(R.id.adView) as AdView
@@ -72,10 +72,13 @@ class MainActivity : AppCompatActivity() {
                 .build()
         adView.loadAd(adRequest)
 
-        initializeRatingPrompt()
+        val preferences = PreferenceManager.getDefaultSharedPreferences(this)
 
-        startService()
+        initializeUiFromPreferences(preferences)
+        initializeRatingPrompt()
+        startService(preferences)
     }
+
 
     override fun onStart() {
         super.onStart()
@@ -86,7 +89,7 @@ class MainActivity : AppCompatActivity() {
         if (mUiUpdateReceiver == null) {
             mUiUpdateReceiver = UiUpdateReceiver()
         }
-        val intentFilter = android.content.IntentFilter(getString(R.string.intent_charging_name))
+        val intentFilter = android.content.IntentFilter(INTENT_POWER_CONNECTION_RECEIVER_CHARGING)
         registerReceiver(mUiUpdateReceiver, intentFilter)
 
         super.onResume()
@@ -121,11 +124,11 @@ class MainActivity : AppCompatActivity() {
 
                 val builder = AlertDialog.Builder(this)
                 builder.setMessage(R.string.help_dialog_message)
-                        .setNeutralButton(R.string.help_dialog_feedback_button_text) { dialogInterface, i ->
+                        .setNeutralButton(R.string.launch_feedback_text) { dialogInterface, i ->
                             dialogInterface.cancel()
                             launchSupportEmailIntent()
                         }
-                        .setNegativeButton(R.string.help_dialog_privacy_policy_button_text) { dialogInterface, i ->
+                        .setNegativeButton(R.string.launch_privacy_policy_text) { dialogInterface, i ->
                             dialogInterface.cancel()
                             launchPrivacyPolicyIntent()
                         }
@@ -134,6 +137,13 @@ class MainActivity : AppCompatActivity() {
                         }
                 val alertDialog = builder.create()
                 alertDialog.show()
+
+                true
+            }
+            R.id.menu_action_settings -> {
+
+                val intent = Intent(this, SettingsActivity::class.java)
+                startActivity(intent)
 
                 true
             }
@@ -181,7 +191,7 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-    fun bindService() {
+    private fun bindService() {
         // Bind to LocalService
         val intent = Intent(this, PowerStateService::class.java)
         bindService(intent, mConnection, Context.BIND_AUTO_CREATE)
@@ -197,19 +207,16 @@ class MainActivity : AppCompatActivity() {
         mBound = false
     }
 
-    fun startService(view: View) {
-        startService()
-        bindService()
-    }
-
-    fun startService() {
+    private fun startService(preferences: SharedPreferences) {
+        val prefValueSoundWhenPowered: Boolean = preferences.getBoolean(KEY_PREF_SOUND_WHEN_POWERED, false)
+        val prefValueSoundMute: Boolean = preferences.getBoolean(KEY_PREF_SOUND_MUTE, false)
         val intent = Intent(this, PowerStateService::class.java)
+
+        intent.putExtra(POWER_STATE_SERVICE_INTENT_EXTRA_IS_MUTED, prefValueSoundMute)
+        intent.putExtra(POWER_STATE_SERVICE_INTENT_EXTRA_SOUND_WHEN_POWERED, prefValueSoundWhenPowered)
+
         startService(intent)
         createNotification()
-    }
-
-    fun stopService(view: View) {
-        stopService()
     }
 
     private fun stopService() {
@@ -221,28 +228,36 @@ class MainActivity : AppCompatActivity() {
 
 
     fun onRadioButtonClicked(view: View) {
-        val isChecked = (view as RadioButton).isChecked
-
         // Check which radio button was clicked
         when (view.getId()) {
-            R.id.rb_sound_when_powered -> setSoundOnPowered(!isChecked)
-            R.id.rb_sound_when_not_powered -> setSoundOnPowered(isChecked)
+            R.id.rb_sound_when_powered -> setSoundOnPowered(true)
+            R.id.rb_sound_when_not_powered -> setSoundOnPowered(false)
         }
     }
-
-    private fun setSoundOnPowered(checked: Boolean) {
-        if (mBound) {
-            mService!!.setSoundOnPowered(checked)
-        }
-    }
-
 
     fun onMuteToggleButtonClicked(view: View) {
         val isChecked = (view as ToggleButton).isChecked
         setMute(isChecked)
     }
 
+
+    private fun setSoundOnPowered(checked: Boolean) {
+        val sharedPref: SharedPreferences = PreferenceManager.getDefaultSharedPreferences(this)
+        val editor: SharedPreferences.Editor = sharedPref.edit()
+        editor.putBoolean(KEY_PREF_SOUND_WHEN_POWERED, checked)
+        editor.apply()
+
+        if (mBound) {
+            mService!!.setSoundOnPowered(checked)
+        }
+    }
+
     private fun setMute(muted: Boolean) {
+        val sharedPref: SharedPreferences = PreferenceManager.getDefaultSharedPreferences(this)
+        val editor: SharedPreferences.Editor = sharedPref.edit()
+        editor.putBoolean(KEY_PREF_SOUND_MUTE, muted)
+        editor.apply()
+
         if (mBound) {
             mService!!.setMute(muted)
         }
@@ -258,25 +273,37 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    private fun initializeUiFromPreferences(preferences: SharedPreferences) {
+        var prefValueSoundWhenPowered: Boolean = preferences.getBoolean(KEY_PREF_SOUND_WHEN_POWERED, false)
+        var prefValueSoundMute: Boolean = preferences.getBoolean(KEY_PREF_SOUND_MUTE, false)
+
+        val tbMute = findViewById<ToggleButton>(R.id.toggle_mute)
+        val rbSoundWhenPowered = findViewById<RadioButton>(R.id.rb_sound_when_powered)
+        val rbSoundWhenNotPowered = findViewById<RadioButton>(R.id.rb_sound_when_not_powered)
+
+        tbMute.isChecked = prefValueSoundMute
+        rbSoundWhenPowered.isChecked = prefValueSoundWhenPowered
+        rbSoundWhenNotPowered.isChecked = !prefValueSoundWhenPowered
+    }
 
     private fun initializeRatingPrompt() {
-        val preferences = this.getSharedPreferences(getString(R.string.preference_shared_key_name_rating), 0)
+        val preferences = this.getSharedPreferences(KEY_PREF_SHARED_RATING_KEY_NAME, 0)
 
-        if (preferences.getBoolean(getString(R.string.preference_name_rating_dont_show_rating_prompt), false)) {
+        if (preferences.getBoolean(KEY_PREF_RATING_DONT_SHOW_RATING_PROMPT, false)) {
             return
         }
 
         val preferencesEditor = preferences.edit()
 
         // increment launch counter
-        val launchCount = preferences.getLong(getString(R.string.preference_name_rating_launch_count), 0) + 1
-        preferencesEditor.putLong(getString(R.string.preference_name_rating_launch_count), launchCount)
+        val launchCount = preferences.getLong(KEY_PREF_RATING_LAUNCH_COUNT, 0) + 1
+        preferencesEditor.putLong(KEY_PREF_RATING_LAUNCH_COUNT, launchCount)
 
         // get date of first launch
-        var dateFirstLaunch = preferences.getLong(getString(R.string.preference_name_rating_launch_date), 0)
+        var dateFirstLaunch = preferences.getLong(KEY_PREF_RATING_DATE_FIRST_LAUNCH, 0)
         if (dateFirstLaunch == 0L) {
             dateFirstLaunch = System.currentTimeMillis()
-            preferencesEditor.putLong(getString(R.string.preference_name_rating_launch_date), dateFirstLaunch)
+            preferencesEditor.putLong(KEY_PREF_RATING_DATE_FIRST_LAUNCH, dateFirstLaunch)
         }
 
         preferencesEditor.apply()
@@ -319,9 +346,9 @@ class MainActivity : AppCompatActivity() {
 
     // when a user clicks the "no feedback" rating button, hide the rating prompt
     fun onRatingNoFeedbackButtonClicked(view: View) {
-        val preferences = this.getSharedPreferences(getString(R.string.preference_shared_key_name_rating), 0)
+        val preferences = this.getSharedPreferences(KEY_PREF_SHARED_RATING_KEY_NAME, 0)
         val preferencesEditor = preferences.edit()
-        preferencesEditor.putBoolean(getString(R.string.preference_name_rating_dont_show_rating_prompt), true)
+        preferencesEditor.putBoolean(KEY_PREF_RATING_DONT_SHOW_RATING_PROMPT, true)
         preferencesEditor.apply()
         setVisibility(R.id.rating_frame_layout, View.INVISIBLE)
         setVisibility(R.id.text_warning, View.VISIBLE)
@@ -329,9 +356,9 @@ class MainActivity : AppCompatActivity() {
 
     // when a user clicks the "yes feedback" rating button, hide the prompt and create an email intent
     fun onRatingYesFeedbackButtonClicked(view: View) {
-        val preferences = this.getSharedPreferences(getString(R.string.preference_shared_key_name_rating), 0)
+        val preferences = this.getSharedPreferences(KEY_PREF_SHARED_RATING_KEY_NAME, 0)
         val preferencesEditor = preferences.edit()
-        preferencesEditor.putBoolean(getString(R.string.preference_name_rating_dont_show_rating_prompt), true)
+        preferencesEditor.putBoolean(KEY_PREF_RATING_DONT_SHOW_RATING_PROMPT, true)
         preferencesEditor.apply()
         setVisibility(R.id.rating_frame_layout, View.INVISIBLE)
         setVisibility(R.id.text_warning, View.VISIBLE)
@@ -340,9 +367,9 @@ class MainActivity : AppCompatActivity() {
 
     // when a user clicks the "no rating" rating button, hide the rating prompt
     fun onRatingNoRatingButtonClicked(view: View) {
-        val preferences = this.getSharedPreferences(getString(R.string.preference_shared_key_name_rating), 0)
+        val preferences = this.getSharedPreferences(KEY_PREF_SHARED_RATING_KEY_NAME, 0)
         val preferencesEditor = preferences.edit()
-        preferencesEditor.putBoolean(getString(R.string.preference_name_rating_dont_show_rating_prompt), true)
+        preferencesEditor.putBoolean(KEY_PREF_RATING_DONT_SHOW_RATING_PROMPT, true)
         preferencesEditor.apply()
         setVisibility(R.id.rating_frame_layout, View.INVISIBLE)
         setVisibility(R.id.text_warning, View.VISIBLE)
@@ -350,27 +377,27 @@ class MainActivity : AppCompatActivity() {
 
     // when a user clicks the "yes rating" rating button, hide the prompt and open google play
     fun onRatingYesRatingButtonClicked(view: View) {
-        val preferences = this.getSharedPreferences(getString(R.string.preference_shared_key_name_rating), 0)
+        val preferences = this.getSharedPreferences(KEY_PREF_SHARED_RATING_KEY_NAME, 0)
         val preferencesEditor = preferences.edit()
-        preferencesEditor.putBoolean(getString(R.string.preference_name_rating_dont_show_rating_prompt), true)
+        preferencesEditor.putBoolean(KEY_PREF_RATING_DONT_SHOW_RATING_PROMPT, true)
         preferencesEditor.apply()
         setVisibility(R.id.rating_frame_layout, View.INVISIBLE)
         setVisibility(R.id.text_warning, View.VISIBLE)
 
         // try launching the google play app, otherwise fall back to the web browser
         try {
-            val playStoreRatingIntent = Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + getString(R.string.app_package_name)))
+            val playStoreRatingIntent = Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=xyz.mechenbier.circuittester"))
             startActivity(playStoreRatingIntent)
         } catch (exception: android.content.ActivityNotFoundException) {
-            val googlePlayBrowserIntent = Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=" + getString(R.string.app_package_name)))
-            startActivity(googlePlayBrowserIntent)
+            val googlePlayBrowserIntent = Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=xyz.mechenbier.circuittester"))
+            startActivity(Intent.createChooser(googlePlayBrowserIntent, getString(R.string.intent_title_launch_browser)))
         }
 
     }
 
     private fun launchSupportEmailIntent(){
         val sendEmailIntent = Intent(Intent.ACTION_SENDTO)
-        val uriText = "mailto:" + Uri.encode(getString(R.string.feedback_email_address)) + "?subject=" + Uri.encode(getString(R.string.app_name) + " " + getString(R.string.help_dialog_feedback_button_text))
+        val uriText = "mailto:" + Uri.encode(getString(R.string.feedback_email_address)) + "?subject=" + Uri.encode(getString(R.string.app_name) + " " + getString(R.string.launch_feedback_text))
         val uri = Uri.parse(uriText)
         sendEmailIntent.data = uri
         startActivity(Intent.createChooser(sendEmailIntent, getString(R.string.intent_title_send_email)))
@@ -378,6 +405,6 @@ class MainActivity : AppCompatActivity() {
 
     private fun launchPrivacyPolicyIntent(){
         val openPrivacyPolicyIntent = Intent(Intent.ACTION_VIEW, Uri.parse(getString(R.string.privacy_policy_url)))
-        startActivity(Intent.createChooser(openPrivacyPolicyIntent, getString(R.string.intent_title_launch_privacy_policy)))
+        startActivity(Intent.createChooser(openPrivacyPolicyIntent, getString(R.string.intent_title_launch_browser)))
     }
 }

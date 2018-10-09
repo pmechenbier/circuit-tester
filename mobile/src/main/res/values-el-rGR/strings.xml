@@ -2,7 +2,7 @@
 <resources>
     <string name="rating_yes">Ναί!</string>
     <string name="help_dialog_close_button_text">Κοντά</string>
-    <string name="help_dialog_feedback_button_text">Στείλετε τα σχόλιά σας</string>
+    <string name="launch_feedback_text">Στείλετε τα σχόλιά σας</string>
     <string name="app_name">Έλεγχος κυκλώματος και εξόδου</string>
     <string name="help_dialog_message">Χρησιμοποιήστε τη συσκευή σας για να ελέγξετε αν υπάρχει ηλεκτρικό κύκλωμα ή πρίζα. Απλά συνδέστε το φορτιστή στη συσκευή σας, συνδέστε το φορτιστή στην πρίζα και ακούστε τον ήχο! Για πρόσθετη εμβέλεια, χρησιμοποιήστε τη συσκευή σας με ένα ακουστικό Bluetooth ή φορητό ηχείο!\n\nΑυτή η εφαρμογή μπορεί να σας βοηθήσει να καταλάβετε ποια σημεία πώλησης υπάρχουν σε ποιοι διακόπτες κυκλώματος στο σπίτι ή στο γραφείο σας ή αν μια πρίζα τροφοδοτείται ενώ εκτελείτε μικρές ηλεκτρικές εργασίες, ειδικά εξοικονομώντας ταξίδια πάνω και κάτω από τις σκάλες μετά από την διακοπή των διακοπτών.\n\nΌπως πάντα, κάντε διπλό έλεγχο πριν από την εκτέλεση οποιασδήποτε εργασίας σε οποιοδήποτε ηλεκτρικό σύστημα που είναι πραγματικά εκτός λειτουργίας.</string>
     <string name="image_powerstate_content_description">Κατάσταση ισχύος</string>
@@ -21,7 +21,14 @@
     <string name="notification_channel_description">Παρουσιάστε μια ειδοποίηση ενώ λειτουργεί ο ελεγκτής κυκλώματος και εξόδου.</string>
     <string name="notification_details">Κάντε κλικ εδώ για να σιωπήσετε τον ελεγκτή</string>
     <string name="nav_help_icon_title">βοήθεια</string>
-    <string name="help_dialog_privacy_policy_button_text">Πολιτική Απορρήτου</string>
+    <string name="launch_privacy_policy_text">Πολιτική Απορρήτου</string>
     <string name="intent_title_send_email">Να στείλετε e-mail...</string>
-    <string name="intent_title_launch_privacy_policy">Άνοιγμα προγράμματος περιήγησης ...</string>
+    <string name="intent_title_launch_browser">Άνοιγμα προγράμματος περιήγησης ...</string>
+    <string name="nav_settings_icon_title">Ρυθμίσεις</string>
+    <string name="preference_title_show_text_state">Εμφάνιση της κατάστασης ισχύος</string>
+    <string name="preference_summary_show_text_state">Εμφανίζει περιγραφικό κείμενο που εξηγεί την κατάσταση ισχύος της συσκευής</string>
+    <string name="preference_title_sound_when_powered">Ήχος όταν τροφοδοτείται</string>
+    <string name="preference_summary_sound_when_powered">Εάν είναι επιλεγμένο, η συσκευή θα αναπαράγει έναν ήχο όταν η συσκευή τροφοδοτείται, διαφορετικά θα ακούγεται ήχος όταν δεν τροφοδοτείται</string>
+    <string name="preference_title_sound_mute">Σίγαση μετρητή κυκλώματος και εξόδου</string>
+    <string name="preference_summary_sound_mute">Απενεργοποιήστε την αναπαραγωγή ήχου από τον αισθητήρα κυκλώματος και εξόδου</string>
 </resources>

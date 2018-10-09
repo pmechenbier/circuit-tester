@@ -18,10 +18,17 @@
     <string name="image_powerstate_content_description">Estado de energía</string>
     <string name="help_dialog_close_button_text">Cerca</string>
     <string name="help_dialog_message">Use su dispositivo para probar si un circuito eléctrico o toma de corriente tiene energía. Simplemente conecte su cargador a su dispositivo, enchufe el cargador a la toma de corriente y ¡escuche el sonido! Para un rango adicional, ¡use su dispositivo con un par de auriculares Bluetooth o un parlante portátil!\n\nEsta aplicación puede ayudarlo a determinar qué tomacorrientes tienen en qué disyuntores dentro de su hogar u oficina o si una toma de corriente funciona mientras realiza trabajos eléctricos menores, especialmente al guardar viajes hacia arriba y hacia abajo de las escaleras después de cambiar los interruptores automáticos.\n\nComo siempre, compruebe dos veces antes de realizar cualquier trabajo en cualquier sistema eléctrico que la potencia está apagada.</string>
-    <string name="help_dialog_feedback_button_text">Enviar comentarios</string>
+    <string name="launch_feedback_text">Enviar comentarios</string>
     <string name="app_name">Circuito y probador de salida</string>
     <string name="nav_help_icon_title">ayuda</string>
-    <string name="help_dialog_privacy_policy_button_text">Política de privacidad</string>
+    <string name="launch_privacy_policy_text">Política de privacidad</string>
     <string name="intent_title_send_email">Enviar correo electrónico...</string>
-    <string name="intent_title_launch_privacy_policy">Navegador abierto...</string>
+    <string name="intent_title_launch_browser">Navegador abierto...</string>
+    <string name="nav_settings_icon_title">Ajustes</string>
+    <string name="preference_title_show_text_state">Mostrar descripción del estado de potencia</string>
+    <string name="preference_summary_show_text_state">Muestra texto descriptivo que explica el estado de energía del dispositivo.</string>
+    <string name="preference_title_sound_when_powered">Sonido cuando se alimenta</string>
+    <string name="preference_summary_sound_when_powered">Si está marcado, el dispositivo reproducirá un sonido cuando esté encendido, de lo contrario, emitirá un sonido cuando no esté encendido.</string>
+    <string name="preference_title_sound_mute">Circuito de silencio y probador de salida</string>
+    <string name="preference_summary_sound_mute">Reproducción de sonido mudo desde el circuito y el probador de salida</string>
 </resources>

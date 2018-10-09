@@ -10,9 +10,9 @@ import android.content.Intent
 internal class UiUpdateReceiver : BroadcastReceiver() {
     override fun onReceive(context: Context, intent: Intent) {
 
-        if (intent.hasExtra(context.getString(R.string.intent_charging_extra_name))) {
-            val isCharging = intent.getBooleanExtra(context.getString(R.string.intent_charging_extra_name), false)
-            MainActivity.instance.setChargingIconColor(isCharging)
+        if (intent.hasExtra(INTENT_POWER_CONNECTION_RECEIVER_CHARGING_EXTRA_ISCHARGING)) {
+            val isCharging = intent.getBooleanExtra(INTENT_POWER_CONNECTION_RECEIVER_CHARGING_EXTRA_ISCHARGING, false)
+            MainActivity.mInstance.setChargingIconColor(isCharging)
         }
     }
 }

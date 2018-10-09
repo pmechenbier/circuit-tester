@@ -8,14 +8,16 @@ import android.os.IBinder
 import android.widget.Toast
 import com.crashlytics.android.Crashlytics
 
+const val POWER_STATE_SERVICE_INTENT_EXTRA_IS_MUTED = "isMutedIntentExtra"
+const val POWER_STATE_SERVICE_INTENT_EXTRA_SOUND_WHEN_POWERED = "soundWhenPoweredIntentExtra"
+
 class PowerStateService : Service() {
-    var mStartMode: Int = 0       // indicates how to behave if the service is killed
+    private var mStartMode: Int = 0       // indicates how to behave if the service is killed
     private val mBinder = LocalBinder()     // interface for clients that bind
-    var mAllowRebind: Boolean = false // indicates whether onRebind should be used
-    var pConRec: PowerConnectionReceiver = PowerConnectionReceiver()
+    private var mAllowRebind: Boolean = false // indicates whether onRebind should be used
+    private var pConRec: PowerConnectionReceiver = PowerConnectionReceiver()
     private var ifilter: IntentFilter? = null
-    // Setting to true will show toasts on start and stop of the service
-    private var debug: Boolean = false
+    private var debug: Boolean = false    // Setting to true will show toasts on start and stop of the service
 
     override fun onCreate() {
         // The service is being created
@@ -26,7 +28,15 @@ class PowerStateService : Service() {
     override fun onStartCommand(intent: Intent, flags: Int, startId: Int): Int {
         // The service is starting, due to a call to startService()
         showToast("Service Starting")
-        pConRec.Resume(false)
+
+        var isMuted = false
+        var soundWhenPowered = false
+        if (intent != null && intent.extras != null){
+            isMuted = intent.extras.getBoolean(POWER_STATE_SERVICE_INTENT_EXTRA_IS_MUTED, false)
+            soundWhenPowered = intent.extras.getBoolean(POWER_STATE_SERVICE_INTENT_EXTRA_SOUND_WHEN_POWERED, false)
+        }
+
+        pConRec.resume(isMuted, soundWhenPowered)
         registerReceiver(pConRec, ifilter)
         return mStartMode
     }
@@ -49,13 +59,14 @@ class PowerStateService : Service() {
     override fun onDestroy() {
         // The service is no longer used and is being destroyed
         showToast("Service Stopping")
+
         try{
             unregisterReceiver(pConRec)
         } catch (e: IllegalArgumentException){
             // this as already unregistered at one point
             Crashlytics.logException(e)
         }
-        pConRec.Pause()
+        pConRec.pause()
     }
 
     fun setMute(muted: Boolean) {
@@ -63,7 +74,7 @@ class PowerStateService : Service() {
     }
 
     fun setSoundOnPowered(checked: Boolean) {
-        pConRec.SetOnPowered(checked)
+        pConRec.setOnPowered(checked)
     }
 
     private fun showToast(message: String) {

@@ -2,7 +2,7 @@
 <resources>
     <string name="rating_yes">نعم فعلا!</string>
     <string name="help_dialog_close_button_text">أغلق</string>
-    <string name="help_dialog_feedback_button_text">ارسل رأيك</string>
+    <string name="launch_feedback_text">ارسل رأيك</string>
     <string name="app_name">اختبار الدوائر والمخارج</string>
     <string name="help_dialog_message">استخدم جهازك لاختبار ما إذا كانت هناك دائرة كهربائية أو مأخذ تيار كهربائي بالطاقة. ما عليك سوى توصيل الشاحن بجهازك ، وتوصيل الشاحن بالمأخذ ، والاستماع إلى الصوت! للحصول على نطاق مضاف ، استخدم جهازك مع زوج من سماعات الرأس Bluetooth أو السماعة المحمولة!\n\nيمكن أن يساعدك هذا التطبيق في معرفة أي منافذ موجودة في أي قواطع للدارة داخل المنزل أو المكتب أو إذا كان منفذ الطاقة يعمل أثناء القيام بأعمال كهربائية بسيطة ، خاصةً حفظ الرحلات إلى أعلى وأسفل الدرج بعد تبديل قواطع الدائرة\n\nكما هو الحال دائمًا ، تحقق مرة أخرى قبل إجراء أي عمل على أي نظام كهربائي يتم إيقاف تشغيله بالفعل.</string>
     <string name="image_powerstate_content_description">دولة السلطة</string>
@@ -21,7 +21,14 @@
     <string name="notification_channel_description">عرض إشعار أثناء تشغيل اختبار الدوائر والمخارج.</string>
     <string name="notification_details">انقر هنا لإسكات اختبار</string>
     <string name="nav_help_icon_title">مساعدة</string>
-    <string name="help_dialog_privacy_policy_button_text">"سياسة الخصوصية "</string>
+    <string name="launch_privacy_policy_text">"سياسة الخصوصية "</string>
     <string name="intent_title_send_email">ارسل بريد الكتروني...</string>
-    <string name="intent_title_launch_privacy_policy">المتصفح المفتوحة...</string>
+    <string name="intent_title_launch_browser">المتصفح المفتوحة...</string>
+    <string name="nav_settings_icon_title">إعدادات</string>
+    <string name="preference_title_show_text_state">إظهار وصف حالة الطاقة</string>
+    <string name="preference_summary_show_text_state">يعرض نصًا وصفيًا يوضح حالة طاقة الجهاز</string>
+    <string name="preference_title_sound_when_powered">الصوت عند تشغيله</string>
+    <string name="preference_summary_sound_when_powered">ﻓﻲ ﺣﺎﻟﺔ ﺗﺤﺪﻳﺪهﺎ ، ﺳﻴﻘﻮم اﻟﺠﻬﺎز ﺑﺘﺸﻐﻴﻞ ﺻﻮت ﻋﻨﺪﻣﺎ ﻳﻜﻮن اﻟﺠﻬﺎز ﻣﺰود ﺑﺎﻟﻄﺎﻗﺔ ، وإﻻ ﻓﺴﻮف ﻳﻘﻮم ﺑﺘﺸﻐﻴﻞ ﺻﻮت ﻋﻨﺪ ﻋﺪم ﺗﺸﻐﻴﻠﻪ</string>
+    <string name="preference_title_sound_mute">كتم الصوت ومخرج الدائرة</string>
+    <string name="preference_summary_sound_mute">صوت كتم الصوت من Circuit and Outlet Tester</string>
 </resources>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <CheckBoxPreference
+        android:key="preference_show_text_state"
+        android:title="@string/preference_title_show_text_state"
+        android:summary="@string/preference_summary_show_text_state"
+        android:defaultValue="false"/>
+
+    <CheckBoxPreference
+        android:key="preference_sound_when_powered"
+        android:title="@string/preference_title_sound_when_powered"
+        android:summary="@string/preference_summary_sound_when_powered"
+        android:defaultValue="true"/>
+
+    <CheckBoxPreference
+        android:key="preference_sound_mute"
+        android:title="@string/preference_title_sound_mute"
+        android:summary="@string/preference_summary_sound_mute"
+        android:defaultValue="false"/>
+</PreferenceScreen>

@@ -2,7 +2,7 @@
 <resources>
     <string name="rating_yes">হ্যাঁ!</string>
     <string name="help_dialog_close_button_text">বন্ধ করা</string>
-    <string name="help_dialog_feedback_button_text">মতামত পাঠানো</string>
+    <string name="launch_feedback_text">মতামত পাঠানো</string>
     <string name="notification_details">পরীক্ষককে নীরব করতে এখানে ক্লিক করুন</string>
     <string name="app_name">সার্কিট এবং আউটলেট পরীক্ষক</string>
     <string name="help_dialog_message">একটি বৈদ্যুতিক সার্কিট বা পাওয়ার আউটলেট ক্ষমতা আছে কিনা তা পরীক্ষা করার জন্য আপনার ডিভাইস ব্যবহার করুন। শুধু আপনার যন্ত্রের মধ্যে আপনার চার্জারটি প্লাগ করুন, চার্জারটিকে আউটলেটে প্লাগ করুন এবং শব্দটি শুনুন! যোগ পরিসীমা জন্য, একটি ডিভাইস ব্লুটুথ হেডফোন বা পোর্টেবল স্পিকার সঙ্গে আপনার ডিভাইস ব্যবহার করুন!\n\nএই অ্যাপ্লিকেশনটি আপনাকে আপনার বাড়ির বা অফিসের মধ্যে সার্কিট ব্রেকার্সগুলি বা কোনও ছোট্ট বৈদ্যুতিক কাজ করার সময় চালিত কোনও সার্কিট ব্রেকারগুলি সনাক্ত করতে সহায়তা করতে পারে, বিশেষ করে সার্কিট ব্রেকারগুলি স্যুইচ করার পরে সিঁড়িগুলি উপরে ও নিচে ভ্রমণ করে।\n\nসর্বদা হিসাবে, বিদ্যুৎ সত্যিই বন্ধ যে কোনো বৈদ্যুতিক সিস্টেমের উপর কোনো কাজ সম্পাদন করার আগে ডবল চেক।</string>
@@ -21,7 +21,14 @@
     <string name="notification_channel_name">চলমান সময় বিজ্ঞপ্তি দেখান</string>
     <string name="notification_channel_description">সার্কিট এবং আউটলেট পরীক্ষক চলছে যখন একটি বিজ্ঞপ্তি দেখান।</string>
     <string name="nav_help_icon_title">সাহায্য</string>
-    <string name="help_dialog_privacy_policy_button_text">গোপনীয়তা নীতি</string>
+    <string name="launch_privacy_policy_text">গোপনীয়তা নীতি</string>
     <string name="intent_title_send_email">ইমেইল পাঠান...</string>
-    <string name="intent_title_launch_privacy_policy">ব্রাউজার খুলুন ...</string>
+    <string name="intent_title_launch_browser">ব্রাউজার খুলুন ...</string>
+    <string name="nav_settings_icon_title">সেটিংস</string>
+    <string name="preference_title_show_text_state">ক্ষমতা রাষ্ট্র বর্ণনা প্রদর্শন করুন</string>
+    <string name="preference_summary_show_text_state">ডিভাইসের পাওয়ার স্টেট ব্যাখ্যা করে এমন বর্ণনামূলক পাঠ্য দেখায়</string>
+    <string name="preference_title_sound_when_powered">চালিত যখন শব্দ</string>
+    <string name="preference_summary_sound_when_powered">যদি চেক করা থাকে, ডিভাইস চালিত হলে ডিভাইসটি একটি শব্দ চালাবে, অন্যথায় এটি চালিত না হলে শব্দটি চালাবে</string>
+    <string name="preference_title_sound_mute">নিঃশব্দ সার্কিট ও আউটলেট পরীক্ষক</string>
+    <string name="preference_summary_sound_mute">সার্কিট এবং আউটলেট পরীক্ষক থেকে বাজানো শব্দ নীরব</string>
 </resources>

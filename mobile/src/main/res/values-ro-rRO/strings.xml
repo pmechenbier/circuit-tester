@@ -2,7 +2,7 @@
 <resources>
     <string name="app_name">Circuit și tester de ieșire</string>
     <string name="help_dialog_message">Utilizați dispozitivul pentru a testa dacă un circuit electric sau o priză de curent are putere. Pur și simplu conectați încărcătorul în aparat, conectați încărcătorul la priză și ascultați sunetul! Pentru o gamă suplimentară, utilizați dispozitivul cu o pereche de căști bluetooth sau difuzor portabil!\n\nAceastă aplicație vă poate ajuta să vă dați seama care sunt prizele pe care întrerupătoare de circuit în interiorul casei sau biroului dvs. sau dacă o priză este alimentată în timp ce efectuați lucrări electrice minore, în special economisind deplasările în sus și în jos pe scări după întreruperea întreruptoarelor.\n\nCa întotdeauna, verificați înainte de a efectua orice lucrare pe orice sistem electric care este într-adevăr oprit.</string>
-    <string name="help_dialog_feedback_button_text">Trimite feedback</string>
+    <string name="launch_feedback_text">Trimite feedback</string>
     <string name="help_dialog_close_button_text">Închide</string>
     <string name="image_powerstate_content_description">Statul de putere</string>
     <string name="warning">Avertizare! Când efectuați lucrări electrice, verificați întotdeauna că nu există nicio putere la priza pe care o testați după scoaterea încărcătorului telefonului.</string>
@@ -21,7 +21,14 @@
     <string name="notification_channel_description">Show a notification while Circuit and Outlet Tester is running.</string>
     <string name="notification_details">Faceți clic aici pentru a tace tester</string>
     <string name="nav_help_icon_title">Ajutor</string>
-    <string name="help_dialog_privacy_policy_button_text">"Politica de confidentialitate "</string>
+    <string name="launch_privacy_policy_text">"Politica de confidentialitate "</string>
     <string name="intent_title_send_email">Trimite email...</string>
-    <string name="intent_title_launch_privacy_policy">Deschideți browserul ...</string>
+    <string name="intent_title_launch_browser">Deschideți browserul ...</string>
+    <string name="nav_settings_icon_title">Setări</string>
+    <string name="preference_title_show_text_state">Afișați descrierea stării de putere</string>
+    <string name="preference_summary_show_text_state">Afișează textul descriptiv care explică starea alimentării dispozitivului</string>
+    <string name="preference_title_sound_when_powered">Sunet când este alimentat</string>
+    <string name="preference_summary_sound_when_powered">Dacă este bifată, dispozitivul va reda un sunet atunci când dispozitivul este alimentat, altfel acesta va reda un sunet atunci când nu este alimentat</string>
+    <string name="preference_title_sound_mute">Mute Circuit și tester de ieșire</string>
+    <string name="preference_summary_sound_mute">Dezactivați sunetul de la testerul de circuite și ieșiri</string>
 </resources>

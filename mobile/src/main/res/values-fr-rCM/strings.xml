@@ -5,7 +5,7 @@
     <string name="app_name">Testeur de circuit et de sortie</string>
     <string name="help_dialog_message">Utilisez votre appareil pour tester si un circuit électrique ou une prise de courant est alimenté. Branchez simplement votre chargeur sur votre appareil, branchez le chargeur dans la prise et écoutez le son! Pour plus de portée, utilisez votre appareil avec une paire d\'écouteurs Bluetooth ou un haut-parleur portable!\n\nCette application peut vous aider à identifier les prises de courant sur votre domicile ou votre bureau, ou si une prise de courant est alimentée en faisant des travaux électriques mineurs, en particulier lors de la commutation de disjoncteurs.\n\nComme toujours, vérifiez avant d\'effectuer tout travail sur un système électrique que le courant est effectivement éteint.</string>
     <string name="image_powerstate_content_description">État de puissance</string>
-    <string name="help_dialog_feedback_button_text">envoyer des commentaires</string>
+    <string name="launch_feedback_text">envoyer des commentaires</string>
     <string name="warning">Attention! Lorsque vous effectuez des travaux électriques, vérifiez toujours que la prise que vous testez n’est pas sous tension après avoir retiré le chargeur de votre téléphone.</string>
     <string name="mute_button_unmuted">muet</string>
     <string name="mute_button_muted">muet</string>
@@ -21,7 +21,14 @@
     <string name="notification_channel_description">Afficher une notification pendant que le testeur de circuit et de sortie est en cours d\'exécution.</string>
     <string name="notification_details">Cliquez ici pour faire taire le testeur</string>
     <string name="nav_help_icon_title">aider</string>
-    <string name="help_dialog_privacy_policy_button_text">Politique de confidentialité</string>
+    <string name="launch_privacy_policy_text">Politique de confidentialité</string>
     <string name="intent_title_send_email">Envoyer un e-mail ...</string>
-    <string name="intent_title_launch_privacy_policy">Navigateur ouvert...</string>
+    <string name="intent_title_launch_browser">Navigateur ouvert...</string>
+    <string name="nav_settings_icon_title">Réglages</string>
+    <string name="preference_title_show_text_state">Afficher la description de l\'état de l\'alimentation</string>
+    <string name="preference_summary_show_text_state">Affiche un texte descriptif qui explique l\'état d\'alimentation du périphérique</string>
+    <string name="preference_title_sound_when_powered">Sound lorsqu\'il est alimenté</string>
+    <string name="preference_summary_sound_when_powered">Si cette case est cochée, l\'appareil émettra un son à la mise sous tension, sinon il émettra un son lorsqu\'il ne l\'est pas</string>
+    <string name="preference_title_sound_mute">Testeur de circuit muet et de prise de courant</string>
+    <string name="preference_summary_sound_mute">Son muet jouant à partir de testeur de circuit et de prise</string>
 </resources>

@@ -19,9 +19,16 @@
     <string name="notification_channel_name">Show notification while running</string>
     <string name="notification_channel_description">Show a notification while Circuit &#038; Outlet Tester is running.</string>
     <string name="notification_details">Click here to silence tester</string>
-    <string name="help_dialog_feedback_button_text">Send Feedback</string>
+    <string name="launch_feedback_text">Send Feedback</string>
     <string name="nav_help_icon_title">Help</string>
-    <string name="help_dialog_privacy_policy_button_text">Privacy Policy</string>
+    <string name="launch_privacy_policy_text">Privacy Policy</string>
     <string name="intent_title_send_email">Send e-mail...</string>
-    <string name="intent_title_launch_privacy_policy">Open browser...</string>
+    <string name="intent_title_launch_browser">Open browser...</string>
+    <string name="nav_settings_icon_title">Settings</string>
+    <string name="preference_title_show_text_state">Show power state description</string>
+    <string name="preference_summary_show_text_state">Shows descriptive text that explains the power state of the device</string>
+    <string name="preference_title_sound_when_powered">Sound when powered</string>
+    <string name="preference_summary_sound_when_powered">If checked, the device will play a sound when the device is powered, otherwise it will play a sound when not powered</string>
+    <string name="preference_title_sound_mute">Mute Circuit &amp; Outlet Tester</string>
+    <string name="preference_summary_sound_mute">Mute sound playing from Circuit &amp; Outlet Tester</string>
 </resources>
