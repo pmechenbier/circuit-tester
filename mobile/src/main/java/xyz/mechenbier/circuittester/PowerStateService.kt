@@ -15,14 +15,14 @@ class PowerStateService : Service() {
     private var mStartMode: Int = 0       // indicates how to behave if the service is killed
     private val mBinder = LocalBinder()     // interface for clients that bind
     private var mAllowRebind: Boolean = false // indicates whether onRebind should be used
-    private var pConRec: PowerConnectionReceiver = PowerConnectionReceiver()
-    private var ifilter: IntentFilter? = null
-    private var debug: Boolean = false    // Setting to true will show toasts on start and stop of the service
+    private var mPowerConnectionReceiver: PowerConnectionReceiver = PowerConnectionReceiver()
+    private var mIntentFilter: IntentFilter? = null
+    private var mDebug: Boolean = false    // Setting to true will show toasts on start and stop of the service
 
     override fun onCreate() {
         // The service is being created
-        pConRec.init(this)
-        ifilter = IntentFilter(Intent.ACTION_BATTERY_CHANGED)
+        mPowerConnectionReceiver.init(this)
+        mIntentFilter = IntentFilter(Intent.ACTION_BATTERY_CHANGED)
     }
 
     override fun onStartCommand(intent: Intent, flags: Int, startId: Int): Int {
@@ -36,8 +36,8 @@ class PowerStateService : Service() {
             soundWhenPowered = intent.extras.getBoolean(POWER_STATE_SERVICE_INTENT_EXTRA_SOUND_WHEN_POWERED, false)
         }
 
-        pConRec.resume(isMuted, soundWhenPowered)
-        registerReceiver(pConRec, ifilter)
+        mPowerConnectionReceiver.resume(isMuted, soundWhenPowered)
+        registerReceiver(mPowerConnectionReceiver, mIntentFilter)
         return mStartMode
     }
 
@@ -61,24 +61,24 @@ class PowerStateService : Service() {
         showToast("Service Stopping")
 
         try{
-            unregisterReceiver(pConRec)
+            unregisterReceiver(mPowerConnectionReceiver)
         } catch (e: IllegalArgumentException){
             // this as already unregistered at one point
             Crashlytics.logException(e)
         }
-        pConRec.pause()
+        mPowerConnectionReceiver.pause()
     }
 
     fun setMute(muted: Boolean) {
-        pConRec.audio.SetMuted(muted)
+        mPowerConnectionReceiver.audio.setMuted(muted)
     }
 
     fun setSoundOnPowered(checked: Boolean) {
-        pConRec.setOnPowered(checked)
+        mPowerConnectionReceiver.setOnPowered(checked)
     }
 
     private fun showToast(message: String) {
-        if (debug) {
+        if (mDebug) {
             Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
         }
     }

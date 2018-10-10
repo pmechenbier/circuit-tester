@@ -5,47 +5,55 @@ import android.media.MediaPlayer
 
 /**
  * Created by tgrannen on 5/15/2016.
+ * Updated by pmechenbier on 10/9/2018.
  */
 class PowerStateAudio {
 
     private var mp: MediaPlayer? = null
-    private var Muted: Boolean = false
-    private var SoundOnPowered = true
+    private var mMuted: Boolean = false
+    private var mSoundOnPowered = true
     var parentContext: Context? = null
-    var IsCharging: Boolean = false
+    var isCharging: Boolean? = null
 
-    fun AlterAudioState() {
-        if (IsCharging) {
-            if (SoundOnPowered) {
-                StartMP()
-            } else {
-                StopMP()
-            }
+    fun alterAudioState() {
+        if (isCharging != null){
+            if (isCharging!!) {
+                if (mSoundOnPowered) {
+                    startMP()
+                } else {
+                    stopMP()
+                }
 
-        } else {
-            if (SoundOnPowered) {
-                StopMP()
             } else {
-                StartMP()
+                if (mSoundOnPowered) {
+                    stopMP()
+                } else {
+                    startMP()
+                }
             }
         }
     }
 
-    fun SetSoundOnPowered(isSoundOnPowered: Boolean) {
-        SoundOnPowered = isSoundOnPowered
-        AlterAudioState()
+    fun setSoundOnPowered(isSoundOnPowered: Boolean) {
+        mSoundOnPowered = isSoundOnPowered
+        alterAudioState()
     }
 
-    fun SetMuted(isMuted: Boolean) {
-        Muted = isMuted
-        if (Muted) {
-            StopMP()
+    fun setMuted(isMuted: Boolean) {
+        mMuted = isMuted
+        if (mMuted) {
+            stopMP()
         } else {
-            AlterAudioState()
+            alterAudioState()
         }
     }
 
-    fun InitMP() {
+    fun initMP(context: Context) {
+        parentContext = context
+        initMP()
+    }
+
+    private fun initMP() {
         if (parentContext == null) {
             return
         }
@@ -53,22 +61,17 @@ class PowerStateAudio {
         mp!!.isLooping = true
     }
 
-    fun InitMP(context: Context) {
-        parentContext = context
-        InitMP()
-    }
-
-    private fun StartMP() {
+    private fun startMP() {
         if (mp == null) {
-            InitMP()
+            initMP()
         }
-        if (mp != null && !mp!!.isPlaying && !Muted) {
-            InitMP()
+        if (mp != null && !mp!!.isPlaying && !mMuted) {
+            initMP()
             mp!!.start()
         }
     }
 
-    private fun StopMP() {
+    private fun stopMP() {
         if (mp != null && mp!!.isPlaying) {
             mp!!.stop()
             mp!!.reset()

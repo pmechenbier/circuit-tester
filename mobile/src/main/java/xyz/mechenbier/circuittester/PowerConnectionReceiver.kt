@@ -7,7 +7,7 @@ import android.os.BatteryManager
 
 /**
  * Created by tgrannen on 5/15/2016.
- * Updated by pmechenbier on 10/8/18.
+ * Updated by pmechenbier on 10/9/18.
  */
 
 const val INTENT_POWER_CONNECTION_RECEIVER_CHARGING = "xyz.mechenbier.circuittester.powerconnectionreceiver.intents.ischarging"
@@ -20,7 +20,7 @@ class PowerConnectionReceiver : BroadcastReceiver() {
 
     fun init(context: Context) {
         this.context = context
-        audio.InitMP(context)
+        audio.initMP(context)
     }
 
     override fun onReceive(context: Context, intent: Intent) {
@@ -29,25 +29,26 @@ class PowerConnectionReceiver : BroadcastReceiver() {
 
     private fun evaluateBattery(intent: Intent) {
         val status = intent.getIntExtra(BatteryManager.EXTRA_STATUS, -1)
-        audio.IsCharging = status == BatteryManager.BATTERY_STATUS_CHARGING || status == BatteryManager.BATTERY_STATUS_FULL
+        val isCharging = status == BatteryManager.BATTERY_STATUS_CHARGING || status == BatteryManager.BATTERY_STATUS_FULL
+        audio.isCharging = isCharging
 
         val powerIntent = Intent(INTENT_POWER_CONNECTION_RECEIVER_CHARGING)
-        powerIntent.putExtra(INTENT_POWER_CONNECTION_RECEIVER_CHARGING_EXTRA_ISCHARGING, audio.IsCharging)
+        powerIntent.putExtra(INTENT_POWER_CONNECTION_RECEIVER_CHARGING_EXTRA_ISCHARGING, isCharging)
         context!!.sendBroadcast(powerIntent)
 
-        audio.AlterAudioState()
+        audio.alterAudioState()
     }
 
     fun pause() {
-        audio.SetMuted(true)
+        audio.setMuted(true)
     }
 
     fun resume(muted: Boolean, soundWhenPowered: Boolean) {
-        audio.SetMuted(muted)
-        audio.SetSoundOnPowered(soundWhenPowered)
+        audio.setMuted(muted)
+        audio.setSoundOnPowered(soundWhenPowered)
     }
 
     fun setOnPowered(checked: Boolean) {
-        audio.SetSoundOnPowered(checked)
+        audio.setSoundOnPowered(checked)
     }
 }
