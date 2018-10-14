@@ -13,21 +13,28 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin">
 
-    <ImageView
-        android:id="@+id/image_powerstate"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
+    <RelativeLayout
+        android:id="@+id/image_holder"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="19dp"
-        android:contentDescription="@string/image_powerstate_content_description"
-        android:src="@drawable/bolt" />
+        android:layout_above="@id/rating_frame_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/image_powerstate"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_centerInParent="true"
+            android:contentDescription="@string/image_powerstate_content_description"
+            android:src="@drawable/bolt" />
+
+    </RelativeLayout>
 
     <FrameLayout
         android:id="@+id/rating_frame_layout"
         android:layout_width="match_parent"
-        android:layout_height="115dp"
-        android:layout_below="@+id/image_powerstate"
+        android:layout_height="0dp"
+        android:layout_above="@id/text_warning"
         android:layout_marginTop="15dp"
         android:visibility="invisible">
 

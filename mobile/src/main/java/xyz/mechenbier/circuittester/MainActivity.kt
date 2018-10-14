@@ -1,9 +1,6 @@
 package xyz.mechenbier.circuittester
 
-import android.app.AlertDialog
-import android.app.NotificationChannel
-import android.app.NotificationManager
-import android.app.PendingIntent
+import android.app.*
 import android.content.*
 import android.net.Uri
 import android.os.Build
@@ -14,11 +11,13 @@ import android.support.v4.app.NotificationCompat
 import android.support.v4.content.ContextCompat
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
+import android.util.TypedValue
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.ImageView
 import android.widget.RadioButton
+import android.widget.RelativeLayout
 import android.widget.ToggleButton
 import com.google.android.gms.ads.AdView
 import com.google.android.gms.ads.AdRequest
@@ -311,8 +310,8 @@ class MainActivity : AppCompatActivity() {
         // wait at least n days before opening
         if (launchCount >= mRatingLaunchesUntilPrompt) {
             if (System.currentTimeMillis() >= dateFirstLaunch + mRatingDaysUntilPrompt * 24 * 60 * 60 * 1000) {
-                setVisibility(R.id.rating_frame_layout, View.VISIBLE)
-                setVisibility(R.id.text_warning, View.INVISIBLE)
+                showHideRatingView(true)
+                showHideWarningText(false)
             }
         }
     }
@@ -346,44 +345,79 @@ class MainActivity : AppCompatActivity() {
 
     // when a user clicks the "no feedback" rating button, hide the rating prompt
     fun onRatingNoFeedbackButtonClicked(view: View) {
-        val preferences = this.getSharedPreferences(KEY_PREF_SHARED_RATING_KEY_NAME, 0)
-        val preferencesEditor = preferences.edit()
-        preferencesEditor.putBoolean(KEY_PREF_RATING_DONT_SHOW_RATING_PROMPT, true)
-        preferencesEditor.apply()
-        setVisibility(R.id.rating_frame_layout, View.INVISIBLE)
-        setVisibility(R.id.text_warning, View.VISIBLE)
+        setDontShowRatingPreference(true)
+        showHideRatingView(false)
+        showHideWarningText(true)
     }
 
     // when a user clicks the "yes feedback" rating button, hide the prompt and create an email intent
     fun onRatingYesFeedbackButtonClicked(view: View) {
-        val preferences = this.getSharedPreferences(KEY_PREF_SHARED_RATING_KEY_NAME, 0)
-        val preferencesEditor = preferences.edit()
-        preferencesEditor.putBoolean(KEY_PREF_RATING_DONT_SHOW_RATING_PROMPT, true)
-        preferencesEditor.apply()
-        setVisibility(R.id.rating_frame_layout, View.INVISIBLE)
-        setVisibility(R.id.text_warning, View.VISIBLE)
+        setDontShowRatingPreference(true)
+        showHideRatingView(false)
+        showHideWarningText(true)
+
         launchSupportEmailIntent()
     }
 
     // when a user clicks the "no rating" rating button, hide the rating prompt
     fun onRatingNoRatingButtonClicked(view: View) {
-        val preferences = this.getSharedPreferences(KEY_PREF_SHARED_RATING_KEY_NAME, 0)
-        val preferencesEditor = preferences.edit()
-        preferencesEditor.putBoolean(KEY_PREF_RATING_DONT_SHOW_RATING_PROMPT, true)
-        preferencesEditor.apply()
-        setVisibility(R.id.rating_frame_layout, View.INVISIBLE)
-        setVisibility(R.id.text_warning, View.VISIBLE)
+        setDontShowRatingPreference(true)
+        showHideRatingView(false)
+        showHideWarningText(true)
     }
 
     // when a user clicks the "yes rating" rating button, hide the prompt and open google play
     fun onRatingYesRatingButtonClicked(view: View) {
+        setDontShowRatingPreference(true)
+        showHideRatingView(false)
+        showHideWarningText(true)
+
+        launchGooglePlayIntent()
+    }
+
+    private fun setDontShowRatingPreference(dontShow: Boolean){
         val preferences = this.getSharedPreferences(KEY_PREF_SHARED_RATING_KEY_NAME, 0)
         val preferencesEditor = preferences.edit()
-        preferencesEditor.putBoolean(KEY_PREF_RATING_DONT_SHOW_RATING_PROMPT, true)
+        preferencesEditor.putBoolean(KEY_PREF_RATING_DONT_SHOW_RATING_PROMPT, dontShow)
         preferencesEditor.apply()
-        setVisibility(R.id.rating_frame_layout, View.INVISIBLE)
-        setVisibility(R.id.text_warning, View.VISIBLE)
+    }
 
+    private fun showHideRatingView(show: Boolean){
+        val ratingView = findViewById<View>(R.id.rating_frame_layout)
+        val ratingParams = ratingView.layoutParams
+
+        if (show) {
+            val ratingHeight = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 115.toFloat(), getResources().getDisplayMetrics()).toInt()
+            ratingParams.height = ratingHeight
+            setVisibility(R.id.rating_frame_layout, View.VISIBLE)
+        } else {
+            val ratingHeight = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 0.toFloat(), getResources().getDisplayMetrics()).toInt()
+            ratingParams.height = ratingHeight
+            setVisibility(R.id.rating_frame_layout, View.INVISIBLE)
+        }
+
+        ratingView.layoutParams = ratingParams
+        ratingView.requestLayout()
+    }
+
+    private fun showHideWarningText(show: Boolean){
+        val warningView = findViewById<View>(R.id.text_warning)
+        val warningParams = warningView.layoutParams
+
+        if (show){
+            warningParams.height = RelativeLayout.LayoutParams.WRAP_CONTENT
+            setVisibility(R.id.text_warning, View.VISIBLE)
+        } else {
+            val warningHeight = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 0.toFloat(), getResources().getDisplayMetrics()).toInt()
+            warningParams.height = warningHeight
+            setVisibility(R.id.text_warning, View.INVISIBLE)
+        }
+
+        warningView.layoutParams = warningParams
+        warningView.requestLayout()
+    }
+
+    private fun launchGooglePlayIntent(){
         // try launching the google play app, otherwise fall back to the web browser
         try {
             val playStoreRatingIntent = Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=xyz.mechenbier.circuittester"))
@@ -392,7 +426,6 @@ class MainActivity : AppCompatActivity() {
             val googlePlayBrowserIntent = Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=xyz.mechenbier.circuittester"))
             startActivity(Intent.createChooser(googlePlayBrowserIntent, getString(R.string.intent_title_launch_browser)))
         }
-
     }
 
     private fun launchSupportEmailIntent(){
