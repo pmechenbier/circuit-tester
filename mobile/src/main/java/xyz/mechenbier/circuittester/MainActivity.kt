@@ -2,6 +2,7 @@ package xyz.mechenbier.circuittester
 
 import android.app.*
 import android.content.*
+import android.graphics.BitmapFactory
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
@@ -160,7 +161,9 @@ class MainActivity : AppCompatActivity() {
 
         val notificationBuilder = NotificationCompat.Builder(this, getString(R.string.notification_channel_id))
                 .setDefaults(NotificationCompat.DEFAULT_ALL)
-                .setSmallIcon(R.drawable.bolt)
+                .setSmallIcon(R.drawable.ic_stat_name)
+                .setLargeIcon(BitmapFactory.decodeResource(this.resources, R.drawable.ic_stat_name))
+                //.setSmallIcon(R.drawable.bolt)
                 .setContentTitle(getString(R.string.app_name))
                 .setContentText(getString(R.string.notification_details))
                 .setWhen(System.currentTimeMillis())
