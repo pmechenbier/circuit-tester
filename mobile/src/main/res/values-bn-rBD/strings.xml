@@ -31,4 +31,6 @@
     <string name="preference_summary_sound_when_powered">যদি চেক করা থাকে, ডিভাইস চালিত হলে ডিভাইসটি একটি শব্দ চালাবে, অন্যথায় এটি চালিত না হলে শব্দটি চালাবে</string>
     <string name="preference_title_sound_mute">নিঃশব্দ সার্কিট ও আউটলেট পরীক্ষক</string>
     <string name="preference_summary_sound_mute">সার্কিট এবং আউটলেট পরীক্ষক থেকে বাজানো শব্দ নীরব</string>
+    <string name="launch_feedback_description">ইমেইল মাধ্যমে প্রতিক্রিয়া পাঠান</string>
+    <string name="launch_privacy_policy_description">গোপনীয়তা নীতি দেখুন</string>
 </resources>

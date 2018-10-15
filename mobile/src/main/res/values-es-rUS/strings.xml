@@ -31,4 +31,6 @@
     <string name="preference_summary_sound_when_powered">Si está marcado, el dispositivo reproducirá un sonido cuando esté encendido, de lo contrario, emitirá un sonido cuando no esté encendido.</string>
     <string name="preference_title_sound_mute">Circuito de silencio y probador de salida</string>
     <string name="preference_summary_sound_mute">Reproducción de sonido mudo desde el circuito y el probador de salida</string>
+    <string name="launch_feedback_description">Enviar comentarios por correo electrónico</string>
+    <string name="launch_privacy_policy_description">Ver la política de privacidad</string>
 </resources>

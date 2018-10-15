@@ -31,4 +31,6 @@
     <string name="preference_summary_sound_when_powered">אם מסומנת, המכשיר ישמיע צליל כשהמכשיר מופעל, אחרת הוא ישמיע צליל כאשר אינו מופעל</string>
     <string name="preference_title_sound_mute">מעגל השתיק ואת מוצא מוצא</string>
     <string name="preference_summary_sound_mute">השמע קול מושמע מעגל ו Outlet Tester</string>
+    <string name="launch_feedback_description">שלח משוב באמצעות דואר אלקטרוני</string>
+    <string name="launch_privacy_policy_description">הצג את מדיניות הפרטיות</string>
 </resources>

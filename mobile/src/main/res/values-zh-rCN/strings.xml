@@ -31,4 +31,6 @@
     <string name="preference_summary_sound_when_powered">如果选中，设备通电时设备将发出声音，否则在未通电时会发出声音</string>
     <string name="preference_title_sound_mute">静音电路和插座测试仪</string>
     <string name="preference_summary_sound_mute">从Circuit and Outlet Tester播放静音</string>
+    <string name="launch_feedback_description">通过电子邮件发送反馈</string>
+    <string name="launch_privacy_policy_description">查看隐私政策</string>
 </resources>

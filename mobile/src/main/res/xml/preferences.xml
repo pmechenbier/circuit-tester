@@ -17,4 +17,22 @@
         android:title="@string/preference_title_sound_mute"
         android:summary="@string/preference_summary_sound_mute"
         android:defaultValue="false"/>
+
+    <Preference
+        android:key="preference_send_feedback"
+        android:title="@string/launch_feedback_text"
+        android:summary="@string/launch_feedback_description">
+        <intent
+            android:action="android.intent.action.SENDTO"/>
+    </Preference>
+
+    <Preference
+        android:key="preference_privacy_policy"
+        android:title="@string/launch_privacy_policy_text"
+        android:summary="@string/launch_privacy_policy_description">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:data="http://mechenbier.xyz/CircuitTesterPrivacyPolicy.html" />
+    </Preference>
+
 </PreferenceScreen>

@@ -31,4 +31,6 @@
     <string name="preference_summary_sound_when_powered">Si cette case est cochée, l\'appareil émettra un son à la mise sous tension, sinon il émettra un son lorsqu\'il ne l\'est pas</string>
     <string name="preference_title_sound_mute">Testeur de circuit muet et de prise de courant</string>
     <string name="preference_summary_sound_mute">Son muet jouant à partir de testeur de circuit et de prise</string>
+    <string name="launch_feedback_description">Envoyer des commentaires par e-mail</string>
+    <string name="launch_privacy_policy_description">Voir la politique de confidentialité</string>
 </resources>

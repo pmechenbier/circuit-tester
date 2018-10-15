@@ -31,4 +31,6 @@
     <string name="preference_summary_sound_when_powered">Se marcado, o dispositivo reproduzirá um som quando o dispositivo estiver ligado, caso contrário, ele reproduzirá um som quando não estiver ligado</string>
     <string name="preference_title_sound_mute">Circuito mudo e testador de saída</string>
     <string name="preference_summary_sound_mute">Som mudo tocando do Circuit and Outlet Tester</string>
+    <string name="launch_feedback_description">Enviar feedback via e-mail</string>
+    <string name="launch_privacy_policy_description">Veja a política de privacidade</string>
 </resources>

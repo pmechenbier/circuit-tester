@@ -31,4 +31,6 @@
     <string name="preference_summary_sound_when_powered">If checked, the device will play a sound when the device is powered, otherwise it will play a sound when not powered</string>
     <string name="preference_title_sound_mute">Mute Circuit &amp; Outlet Tester</string>
     <string name="preference_summary_sound_mute">Mute sound playing from Circuit &amp; Outlet Tester</string>
+    <string name="launch_feedback_description">Send feedback via e-mail</string>
+    <string name="launch_privacy_policy_description">View the privacy policy</string>
 </resources>

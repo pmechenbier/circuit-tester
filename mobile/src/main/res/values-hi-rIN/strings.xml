@@ -31,4 +31,6 @@
     <string name="preference_summary_sound_when_powered">यदि चेक किया गया है, तो डिवाइस चालू होने पर डिवाइस ध्वनि बजाएगा, अन्यथा यह संचालित होने पर ध्वनि बजाएगा</string>
     <string name="preference_title_sound_mute">म्यूट सर्किट और आउटलेट परीक्षक</string>
     <string name="preference_summary_sound_mute">सर्किट और आउटलेट परीक्षक से खेलना म्यूट करें</string>
+    <string name="launch_feedback_description">ई-मेल के माध्यम से प्रतिक्रिया भेजें</string>
+    <string name="launch_privacy_policy_description">गोपनीयता नीति देखें</string>
 </resources>

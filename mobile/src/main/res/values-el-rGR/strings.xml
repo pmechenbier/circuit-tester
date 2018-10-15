@@ -31,4 +31,6 @@
     <string name="preference_summary_sound_when_powered">Εάν είναι επιλεγμένο, η συσκευή θα αναπαράγει έναν ήχο όταν η συσκευή τροφοδοτείται, διαφορετικά θα ακούγεται ήχος όταν δεν τροφοδοτείται</string>
     <string name="preference_title_sound_mute">Σίγαση μετρητή κυκλώματος και εξόδου</string>
     <string name="preference_summary_sound_mute">Απενεργοποιήστε την αναπαραγωγή ήχου από τον αισθητήρα κυκλώματος και εξόδου</string>
+    <string name="launch_feedback_description">Αποστολή σχολίων μέσω ηλεκτρονικού ταχυδρομείου</string>
+    <string name="launch_privacy_policy_description">Δείτε την πολιτική απορρήτου</string>
 </resources>

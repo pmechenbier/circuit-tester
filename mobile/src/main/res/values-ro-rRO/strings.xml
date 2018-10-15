@@ -31,4 +31,6 @@
     <string name="preference_summary_sound_when_powered">Dacă este bifată, dispozitivul va reda un sunet atunci când dispozitivul este alimentat, altfel acesta va reda un sunet atunci când nu este alimentat</string>
     <string name="preference_title_sound_mute">Mute Circuit și tester de ieșire</string>
     <string name="preference_summary_sound_mute">Dezactivați sunetul de la testerul de circuite și ieșiri</string>
+    <string name="launch_feedback_description">Trimiteți feedback prin e-mail</string>
+    <string name="launch_privacy_policy_description">Vedeți politica de confidențialitate</string>
 </resources>
