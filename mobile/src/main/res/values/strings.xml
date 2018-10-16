@@ -1,5 +1,5 @@
 <resources>
-      <string name="app_name">Circuit &#038; Outlet Tester</string>
+      <string name="app_name">Circuit &amp; Outlet Tester</string>
       <string name="nav_settings_icon_title">Settings</string>
       <string name="nav_help_icon_title">Help</string>
       <string name="help_dialog_message">Use your device to test if an electrical circuit or power outlet has power. Simply plug your charger into your device, plug the charger into the outlet, and listen for the sound! For added range, use your device with a pair of Bluetooth headphones or portable speaker!\n\nThis app can help you figure out which outlets are on which circuit breakers within your home or office or if an outlet is powered while doing minor electrical work, especially saving trips up and down the stairs after switching circuit breakers.\n\nAs always, double check before performing any work on any electrical system that power is indeed off.</string>
@@ -7,16 +7,18 @@
       <string name="launch_feedback_description">Send feedback via e-mail</string>
       <string name="launch_privacy_policy_text">Privacy Policy</string>
       <string name="launch_privacy_policy_description">View the privacy policy</string>
+      <string name="power_state_powered">Device is powered</string>
+      <string name="power_state_not_powered">Device is not powered</string>
       <string name="help_dialog_close_button_text">Close</string>
       <string name="feedback_email_address" translatable="false">circuittester@mechenbier.xyz</string>
       <string name="privacy_policy_url" translatable="false">http://mechenbier.xyz/CircuitTesterPrivacyPolicy.html</string>
-      <string name="image_powerstate_content_description">Power State</string>
+      <string name="image_power_state_content_description">Power State</string>
       <string name="warning">Warning! When doing electrical work, always double check that there is no power to the outlet you are testing after removing your phone charger.</string>
       <string name="mute_button_muted">Unmute</string>
       <string name="mute_button_unmuted">Mute</string>
       <string name="invert_radio_invert">Sound when powered</string>
       <string name="invert_radio_uninvert">Sound when not powered</string>
-      <string name="rating_enjoying_app_prompt">Enjoying Circuit &#038; Outlet Tester?</string>
+      <string name="rating_enjoying_app_prompt">Enjoying Circuit &amp; Outlet Tester?</string>
       <string name="rating_feedback_app_prompt">Would you mind giving us some feedback?</string>
       <string name="rating_rating_app_prompt">How about a rating on the Play Store, then?</string>
       <string name="rating_not_really">Not Really</string>
@@ -27,7 +29,7 @@
       <string name="intent_title_launch_browser">Open browser...</string>
       <string name="notification_channel_id" translatable="false">xyx.mechenbier.circuittester.notifications.defaultchannel</string>
       <string name="notification_channel_name">Show notification while running</string>
-      <string name="notification_channel_description">Show a notification while Circuit &#038; Outlet Tester is running.</string>
+      <string name="notification_channel_description">Show a notification while Circuit &amp; Outlet Tester is running.</string>
       <string name="notification_details">Click here to silence tester</string>
       <string name="preference_title_show_text_state">Show power state description</string>
       <string name="preference_summary_show_text_state">Shows descriptive text that explains the power state of the device</string>

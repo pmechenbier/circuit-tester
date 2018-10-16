@@ -3,7 +3,7 @@
     <string name="rating_yes">Yes!</string>
     <string name="help_dialog_close_button_text">Close</string>
     <string name="launch_feedback_text">Send Feedback</string>
-    <string name="image_powerstate_content_description">Power State</string>
+    <string name="image_power_state_content_description">Power State</string>
     <string name="warning">Warning! When doing electrical work, always double check that there is no power to the outlet you are testing after removing your phone charger.</string>
     <string name="mute_button_muted">Unmute</string>
     <string name="mute_button_unmuted">Mute</string>
@@ -33,4 +33,6 @@
     <string name="preference_summary_sound_mute">Mute sound playing from Circuit &amp; Outlet Tester</string>
     <string name="launch_feedback_description">Send feedback via e-mail</string>
     <string name="launch_privacy_policy_description">View the privacy policy</string>
+    <string name="power_state_powered">Device is powered</string>
+    <string name="power_state_not_powered">Device is not powered</string>
 </resources>

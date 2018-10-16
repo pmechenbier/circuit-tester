@@ -12,7 +12,7 @@ internal class UiUpdateReceiver : BroadcastReceiver() {
 
         if (intent.hasExtra(INTENT_POWER_CONNECTION_RECEIVER_CHARGING_EXTRA_ISCHARGING)) {
             val isCharging = intent.getBooleanExtra(INTENT_POWER_CONNECTION_RECEIVER_CHARGING_EXTRA_ISCHARGING, false)
-            MainActivity.mInstance.setChargingIconColor(isCharging)
+            MainActivity.mInstance.setUiFromChargingState(isCharging)
         }
     }
 }

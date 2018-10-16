@@ -4,7 +4,7 @@
     <string name="help_dialog_message">Utilizați dispozitivul pentru a testa dacă un circuit electric sau o priză de curent are putere. Pur și simplu conectați încărcătorul în aparat, conectați încărcătorul la priză și ascultați sunetul! Pentru o gamă suplimentară, utilizați dispozitivul cu o pereche de căști bluetooth sau difuzor portabil!\n\nAceastă aplicație vă poate ajuta să vă dați seama care sunt prizele pe care întrerupătoare de circuit în interiorul casei sau biroului dvs. sau dacă o priză este alimentată în timp ce efectuați lucrări electrice minore, în special economisind deplasările în sus și în jos pe scări după întreruperea întreruptoarelor.\n\nCa întotdeauna, verificați înainte de a efectua orice lucrare pe orice sistem electric care este într-adevăr oprit.</string>
     <string name="launch_feedback_text">Trimite feedback</string>
     <string name="help_dialog_close_button_text">Închide</string>
-    <string name="image_powerstate_content_description">Statul de putere</string>
+    <string name="image_power_state_content_description">Statul de putere</string>
     <string name="warning">Avertizare! Când efectuați lucrări electrice, verificați întotdeauna că nu există nicio putere la priza pe care o testați după scoaterea încărcătorului telefonului.</string>
     <string name="mute_button_unmuted">mut</string>
     <string name="mute_button_muted">activați sunetul</string>
@@ -33,4 +33,6 @@
     <string name="preference_summary_sound_mute">Dezactivați sunetul de la testerul de circuite și ieșiri</string>
     <string name="launch_feedback_description">Trimiteți feedback prin e-mail</string>
     <string name="launch_privacy_policy_description">Vedeți politica de confidențialitate</string>
+    <string name="power_state_powered">Dispozitivul este alimentat</string>
+    <string name="power_state_not_powered">Dispozitivul nu este alimentat</string>
 </resources>

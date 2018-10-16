@@ -4,7 +4,7 @@
     <string name="help_dialog_close_button_text">Fermer</string>
     <string name="app_name">Testeur de circuit et de sortie</string>
     <string name="help_dialog_message">Utilisez votre appareil pour tester si un circuit électrique ou une prise de courant est alimenté. Branchez simplement votre chargeur sur votre appareil, branchez le chargeur dans la prise et écoutez le son! Pour plus de portée, utilisez votre appareil avec une paire d\'écouteurs Bluetooth ou un haut-parleur portable!\n\nCette application peut vous aider à identifier les prises de courant sur votre domicile ou votre bureau, ou si une prise de courant est alimentée en faisant des travaux électriques mineurs, en particulier lors de la commutation de disjoncteurs.\n\nComme toujours, vérifiez avant d\'effectuer tout travail sur un système électrique que le courant est effectivement éteint.</string>
-    <string name="image_powerstate_content_description">État de puissance</string>
+    <string name="image_power_state_content_description">État de puissance</string>
     <string name="launch_feedback_text">envoyer des commentaires</string>
     <string name="warning">Attention! Lorsque vous effectuez des travaux électriques, vérifiez toujours que la prise que vous testez n’est pas sous tension après avoir retiré le chargeur de votre téléphone.</string>
     <string name="mute_button_unmuted">muet</string>
@@ -33,4 +33,6 @@
     <string name="preference_summary_sound_mute">Son muet jouant à partir de testeur de circuit et de prise</string>
     <string name="launch_feedback_description">Envoyer des commentaires par e-mail</string>
     <string name="launch_privacy_policy_description">Voir la politique de confidentialité</string>
+    <string name="power_state_powered">L\'appareil est alimenté</string>
+    <string name="power_state_not_powered">L\'appareil n\'est pas alimenté</string>
 </resources>

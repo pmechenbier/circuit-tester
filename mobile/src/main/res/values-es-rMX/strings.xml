@@ -15,7 +15,7 @@
     <string name="mute_button_unmuted">silencioso</string>
     <string name="mute_button_muted">dejar de silenciar</string>
     <string name="warning">¡Advertencia! Cuando realice trabajos eléctricos, siempre verifique que no haya corriente en la toma de corriente que está probando después de retirar el cargador del teléfono.</string>
-    <string name="image_powerstate_content_description">Estado de energía</string>
+    <string name="image_power_state_content_description">Estado de energía</string>
     <string name="help_dialog_close_button_text">Cerca</string>
     <string name="help_dialog_message">Use su dispositivo para probar si un circuito eléctrico o toma de corriente tiene energía. Simplemente conecte su cargador a su dispositivo, enchufe el cargador a la toma de corriente y ¡escuche el sonido! Para un rango adicional, ¡use su dispositivo con un par de auriculares Bluetooth o un parlante portátil!\n\nEsta aplicación puede ayudarlo a determinar qué tomacorrientes tienen en qué disyuntores dentro de su hogar u oficina o si una toma de corriente funciona mientras realiza trabajos eléctricos menores, especialmente al guardar viajes hacia arriba y hacia abajo de las escaleras después de cambiar los interruptores automáticos.\n\nComo siempre, compruebe dos veces antes de realizar cualquier trabajo en cualquier sistema eléctrico que la potencia está apagada.</string>
     <string name="launch_feedback_text">Enviar comentarios</string>
@@ -33,4 +33,6 @@
     <string name="preference_summary_sound_mute">Reproducción de sonido mudo desde el circuito y el probador de salida</string>
     <string name="launch_feedback_description">Enviar comentarios por correo electrónico</string>
     <string name="launch_privacy_policy_description">Ver la política de privacidad</string>
+    <string name="power_state_powered">Dispositivo es alimentado</string>
+    <string name="power_state_not_powered">El dispositivo no está encendido</string>
 </resources>

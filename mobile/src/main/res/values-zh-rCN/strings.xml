@@ -5,7 +5,7 @@
     <string name="launch_feedback_text">发送反馈</string>
     <string name="app_name">电路和插座测试仪</string>
     <string name="help_dialog_message">使用您的设备测试电路或电源插座是否有电。 只需将充电器插入设备，将充电器插入插座，然后听取声音！ 如需增加射程，请将您的设备与一副蓝牙耳机或便携式扬声器配合使用！\n\n此应用程序可以帮助您确定哪些插座位于家中或办公室内的断路器上，或者在进行小电力工作时是否为插座供电，尤其是在切换断路器后上下楼梯。\n\n一如往常，在对电源确实关闭的任何电气系统执行任何工作之前，请仔细检查。</string>
-    <string name="image_powerstate_content_description">动力状态</string>
+    <string name="image_power_state_content_description">动力状态</string>
     <string name="warning">警告！ 在进行电气工作时，请务必在取出手机充电器后仔细检查您正在测试的插座是否有电。</string>
     <string name="mute_button_unmuted">静音</string>
     <string name="mute_button_muted">取消静音</string>
@@ -33,4 +33,6 @@
     <string name="preference_summary_sound_mute">从Circuit and Outlet Tester播放静音</string>
     <string name="launch_feedback_description">通过电子邮件发送反馈</string>
     <string name="launch_privacy_policy_description">查看隐私政策</string>
+    <string name="power_state_powered">设备已通电</string>
+    <string name="power_state_not_powered">设备未通电</string>
 </resources>

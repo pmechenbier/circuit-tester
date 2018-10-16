@@ -5,7 +5,7 @@
     <string name="launch_feedback_text">ارسل رأيك</string>
     <string name="app_name">اختبار الدوائر والمخارج</string>
     <string name="help_dialog_message">استخدم جهازك لاختبار ما إذا كانت هناك دائرة كهربائية أو مأخذ تيار كهربائي بالطاقة. ما عليك سوى توصيل الشاحن بجهازك ، وتوصيل الشاحن بالمأخذ ، والاستماع إلى الصوت! للحصول على نطاق مضاف ، استخدم جهازك مع زوج من سماعات الرأس Bluetooth أو السماعة المحمولة!\n\nيمكن أن يساعدك هذا التطبيق في معرفة أي منافذ موجودة في أي قواطع للدارة داخل المنزل أو المكتب أو إذا كان منفذ الطاقة يعمل أثناء القيام بأعمال كهربائية بسيطة ، خاصةً حفظ الرحلات إلى أعلى وأسفل الدرج بعد تبديل قواطع الدائرة\n\nكما هو الحال دائمًا ، تحقق مرة أخرى قبل إجراء أي عمل على أي نظام كهربائي يتم إيقاف تشغيله بالفعل.</string>
-    <string name="image_powerstate_content_description">دولة السلطة</string>
+    <string name="image_power_state_content_description">دولة السلطة</string>
     <string name="warning">تحذير! عند القيام بالأعمال الكهربائية ، تأكد دائمًا من عدم وجود طاقة للمأخذ الذي تختبره بعد إزالة شاحن هاتفك.</string>
     <string name="mute_button_muted">غير صامت</string>
     <string name="mute_button_unmuted">صامت</string>
@@ -33,4 +33,6 @@
     <string name="preference_summary_sound_mute">صوت كتم الصوت من Circuit and Outlet Tester</string>
     <string name="launch_feedback_description">إرسال التعليقات عبر البريد الإلكتروني</string>
     <string name="launch_privacy_policy_description">عرض سياسة الخصوصية</string>
+    <string name="power_state_powered">الجهاز يعمل بالطاقة</string>
+    <string name="power_state_not_powered">الجهاز غير مدعوم</string>
 </resources>

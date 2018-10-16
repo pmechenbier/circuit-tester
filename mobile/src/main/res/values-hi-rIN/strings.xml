@@ -5,7 +5,7 @@
     <string name="help_dialog_close_button_text">बंद करे</string>
     <string name="launch_feedback_text">प्रतिक्रिया भेजें</string>
     <string name="help_dialog_message">बिजली के सर्किट या पावर आउटलेट में बिजली होने पर परीक्षण करने के लिए अपने डिवाइस का प्रयोग करें। बस अपने चार्जर को अपने डिवाइस में प्लग करें, चार्जर को आउटलेट में प्लग करें, और ध्वनि सुनें! अतिरिक्त सीमा के लिए, ब्लूटूथ हेडफ़ोन या पोर्टेबल स्पीकर की एक जोड़ी के साथ अपने डिवाइस का उपयोग करें!\n\nयह ऐप आपको यह पता लगाने में मदद कर सकता है कि कौन से आउटलेट आपके घर या कार्यालय के भीतर सर्किट ब्रेकर हैं या यदि मामूली विद्युत कार्य करते समय आउटलेट संचालित होता है, विशेष रूप से सर्किट ब्रेकर स्विच करने के बाद सीढ़ियों को ऊपर और नीचे यात्रा की बचत करता है।\n\nहमेशा के रूप में, किसी भी विद्युत प्रणाली पर किसी भी काम करने से पहले दोहरी जांच करें कि वास्तव में बिजली बंद है।</string>
-    <string name="image_powerstate_content_description">पावर स्टेट</string>
+    <string name="image_power_state_content_description">पावर स्टेट</string>
     <string name="invert_radio_invert">संचालित होने पर ध्वनि</string>
     <string name="invert_radio_uninvert">संचालित नहीं होने पर ध्वनि</string>
     <string name="mute_button_muted">अनम्यूट</string>
@@ -33,4 +33,6 @@
     <string name="preference_summary_sound_mute">सर्किट और आउटलेट परीक्षक से खेलना म्यूट करें</string>
     <string name="launch_feedback_description">ई-मेल के माध्यम से प्रतिक्रिया भेजें</string>
     <string name="launch_privacy_policy_description">गोपनीयता नीति देखें</string>
+    <string name="power_state_powered">डिवाइस संचालित है</string>
+    <string name="power_state_not_powered">डिवाइस संचालित नहीं है</string>
 </resources>

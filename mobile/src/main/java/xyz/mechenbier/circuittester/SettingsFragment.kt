@@ -15,7 +15,7 @@ const val KEY_PREF_RATING_DONT_SHOW_RATING_PROMPT = "preference_dont_show_rating
 const val KEY_PREF_RATING_LAUNCH_COUNT = "launch_count"
 const val KEY_PREF_RATING_DATE_FIRST_LAUNCH = "date_first_launch"
 
-class SettingsFragment : PreferenceFragmentCompat()  {
+class SettingsFragment : PreferenceFragmentCompat() {
     override fun onCreatePreferences(p0: Bundle?, p1: String?) {
         addPreferencesFromResource(R.xml.preferences)
 
@@ -27,6 +27,7 @@ class SettingsFragment : PreferenceFragmentCompat()  {
 
         val openPrivacyPolicyIntent = Intent(Intent.ACTION_VIEW, Uri.parse(getString(R.string.privacy_policy_url)))
 
+        // check if the device can resolve the intent and display accordingly
         val preference = this.preferenceScreen.findPreference(KEY_PREF_SEND_FEEDBACK)
         if (sendEmailIntent.resolveActivity(packageManager) == null){
             this.preferenceScreen.removePreference(preference)
@@ -34,6 +35,7 @@ class SettingsFragment : PreferenceFragmentCompat()  {
             preference.intent = sendEmailIntent
         }
 
+        // check if the device can resolve the intent and display accordingly
         if (openPrivacyPolicyIntent.resolveActivity(packageManager) == null){
             val preference = this.preferenceScreen.findPreference(KEY_PREF_PRIVACY_POLICY)
             this.preferenceScreen.removePreference(preference)

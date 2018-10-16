@@ -16,10 +16,7 @@ import android.util.TypedValue
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import android.widget.ImageView
-import android.widget.RadioButton
-import android.widget.RelativeLayout
-import android.widget.ToggleButton
+import android.widget.*
 import com.google.android.gms.ads.AdView
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.MobileAds
@@ -92,6 +89,9 @@ class MainActivity : AppCompatActivity() {
         val intentFilter = android.content.IntentFilter(INTENT_POWER_CONNECTION_RECEIVER_CHARGING)
         registerReceiver(mUiUpdateReceiver, intentFilter)
 
+        val preferences = PreferenceManager.getDefaultSharedPreferences(this)
+        initializeUiFromPreferences(preferences)
+
         super.onResume()
     }
 
@@ -163,7 +163,6 @@ class MainActivity : AppCompatActivity() {
                 .setDefaults(NotificationCompat.DEFAULT_ALL)
                 .setSmallIcon(R.drawable.ic_stat_name)
                 .setLargeIcon(BitmapFactory.decodeResource(this.resources, R.drawable.ic_stat_name))
-                //.setSmallIcon(R.drawable.bolt)
                 .setContentTitle(getString(R.string.app_name))
                 .setContentText(getString(R.string.notification_details))
                 .setWhen(System.currentTimeMillis())
@@ -266,26 +265,45 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-    fun setChargingIconColor(isCharging: Boolean) {
-        val image = findViewById<View>(R.id.image_powerstate) as ImageView
+    fun setUiFromChargingState(isCharging: Boolean) {
+        val image = findViewById<ImageView>(R.id.image_powerstate)
+        val powerStateTextView = findViewById<TextView>(R.id.text_powerstate)
+
         if (isCharging) {
             image.setColorFilter(ContextCompat.getColor(this, R.color.image_charging))
+            powerStateTextView.text = getString(R.string.power_state_powered)
         } else {
             image.setColorFilter(ContextCompat.getColor(this, R.color.image_not_charging))
+            powerStateTextView.text = getString(R.string.power_state_not_powered)
         }
     }
 
     private fun initializeUiFromPreferences(preferences: SharedPreferences) {
-        var prefValueSoundWhenPowered: Boolean = preferences.getBoolean(KEY_PREF_SOUND_WHEN_POWERED, false)
-        var prefValueSoundMute: Boolean = preferences.getBoolean(KEY_PREF_SOUND_MUTE, false)
+        val prefValueShowPowerStateText = preferences.getBoolean(KEY_PREF_SHOW_STATE_TEXT, false)
+        val prefValueSoundWhenPowered = preferences.getBoolean(KEY_PREF_SOUND_WHEN_POWERED, false)
+        val prefValueSoundMute = preferences.getBoolean(KEY_PREF_SOUND_MUTE, false)
 
         val tbMute = findViewById<ToggleButton>(R.id.toggle_mute)
         val rbSoundWhenPowered = findViewById<RadioButton>(R.id.rb_sound_when_powered)
         val rbSoundWhenNotPowered = findViewById<RadioButton>(R.id.rb_sound_when_not_powered)
+        val powerStateTextView = findViewById<TextView>(R.id.text_powerstate)
+        val powerStateTextViewParams = powerStateTextView.layoutParams
 
         tbMute.isChecked = prefValueSoundMute
         rbSoundWhenPowered.isChecked = prefValueSoundWhenPowered
         rbSoundWhenNotPowered.isChecked = !prefValueSoundWhenPowered
+
+        if (prefValueShowPowerStateText) {
+            powerStateTextViewParams.height = RelativeLayout.LayoutParams.WRAP_CONTENT
+            setVisibility(R.id.text_powerstate, View.VISIBLE)
+        } else {
+            val viewHeight = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 0.toFloat(), getResources().getDisplayMetrics()).toInt()
+            powerStateTextViewParams.height = viewHeight
+            setVisibility(R.id.text_powerstate, View.INVISIBLE)
+        }
+
+        powerStateTextView.layoutParams = powerStateTextViewParams
+        powerStateTextView.requestLayout()
     }
 
     private fun initializeRatingPrompt() {
