@@ -44,7 +44,7 @@
 
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="${adMobAppApiKey}" />
+            android:value="@string/admob_ad_app_api_key" />
 
         <service
             android:name=".PowerStateService"
