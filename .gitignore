@@ -36,9 +36,5 @@
 # Android Studio Navigation editor temp files
 #.navigation/
 mobile/google-services.json
-mobile/release/output.json
-.idea/assetWizardSettings.xml
-.idea/caches/build_file_checksums.ser
-.idea/caches/build_file_checksums.ser
-.idea/assetWizardSettings.xml
-.idea/misc.xml
+.idea/
+mobile/release/
