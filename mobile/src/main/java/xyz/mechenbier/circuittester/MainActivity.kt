@@ -26,7 +26,7 @@ import xyz.mechenbier.circuittester.PowerStateService.LocalBinder
 
 class MainActivity : AppCompatActivity() {
 
-    private var mService: PowerStateService? = null
+    private lateinit var mService: PowerStateService
     private var mBound = false
     private var mUiUpdateReceiver: UiUpdateReceiver? = null
     private lateinit var mFirebaseAnalytics: FirebaseAnalytics
@@ -43,9 +43,16 @@ class MainActivity : AppCompatActivity() {
 
         override fun onServiceConnected(className: ComponentName, service: IBinder) {
             // We've bound to LocalService, cast the IBinder and get LocalService instance
-            val binder = service as LocalBinder
+            val binder = service as PowerStateService.LocalBinder
             mService = binder.getService()
             mBound = true
+
+            val preferences = PreferenceManager.getDefaultSharedPreferences(applicationContext)
+            val prefValueSoundWhenPowered: Boolean = preferences.getBoolean(KEY_PREF_SOUND_WHEN_POWERED, false)
+            val prefValueSoundMute: Boolean = preferences.getBoolean(KEY_PREF_SOUND_MUTE, false)
+
+            mService.setSoundOnPowered(prefValueSoundWhenPowered)
+            mService.setMute(prefValueSoundMute)
         }
 
         override fun onServiceDisconnected(arg0: ComponentName) {
@@ -83,16 +90,17 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onResume() {
+        super.onResume()
+
         if (mUiUpdateReceiver == null) {
             mUiUpdateReceiver = UiUpdateReceiver()
         }
+
         val intentFilter = android.content.IntentFilter(INTENT_POWER_CONNECTION_RECEIVER_CHARGING)
         registerReceiver(mUiUpdateReceiver, intentFilter)
 
         val preferences = PreferenceManager.getDefaultSharedPreferences(this)
         initializeUiFromPreferences(preferences)
-
-        super.onResume()
     }
 
     override fun onPause() {
