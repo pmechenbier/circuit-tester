@@ -11,22 +11,22 @@ android {
         applicationId "xyz.mechenbier.circuittester"
         minSdkVersion 15
         targetSdkVersion 28
-        versionCode 4
-        versionName "1.3"
+        versionCode 5
+        versionName "1.4"
     }
 
     buildTypes {
         debug {
             buildConfigField 'String', "AdMobAppApiKey", "\"ca-app-pub-3940256099942544~3347511713\""
             resValue 'string', "admob_ad_unit_api_key", "\"ca-app-pub-3940256099942544/6300978111\""
-            manifestPlaceholders = [firebaseDeactivated: true, crashlyticsEnabled: false]
+            manifestPlaceholders = [firebaseDeactivated: true, crashlyticsEnabled: false, adMobAppApiKey: "ca-app-pub-3940256099942544~3347511713"]
         }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             buildConfigField 'String', "AdMobAppApiKey", CircuitTester_AdMobAppApiKey
             resValue 'string', "admob_ad_unit_api_key", CircuitTester_AdMobAdUnitApiKey
-            manifestPlaceholders = [firebaseDeactivated: false, crashlyticsEnabled: true]
+            manifestPlaceholders = [firebaseDeactivated: false, crashlyticsEnabled: true, adMobAppApiKey: CircuitTester_AdMobAppApiKey]
         }
     }
 
@@ -45,7 +45,7 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     testImplementation 'junit:junit:4.12'
-    implementation 'com.google.android.gms:play-services-ads:16.0.0'
+    implementation 'com.google.android.gms:play-services-ads:17.0.0'
     implementation "com.android.support:preference-v7:28.0.0"
     implementation 'com.android.support:appcompat-v7:28.0.0'
     implementation "com.android.support:customtabs:28.0.0"
