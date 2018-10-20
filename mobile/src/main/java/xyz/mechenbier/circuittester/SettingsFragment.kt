@@ -21,24 +21,22 @@ class SettingsFragment : PreferenceFragmentCompat() {
 
         val packageManager = activity!!.packageManager
 
+        // check if the device can resolve the intent and display accordingly
         val sendEmailIntent = Intent(Intent.ACTION_SENDTO)
         val uriText = "mailto:" + Uri.encode(getString(R.string.feedback_email_address)) + "?subject=" + Uri.encode(getString(R.string.app_name) + " " + getString(R.string.launch_feedback_text))
         sendEmailIntent.data = Uri.parse(uriText)
-
-        val openPrivacyPolicyIntent = Intent(Intent.ACTION_VIEW, Uri.parse(getString(R.string.privacy_policy_url)))
-
-        // check if the device can resolve the intent and display accordingly
-        val preference = this.preferenceScreen.findPreference(KEY_PREF_SEND_FEEDBACK)
-        if (sendEmailIntent.resolveActivity(packageManager) == null){
-            this.preferenceScreen.removePreference(preference)
+        val feedbackPreference = this.preferenceScreen.findPreference(KEY_PREF_SEND_FEEDBACK)
+        if (sendEmailIntent.resolveActivity(packageManager) == null) {
+            this.preferenceScreen.removePreference(feedbackPreference)
         } else {
-            preference.intent = sendEmailIntent
+            feedbackPreference.intent = sendEmailIntent
         }
 
         // check if the device can resolve the intent and display accordingly
-        if (openPrivacyPolicyIntent.resolveActivity(packageManager) == null){
-            val preference = this.preferenceScreen.findPreference(KEY_PREF_PRIVACY_POLICY)
-            this.preferenceScreen.removePreference(preference)
+        val openPrivacyPolicyIntent = Intent(Intent.ACTION_VIEW, Uri.parse(getString(R.string.privacy_policy_url)))
+        if (openPrivacyPolicyIntent.resolveActivity(packageManager) == null) {
+            val privacyPolicyPreference = this.preferenceScreen.findPreference(KEY_PREF_PRIVACY_POLICY)
+            this.preferenceScreen.removePreference(privacyPolicyPreference)
         }
     }
 }

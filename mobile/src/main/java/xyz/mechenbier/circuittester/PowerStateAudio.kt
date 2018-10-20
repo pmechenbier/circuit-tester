@@ -9,10 +9,10 @@ import android.media.MediaPlayer
  */
 class PowerStateAudio {
 
-    private var mp: MediaPlayer? = null
+    private var mMediaPlayer: MediaPlayer? = null
     private var mMuted: Boolean = false
     private var mSoundOnPowered = true
-    var parentContext: Context? = null
+    private var mParentContext: Context? = null
     var isCharging: Boolean? = null
 
     fun alterAudioState() {
@@ -49,32 +49,32 @@ class PowerStateAudio {
     }
 
     fun initMP(context: Context) {
-        parentContext = context
+        mParentContext = context
         initMP()
     }
 
     private fun initMP() {
-        if (parentContext == null) {
+        if (mParentContext == null) {
             return
         }
-        mp = MediaPlayer.create(parentContext, R.raw.test_alert)
-        mp!!.isLooping = true
+        mMediaPlayer = MediaPlayer.create(mParentContext, R.raw.test_alert)
+        mMediaPlayer!!.isLooping = true
     }
 
     private fun startMP() {
-        if (mp == null) {
+        if (mMediaPlayer == null) {
             initMP()
         }
-        if (mp != null && !mp!!.isPlaying && !mMuted) {
+        if (mMediaPlayer != null && !mMediaPlayer!!.isPlaying && !mMuted) {
             initMP()
-            mp!!.start()
+            mMediaPlayer!!.start()
         }
     }
 
     private fun stopMP() {
-        if (mp != null && mp!!.isPlaying) {
-            mp!!.stop()
-            mp!!.reset()
+        if (mMediaPlayer != null && mMediaPlayer!!.isPlaying) {
+            mMediaPlayer!!.stop()
+            mMediaPlayer!!.reset()
         }
     }
 }

@@ -31,9 +31,9 @@ class PowerStateService : Service() {
 
         var isMuted = false
         var soundWhenPowered = false
-        if (intent != null && intent.extras != null){
-            isMuted = intent.extras.getBoolean(POWER_STATE_SERVICE_INTENT_EXTRA_IS_MUTED, false)
-            soundWhenPowered = intent.extras.getBoolean(POWER_STATE_SERVICE_INTENT_EXTRA_SOUND_WHEN_POWERED, false)
+        if (intent.extras != null) {
+            isMuted = intent.extras!!.getBoolean(POWER_STATE_SERVICE_INTENT_EXTRA_IS_MUTED, false)
+            soundWhenPowered = intent.extras!!.getBoolean(POWER_STATE_SERVICE_INTENT_EXTRA_SOUND_WHEN_POWERED, false)
         }
 
         mPowerConnectionReceiver.resume(isMuted, soundWhenPowered)
@@ -60,9 +60,9 @@ class PowerStateService : Service() {
         // The service is no longer used and is being destroyed
         showToast("Service Stopping")
 
-        try{
+        try {
             unregisterReceiver(mPowerConnectionReceiver)
-        } catch (e: IllegalArgumentException){
+        } catch (e: IllegalArgumentException) {
             // this as already unregistered at one point
             Crashlytics.logException(e)
         }
