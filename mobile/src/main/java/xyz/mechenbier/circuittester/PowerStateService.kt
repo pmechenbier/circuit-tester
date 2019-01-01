@@ -25,13 +25,13 @@ class PowerStateService : Service() {
         mIntentFilter = IntentFilter(Intent.ACTION_BATTERY_CHANGED)
     }
 
-    override fun onStartCommand(intent: Intent, flags: Int, startId: Int): Int {
+    override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
         // The service is starting, due to a call to startService()
         showToast("Service Starting")
 
         var isMuted = false
         var soundWhenPowered = false
-        if (intent.extras != null) {
+        if (intent != null && intent.extras != null) {
             isMuted = intent.extras!!.getBoolean(POWER_STATE_SERVICE_INTENT_EXTRA_IS_MUTED, false)
             soundWhenPowered = intent.extras!!.getBoolean(POWER_STATE_SERVICE_INTENT_EXTRA_SOUND_WHEN_POWERED, false)
         }
