@@ -6,6 +6,7 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
 
     <uses-feature android:name="android.hardware.screen.portrait" />
 
@@ -50,6 +51,7 @@
 
         <service
             android:name=".PowerStateService"
+            android:description="@string/service_manifest_description"
             android:enabled="true"
             android:exported="false" />
 

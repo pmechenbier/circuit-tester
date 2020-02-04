@@ -1,28 +1,56 @@
 package xyz.mechenbier.circuittester
 
+import android.app.NotificationChannel
+import android.app.NotificationManager
+import android.app.PendingIntent
 import android.app.Service
+import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
+import android.graphics.BitmapFactory
 import android.os.Binder
+import android.os.Build
 import android.os.IBinder
 import android.widget.Toast
+import androidx.core.app.NotificationCompat
 import com.crashlytics.android.Crashlytics
 
 const val POWER_STATE_SERVICE_INTENT_EXTRA_IS_MUTED = "isMutedIntentExtra"
 const val POWER_STATE_SERVICE_INTENT_EXTRA_SOUND_WHEN_POWERED = "soundWhenPoweredIntentExtra"
 
 class PowerStateService : Service() {
-    private var mStartMode: Int = 0       // indicates how to behave if the service is killed
-    private val mBinder = LocalBinder()     // interface for clients that bind
-    private var mAllowRebind: Boolean = false // indicates whether onRebind should be used
+    private var mStartMode: Int = START_STICKY  // indicates how to behave if the service is killed
+    private val mBinder = LocalBinder()         // interface for clients that bind
+    private var mAllowRebind: Boolean = false   // indicates whether onRebind should be used
     private var mPowerConnectionReceiver: PowerConnectionReceiver = PowerConnectionReceiver()
-    private var mIntentFilter: IntentFilter? = null
-    private var mDebug: Boolean = false    // Setting to true will show toasts on start and stop of the service
+    private var mDebug: Boolean = false          // Setting to true will show toasts on start and stop of the service
 
     override fun onCreate() {
         // The service is being created
         mPowerConnectionReceiver.init(this)
-        mIntentFilter = IntentFilter(Intent.ACTION_BATTERY_CHANGED)
+
+        // we don't need to do this for devices running Android O or lower but NotificationChannel is not in appcompat so we have to check the version
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            val notificationManager = this.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+            val notificationChannel = NotificationChannel(getString(R.string.notification_channel_id), getString(R.string.notification_channel_name), NotificationManager.IMPORTANCE_DEFAULT)
+            notificationChannel.description = getString(R.string.notification_channel_description)
+            notificationManager.createNotificationChannel(notificationChannel)
+        }
+
+        val mainActivityIntent = Intent(this, MainActivity::class.java)
+        val contentIntent = PendingIntent.getActivity(this, 0, mainActivityIntent, PendingIntent.FLAG_UPDATE_CURRENT)
+
+        val notification = NotificationCompat.Builder(this, getString(R.string.notification_channel_id))
+                .setDefaults(NotificationCompat.DEFAULT_ALL)
+                .setContentTitle(getString(R.string.app_name))
+                .setContentText(getString(R.string.notification_details))
+                .setSmallIcon(R.drawable.ic_stat_name)
+                .setLargeIcon(BitmapFactory.decodeResource(this.resources, R.drawable.ic_stat_name))
+                .setPriority(NotificationCompat.PRIORITY_LOW)
+                .setContentIntent(contentIntent)
+                .build()
+
+        startForeground(1, notification)
     }
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
@@ -37,7 +65,8 @@ class PowerStateService : Service() {
         }
 
         mPowerConnectionReceiver.resume(isMuted, soundWhenPowered)
-        registerReceiver(mPowerConnectionReceiver, mIntentFilter)
+        registerReceiver(mPowerConnectionReceiver, IntentFilter(Intent.ACTION_BATTERY_CHANGED))
+
         return mStartMode
     }
 

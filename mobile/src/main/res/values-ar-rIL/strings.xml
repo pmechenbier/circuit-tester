@@ -35,4 +35,5 @@
     <string name="launch_privacy_policy_description">عرض سياسة الخصوصية</string>
     <string name="power_state_powered">الجهاز يعمل بالطاقة</string>
     <string name="power_state_not_powered">الجهاز غير مدعوم</string>
+    <string name="service_manifest_description">يراقب حالة شحن جهازك لتطبيق Circuit and Outlet Tester.</string>
 </resources>

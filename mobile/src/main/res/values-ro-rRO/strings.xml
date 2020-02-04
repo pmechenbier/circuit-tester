@@ -35,4 +35,5 @@
     <string name="launch_privacy_policy_description">Vedeți politica de confidențialitate</string>
     <string name="power_state_powered">Dispozitivul este alimentat</string>
     <string name="power_state_not_powered">Dispozitivul nu este alimentat</string>
+    <string name="service_manifest_description">Monitorizează starea de încărcare a dispozitivului dvs. pentru aplicația Circuit and Outlet Tester.</string>
 </resources>

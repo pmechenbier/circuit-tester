@@ -35,4 +35,5 @@
     <string name="launch_privacy_policy_description">গোপনীয়তা নীতি দেখুন</string>
     <string name="power_state_powered">ডিভাইস চালিত হয়</string>
     <string name="power_state_not_powered">ডিভাইস চালিত হয় না</string>
+    <string name="service_manifest_description">সার্কিট এবং আউটলেট পরীক্ষক অ্যাপ্লিকেশনটির জন্য আপনার ডিভাইসের চার্জিং অবস্থা পর্যবেক্ষণ করে।</string>
 </resources>

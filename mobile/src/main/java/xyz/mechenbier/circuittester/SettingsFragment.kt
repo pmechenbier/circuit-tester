@@ -3,7 +3,8 @@ package xyz.mechenbier.circuittester
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.support.v7.preference.PreferenceFragmentCompat
+import androidx.preference.Preference
+import androidx.preference.PreferenceFragmentCompat
 
 const val KEY_PREF_SHOW_STATE_TEXT = "preference_show_text_state"
 const val KEY_PREF_SOUND_WHEN_POWERED = "preference_sound_when_powered"
@@ -25,17 +26,17 @@ class SettingsFragment : PreferenceFragmentCompat() {
         val sendEmailIntent = Intent(Intent.ACTION_SENDTO)
         val uriText = "mailto:" + Uri.encode(getString(R.string.feedback_email_address)) + "?subject=" + Uri.encode(getString(R.string.app_name) + " " + getString(R.string.launch_feedback_text))
         sendEmailIntent.data = Uri.parse(uriText)
-        val feedbackPreference = this.preferenceScreen.findPreference(KEY_PREF_SEND_FEEDBACK)
+        val feedbackPreference = this.preferenceScreen.findPreference<Preference>(KEY_PREF_SEND_FEEDBACK)
         if (sendEmailIntent.resolveActivity(packageManager) == null) {
             this.preferenceScreen.removePreference(feedbackPreference)
         } else {
-            feedbackPreference.intent = sendEmailIntent
+            feedbackPreference?.intent = sendEmailIntent
         }
 
         // check if the device can resolve the intent and display accordingly
         val openPrivacyPolicyIntent = Intent(Intent.ACTION_VIEW, Uri.parse(getString(R.string.privacy_policy_url)))
         if (openPrivacyPolicyIntent.resolveActivity(packageManager) == null) {
-            val privacyPolicyPreference = this.preferenceScreen.findPreference(KEY_PREF_PRIVACY_POLICY)
+            val privacyPolicyPreference = this.preferenceScreen.findPreference<Preference>(KEY_PREF_PRIVACY_POLICY)
             this.preferenceScreen.removePreference(privacyPolicyPreference)
         }
     }

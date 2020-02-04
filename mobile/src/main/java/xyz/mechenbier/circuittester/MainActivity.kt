@@ -2,15 +2,12 @@ package xyz.mechenbier.circuittester
 
 import android.app.*
 import android.content.*
-import android.graphics.BitmapFactory
 import android.net.Uri
-import android.os.Build
 import android.os.Bundle
 import android.os.IBinder
-import android.preference.PreferenceManager
-import android.support.v4.app.NotificationCompat
-import android.support.v4.content.ContextCompat
-import android.support.v7.app.AppCompatActivity
+import androidx.preference.PreferenceManager
+import androidx.core.content.ContextCompat
+import androidx.appcompat.app.AppCompatActivity
 import android.util.Log
 import android.util.TypedValue
 import android.view.Menu
@@ -22,15 +19,12 @@ import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.MobileAds
 import com.google.firebase.analytics.FirebaseAnalytics
 
-import xyz.mechenbier.circuittester.PowerStateService.LocalBinder
-
 class MainActivity : AppCompatActivity() {
 
     private lateinit var mService: PowerStateService
     private var mBound = false
     private var mUiUpdateReceiver: UiUpdateReceiver? = null
     private lateinit var mFirebaseAnalytics: FirebaseAnalytics
-    private val mNotificationID = 5000
     private val mRatingDaysUntilPrompt = 3
     private val mRatingLaunchesUntilPrompt = 3
 
@@ -69,7 +63,8 @@ class MainActivity : AppCompatActivity() {
         mInstance = this
         mFirebaseAnalytics = FirebaseAnalytics.getInstance(this)
 
-        MobileAds.initialize(this, BuildConfig.AdMobAppApiKey)
+        MobileAds.initialize(this)
+
         val adView = findViewById<View>(R.id.adView) as AdView
         val adRequest = AdRequest.Builder()
                 .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
@@ -159,47 +154,6 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-
-    private fun createNotification() {
-        createNotificationChannel(this)
-
-        val intent = Intent(this, MainActivity::class.java)
-        val contentIntent = PendingIntent
-                .getActivity(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT)
-
-        val notificationBuilder = NotificationCompat.Builder(this, getString(R.string.notification_channel_id))
-                .setDefaults(NotificationCompat.DEFAULT_ALL)
-                .setSmallIcon(R.drawable.ic_stat_name)
-                .setLargeIcon(BitmapFactory.decodeResource(this.resources, R.drawable.ic_stat_name))
-                .setContentTitle(getString(R.string.app_name))
-                .setContentText(getString(R.string.notification_details))
-                .setWhen(System.currentTimeMillis())
-                .setOngoing(true)
-                .setContentIntent(contentIntent)
-
-        val notificationManager = this
-                .getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-
-        notificationManager.notify(mNotificationID, notificationBuilder.build())
-    }
-
-    private fun createNotificationChannel(context: Context) {
-        // we don't need to do this for devices running Android O or lower but NotificationChannel is not in appcompat so we have to check the version
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            val notificationManager = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-            val notificationChannel = NotificationChannel(getString(R.string.notification_channel_id), getString(R.string.notification_channel_name), NotificationManager.IMPORTANCE_DEFAULT)
-            notificationChannel.description = getString(R.string.notification_channel_description)
-            notificationManager.createNotificationChannel(notificationChannel)
-        }
-    }
-
-    private fun dismissNotification() {
-        val notificationManager = this
-                .getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-        notificationManager.cancel(mNotificationID)
-    }
-
-
     private fun bindService() {
         // Bind to LocalService
         val intent = Intent(this, PowerStateService::class.java)
@@ -219,18 +173,16 @@ class MainActivity : AppCompatActivity() {
     private fun startService(preferences: SharedPreferences) {
         val prefValueSoundWhenPowered: Boolean = preferences.getBoolean(KEY_PREF_SOUND_WHEN_POWERED, false)
         val prefValueSoundMute: Boolean = preferences.getBoolean(KEY_PREF_SOUND_MUTE, false)
-        val intent = Intent(this, PowerStateService::class.java)
+        val powerStateServiceIntent = Intent(this, PowerStateService::class.java)
 
-        intent.putExtra(POWER_STATE_SERVICE_INTENT_EXTRA_IS_MUTED, prefValueSoundMute)
-        intent.putExtra(POWER_STATE_SERVICE_INTENT_EXTRA_SOUND_WHEN_POWERED, prefValueSoundWhenPowered)
+        powerStateServiceIntent.putExtra(POWER_STATE_SERVICE_INTENT_EXTRA_IS_MUTED, prefValueSoundMute)
+        powerStateServiceIntent.putExtra(POWER_STATE_SERVICE_INTENT_EXTRA_SOUND_WHEN_POWERED, prefValueSoundWhenPowered)
 
-        startService(intent)
-        createNotification()
+        startService(powerStateServiceIntent)
     }
 
     private fun stopService() {
         unbindService()
-        dismissNotification()
         val intent = Intent(this, PowerStateService::class.java)
         stopService(intent)
     }
