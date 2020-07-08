@@ -1,23 +1,25 @@
 package xyz.mechenbier.circuittester
 
-import android.app.*
+import android.app.AlertDialog
 import android.content.*
 import android.net.Uri
 import android.os.Bundle
 import android.os.IBinder
-import androidx.preference.PreferenceManager
-import androidx.core.content.ContextCompat
-import androidx.appcompat.app.AppCompatActivity
 import android.util.Log
 import android.util.TypedValue
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.*
-import com.google.android.gms.ads.AdView
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
+import androidx.preference.PreferenceManager
 import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.AdView
 import com.google.android.gms.ads.MobileAds
+import com.google.android.gms.ads.RequestConfiguration
 import com.google.firebase.analytics.FirebaseAnalytics
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -66,9 +68,17 @@ class MainActivity : AppCompatActivity() {
         MobileAds.initialize(this)
 
         val adView = findViewById<View>(R.id.adView) as AdView
-        val adRequest = AdRequest.Builder()
-                .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
+
+        val testDevices: MutableList<String> = ArrayList()
+        testDevices.add(AdRequest.DEVICE_ID_EMULATOR)
+
+        val requestConfiguration = RequestConfiguration.Builder()
+                .setTestDeviceIds(testDevices)
                 .build()
+
+        MobileAds.setRequestConfiguration(requestConfiguration)
+
+        val adRequest = AdRequest.Builder().build()
         adView.loadAd(adRequest)
 
         val preferences = PreferenceManager.getDefaultSharedPreferences(this)
@@ -209,7 +219,7 @@ class MainActivity : AppCompatActivity() {
         editor.apply()
 
         if (mBound) {
-            mService!!.setSoundOnPowered(checked)
+            mService.setSoundOnPowered(checked)
         }
     }
 
@@ -220,7 +230,7 @@ class MainActivity : AppCompatActivity() {
         editor.apply()
 
         if (mBound) {
-            mService!!.setMute(muted)
+            mService.setMute(muted)
         }
     }
 

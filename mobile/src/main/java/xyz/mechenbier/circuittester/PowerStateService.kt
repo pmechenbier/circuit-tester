@@ -13,7 +13,7 @@ import android.os.Build
 import android.os.IBinder
 import android.widget.Toast
 import androidx.core.app.NotificationCompat
-import com.crashlytics.android.Crashlytics
+import com.google.firebase.crashlytics.FirebaseCrashlytics;
 
 const val POWER_STATE_SERVICE_INTENT_EXTRA_IS_MUTED = "isMutedIntentExtra"
 const val POWER_STATE_SERVICE_INTENT_EXTRA_SOUND_WHEN_POWERED = "soundWhenPoweredIntentExtra"
@@ -93,7 +93,8 @@ class PowerStateService : Service() {
             unregisterReceiver(mPowerConnectionReceiver)
         } catch (e: IllegalArgumentException) {
             // this as already unregistered at one point
-            Crashlytics.logException(e)
+            val crashlytics = FirebaseCrashlytics.getInstance()
+            crashlytics.recordException(e)
         }
         mPowerConnectionReceiver.pause()
     }

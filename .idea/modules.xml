@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/circuit-tester.iml" filepath="$PROJECT_DIR$/circuit-tester.iml" />
-      <module fileurl="file://$PROJECT_DIR$/mobile/mobile.iml" filepath="$PROJECT_DIR$/mobile/mobile.iml" />
+      <module fileurl="file://$PROJECT_DIR$/circuit-tester.iml" filepath="$PROJECT_DIR$/circuit-tester.iml" group="circuit-tester" />
+      <module fileurl="file://$PROJECT_DIR$/mobile/mobile.iml" filepath="$PROJECT_DIR$/mobile/mobile.iml" group="circuit-tester/mobile" />
     </modules>
   </component>
 </project>
