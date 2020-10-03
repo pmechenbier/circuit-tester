@@ -69,11 +69,7 @@ class MainActivity : AppCompatActivity() {
 
         val adView = findViewById<View>(R.id.adView) as AdView
 
-        val testDevices: MutableList<String> = ArrayList()
-        testDevices.add(AdRequest.DEVICE_ID_EMULATOR)
-
         val requestConfiguration = RequestConfiguration.Builder()
-                .setTestDeviceIds(testDevices)
                 .build()
 
         MobileAds.setRequestConfiguration(requestConfiguration)
