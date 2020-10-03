@@ -19,6 +19,8 @@ import com.google.android.gms.ads.AdView
 import com.google.android.gms.ads.MobileAds
 import com.google.android.gms.ads.RequestConfiguration
 import com.google.firebase.analytics.FirebaseAnalytics
+import com.google.firebase.analytics.ktx.analytics
+import com.google.firebase.ktx.Firebase
 
 
 class MainActivity : AppCompatActivity() {
@@ -29,6 +31,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var mFirebaseAnalytics: FirebaseAnalytics
     private val mRatingDaysUntilPrompt = 3
     private val mRatingLaunchesUntilPrompt = 3
+    private lateinit var firebaseAnalytics: FirebaseAnalytics
 
     companion object {
         lateinit var mInstance: MainActivity
@@ -63,15 +66,14 @@ class MainActivity : AppCompatActivity() {
         PreferenceManager.setDefaultValues(this, R.xml.preferences, false)
 
         mInstance = this
-        mFirebaseAnalytics = FirebaseAnalytics.getInstance(this)
+
+        firebaseAnalytics = Firebase.analytics
 
         MobileAds.initialize(this)
 
         val adView = findViewById<View>(R.id.adView) as AdView
 
-        val requestConfiguration = RequestConfiguration.Builder()
-                .build()
-
+        val requestConfiguration = RequestConfiguration.Builder().build()
         MobileAds.setRequestConfiguration(requestConfiguration)
 
         val adRequest = AdRequest.Builder().build()
