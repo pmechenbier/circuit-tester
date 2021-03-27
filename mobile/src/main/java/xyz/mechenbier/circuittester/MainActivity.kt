@@ -14,10 +14,6 @@ import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.preference.PreferenceManager
-import com.google.android.gms.ads.AdRequest
-import com.google.android.gms.ads.AdView
-import com.google.android.gms.ads.MobileAds
-import com.google.android.gms.ads.RequestConfiguration
 import com.google.firebase.analytics.FirebaseAnalytics
 import com.google.firebase.analytics.ktx.analytics
 import com.google.firebase.ktx.Firebase
@@ -28,7 +24,6 @@ class MainActivity : AppCompatActivity() {
     private lateinit var mService: PowerStateService
     private var mBound = false
     private var mUiUpdateReceiver: UiUpdateReceiver? = null
-    private lateinit var mFirebaseAnalytics: FirebaseAnalytics
     private val mRatingDaysUntilPrompt = 3
     private val mRatingLaunchesUntilPrompt = 3
     private lateinit var firebaseAnalytics: FirebaseAnalytics
@@ -68,16 +63,6 @@ class MainActivity : AppCompatActivity() {
         mInstance = this
 
         firebaseAnalytics = Firebase.analytics
-
-        MobileAds.initialize(this)
-
-        val adView = findViewById<View>(R.id.adView) as AdView
-
-        val requestConfiguration = RequestConfiguration.Builder().build()
-        MobileAds.setRequestConfiguration(requestConfiguration)
-
-        val adRequest = AdRequest.Builder().build()
-        adView.loadAd(adRequest)
 
         val preferences = PreferenceManager.getDefaultSharedPreferences(this)
 

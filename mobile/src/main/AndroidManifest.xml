@@ -46,10 +46,6 @@
             android:name="firebase_performance_collection_deactivated"
             android:value="${firebaseDeactivated}" />
 
-        <meta-data
-            android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="@string/admob_ad_app_api_key" />
-
         <service
             android:name=".PowerStateService"
             android:description="@string/service_manifest_description"
