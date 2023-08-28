@@ -20,13 +20,13 @@ class SettingsFragment : PreferenceFragmentCompat() {
     override fun onCreatePreferences(p0: Bundle?, p1: String?) {
         addPreferencesFromResource(R.xml.preferences)
 
-        val packageManager = activity!!.packageManager
+        val packageManager = requireActivity().packageManager
 
         // check if the device can resolve the intent and display accordingly
         val sendEmailIntent = Intent(Intent.ACTION_SENDTO)
         val uriText = "mailto:" + Uri.encode(getString(R.string.feedback_email_address)) + "?subject=" + Uri.encode(getString(R.string.app_name) + " " + getString(R.string.launch_feedback_text))
         sendEmailIntent.data = Uri.parse(uriText)
-        val feedbackPreference = this.preferenceScreen.findPreference<Preference>(KEY_PREF_SEND_FEEDBACK)
+        val feedbackPreference = this.preferenceScreen.findPreference<Preference>(KEY_PREF_SEND_FEEDBACK)!!
         if (sendEmailIntent.resolveActivity(packageManager) == null) {
             this.preferenceScreen.removePreference(feedbackPreference)
         } else {
@@ -36,7 +36,7 @@ class SettingsFragment : PreferenceFragmentCompat() {
         // check if the device can resolve the intent and display accordingly
         val openPrivacyPolicyIntent = Intent(Intent.ACTION_VIEW, Uri.parse(getString(R.string.privacy_policy_url)))
         if (openPrivacyPolicyIntent.resolveActivity(packageManager) == null) {
-            val privacyPolicyPreference = this.preferenceScreen.findPreference<Preference>(KEY_PREF_PRIVACY_POLICY)
+            val privacyPolicyPreference = this.preferenceScreen.findPreference<Preference>(KEY_PREF_PRIVACY_POLICY)!!
             this.preferenceScreen.removePreference(privacyPolicyPreference)
         }
     }

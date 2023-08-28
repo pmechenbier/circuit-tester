@@ -38,7 +38,7 @@ class PowerStateService : Service() {
         }
 
         val mainActivityIntent = Intent(this, MainActivity::class.java)
-        val contentIntent = PendingIntent.getActivity(this, 0, mainActivityIntent, PendingIntent.FLAG_UPDATE_CURRENT)
+        val contentIntent = PendingIntent.getActivity(this, 0, mainActivityIntent, PendingIntent.FLAG_MUTABLE)
 
         val notification = NotificationCompat.Builder(this, getString(R.string.notification_channel_id))
                 .setDefaults(NotificationCompat.DEFAULT_ALL)
