@@ -13,6 +13,7 @@ import android.os.Build
 import android.os.IBinder
 import android.widget.Toast
 import androidx.core.app.NotificationCompat
+import androidx.core.content.ContextCompat
 import com.google.firebase.crashlytics.FirebaseCrashlytics;
 
 const val POWER_STATE_SERVICE_INTENT_EXTRA_IS_MUTED = "isMutedIntentExtra"
@@ -65,7 +66,7 @@ class PowerStateService : Service() {
         }
 
         mPowerConnectionReceiver.resume(isMuted, soundWhenPowered)
-        registerReceiver(mPowerConnectionReceiver, IntentFilter(Intent.ACTION_BATTERY_CHANGED))
+        ContextCompat.registerReceiver(this, mPowerConnectionReceiver, IntentFilter(Intent.ACTION_BATTERY_CHANGED), ContextCompat.RECEIVER_EXPORTED)
 
         return mStartMode
     }

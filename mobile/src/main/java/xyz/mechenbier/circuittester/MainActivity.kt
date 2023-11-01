@@ -85,7 +85,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         val intentFilter = android.content.IntentFilter(INTENT_POWER_CONNECTION_RECEIVER_CHARGING)
-        registerReceiver(mUiUpdateReceiver, intentFilter)
+        ContextCompat.registerReceiver(this, mUiUpdateReceiver, intentFilter, ContextCompat.RECEIVER_EXPORTED)
 
         val preferences = PreferenceManager.getDefaultSharedPreferences(this)
         initializeUiFromPreferences(preferences)
