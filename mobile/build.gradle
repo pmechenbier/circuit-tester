@@ -8,8 +8,15 @@ plugins {
 
 android {
     namespace "xyz.mechenbier.circuittester"
-    compileSdk 34
-    buildToolsVersion '34.0.0'
+
+    defaultConfig {
+        minSdk 19
+        targetSdk 34
+        compileSdk 34
+        versionCode 19
+        versionName "1.4.7"
+        multiDexEnabled true
+    }
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -17,14 +24,6 @@ android {
     }
     kotlinOptions {
         jvmTarget = '1.8'
-    }
-
-    defaultConfig {
-        minSdk 19
-        targetSdk 34
-        versionCode 19
-        versionName "1.4.7"
-        multiDexEnabled true
     }
 
     buildTypes {
@@ -49,7 +48,7 @@ dependencies {
     implementation 'androidx.media:media:1.6.0'
     implementation 'androidx.multidex:multidex:2.0.1'
     implementation 'androidx.preference:preference-ktx:1.2.1'
-    implementation 'com.google.android.material:material:1.9.0'
-    implementation 'com.google.firebase:firebase-analytics-ktx:21.3.0'
-    implementation 'com.google.firebase:firebase-crashlytics-ktx:18.4.1'
+    implementation 'com.google.android.material:material:1.10.0'
+    implementation 'com.google.firebase:firebase-analytics-ktx:21.5.0'
+    implementation 'com.google.firebase:firebase-crashlytics-ktx:18.5.1'
 }
