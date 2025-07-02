@@ -44,3 +44,5 @@ mobile/release/
 .idea/caches/build_file_checksums.ser
 .idea/assetWizardSettings.xml
 java_pid3800.hprof
+*.hprof
+*.salive

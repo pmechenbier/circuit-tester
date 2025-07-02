@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/circuit-tester.iml" filepath="$PROJECT_DIR$/circuit-tester.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/mobile/circuit-tester.mobile.iml" filepath="$PROJECT_DIR$/.idea/modules/mobile/circuit-tester.mobile.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/mobile/circuit-tester.mobile.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/mobile/circuit-tester.mobile.androidTest.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/mobile/circuit-tester.mobile.main.iml" filepath="$PROJECT_DIR$/.idea/modules/mobile/circuit-tester.mobile.main.iml" />

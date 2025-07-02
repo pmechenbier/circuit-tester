@@ -10,11 +10,11 @@ android {
     namespace "xyz.mechenbier.circuittester"
 
     defaultConfig {
-        minSdk 19
-        targetSdk 34
-        compileSdk 34
-        versionCode 20
-        versionName "1.5.0"
+        minSdk 21
+        targetSdk 36
+        compileSdk 36
+        versionCode 21
+        versionName '1.5.1'
         multiDexEnabled true
     }
 
@@ -28,8 +28,8 @@ android {
 
     buildTypes {
         debug {
-            minifyEnabled true
-            shrinkResources true
+            minifyEnabled false
+            shrinkResources false
             manifestPlaceholders = [firebaseDeactivated: true, crashlyticsEnabled: false]
         }
         release {
@@ -42,13 +42,14 @@ android {
 }
 
 dependencies {
-    implementation 'androidx.appcompat:appcompat:1.6.1'
-    implementation 'androidx.browser:browser:1.6.0'
+    implementation 'androidx.appcompat:appcompat:1.7.1'
+    implementation 'androidx.browser:browser:1.8.0'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
-    implementation 'androidx.media:media:1.6.0'
+    implementation 'androidx.media:media:1.7.0'
     implementation 'androidx.multidex:multidex:2.0.1'
     implementation 'androidx.preference:preference-ktx:1.2.1'
-    implementation 'com.google.android.material:material:1.10.0'
-    implementation 'com.google.firebase:firebase-analytics-ktx:21.5.0'
-    implementation 'com.google.firebase:firebase-crashlytics-ktx:18.5.1'
+    implementation 'com.google.android.material:material:1.12.0'
+    implementation platform('com.google.firebase:firebase-bom:33.16.0')
+    implementation 'com.google.firebase:firebase-crashlytics-ktx'
+    implementation 'com.google.firebase:firebase-analytics-ktx'
 }
